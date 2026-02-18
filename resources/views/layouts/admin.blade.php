@@ -2,956 +2,659 @@
 <html lang="en">
 
 <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<!--favicon-->
-	<link rel="icon" href="{{ asset('images/application/'.application()->fav_icon) }}" type="image/png" />
-	<!--plugins-->
-	<link href="{{ asset('admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet"/>
-	<link href="{{ asset('admin/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
-	<link href="{{ asset('admin/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
-	<link href="{{ asset('admin/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
-	<!-- loader-->
-	<link href="{{ asset('admin/assets/css/pace.min.css') }}" rel="stylesheet" />
-	<script src="{{ asset('admin/assets/js/pace.min.js') }}"></script>
-	<!-- Bootstrap CSS -->
-	<link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-	<link href="{{ asset('admin/assets/css/app.css') }}" rel="stylesheet">
-	<link href="{{ asset('admin/assets/css/icons.css') }}" rel="stylesheet">
-	<!-- Theme Style CSS -->
-	<link rel="stylesheet" href="{{ asset('admin/assets/css/dark-theme.css') }}" />
-	<link rel="stylesheet" href="{{ asset('admin/assets/css/semi-dark.css') }}" />
-	<link rel="stylesheet" href="{{ asset('admin/assets/css/header-colors.css') }}" />
-	<title>AFADBD | Admin</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" href="{{ asset('images/application/'.application()->fav_icon) }}" type="image/png" />
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>AFADBD | Admin</title>
+    <style>
+        :root {
+            --sidebar-width: 280px;
+            --sidebar-collapsed-width: 0px;
+            --header-height: 60px;
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --sidebar-bg: #1e293b;
+            --sidebar-hover: #334155;
+            --sidebar-active: #4f46e5;
+            --sidebar-text: #94a3b8;
+            --sidebar-text-active: #ffffff;
+            --body-bg: #f1f5f9;
+            --card-shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--body-bg);
+            overflow-x: hidden;
+        }
+
+        /* Sidebar */
+        .admin-sidebar {
+            position: fixed;
+            top: 0; left: 0; bottom: 0;
+            width: var(--sidebar-width);
+            background: var(--sidebar-bg);
+            z-index: 1040;
+            transition: transform .3s ease;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: thin;
+            scrollbar-color: #475569 transparent;
+        }
+        .admin-sidebar::-webkit-scrollbar { width: 5px; }
+        .admin-sidebar::-webkit-scrollbar-thumb { background: #475569; border-radius: 10px; }
+
+        .sidebar-brand {
+            height: var(--header-height);
+            display: flex; align-items: center;
+            padding: 0 20px; gap: 12px;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            position: sticky; top: 0;
+            background: var(--sidebar-bg);
+            z-index: 2;
+        }
+        .sidebar-brand img { height: 36px; width: 36px; object-fit: contain; border-radius: 8px; }
+        .sidebar-brand h5 { color: #fff; font-weight: 700; margin: 0; font-size: 1.1rem; letter-spacing: .5px; }
+
+        .sidebar-nav { padding: 12px 0; }
+        .sidebar-nav .nav-label {
+            padding: 18px 20px 6px;
+            font-size: .65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .sidebar-nav .nav-item > .nav-link {
+            display: flex; align-items: center; gap: 12px;
+            padding: 9px 20px;
+            color: var(--sidebar-text);
+            font-size: .85rem; font-weight: 400;
+            text-decoration: none;
+            transition: all .2s;
+            border-left: 3px solid transparent;
+        }
+        .sidebar-nav .nav-item > .nav-link:hover {
+            color: var(--sidebar-text-active);
+            background: var(--sidebar-hover);
+        }
+        .sidebar-nav .nav-item > .nav-link.active,
+        .sidebar-nav .nav-item.menu-open > .nav-link {
+            color: var(--sidebar-text-active);
+            background: rgba(79,70,229,.15);
+            border-left-color: var(--sidebar-active);
+        }
+        .sidebar-nav .nav-link .bi { font-size: 1.1rem; min-width: 20px; text-align: center; }
+        .sidebar-nav .nav-link .menu-arrow {
+            margin-left: auto;
+            transition: transform .25s;
+            font-size: .7rem;
+        }
+        .sidebar-nav .nav-item.menu-open > .nav-link .menu-arrow { transform: rotate(90deg); }
+
+        .sidebar-nav .sub-menu {
+            list-style: none; padding: 0; margin: 0;
+            max-height: 0; overflow: hidden;
+            transition: max-height .35s ease;
+            background: rgba(0,0,0,.12);
+        }
+        .sidebar-nav .nav-item.menu-open > .sub-menu { max-height: 500px; }
+        .sidebar-nav .sub-menu .nav-link {
+            display: flex; align-items: center; gap: 10px;
+            padding: 7px 20px 7px 55px;
+            color: var(--sidebar-text);
+            font-size: .8rem;
+            text-decoration: none;
+            transition: all .2s;
+        }
+        .sidebar-nav .sub-menu .nav-link:hover { color: var(--sidebar-text-active); }
+        .sidebar-nav .sub-menu .nav-link::before {
+            content: '';
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #64748b;
+            flex-shrink: 0;
+            transition: background .2s;
+        }
+        .sidebar-nav .sub-menu .nav-link:hover::before { background: var(--sidebar-active); }
+
+        /* Header */
+        .admin-header {
+            position: fixed; top: 0; right: 0;
+            left: var(--sidebar-width);
+            height: var(--header-height);
+            background: #fff;
+            z-index: 1030;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex; align-items: center;
+            padding: 0 24px;
+            transition: left .3s ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,.04);
+        }
+
+        /* Main */
+        .admin-main {
+            margin-left: var(--sidebar-width);
+            margin-top: var(--header-height);
+            padding: 24px;
+            min-height: calc(100vh - var(--header-height));
+            transition: margin-left .3s ease;
+        }
+
+        /* Footer */
+        .admin-footer {
+            margin-left: var(--sidebar-width);
+            padding: 16px 24px;
+            background: #fff;
+            border-top: 1px solid #e2e8f0;
+            font-size: .8rem;
+            color: #64748b;
+            transition: margin-left .3s ease;
+        }
+
+        /* Mobile overlay */
+        .sidebar-overlay {
+            display: none; position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,.5);
+            z-index: 1035;
+        }
+
+        /* Responsive */
+        @media (max-width: 991.98px) {
+            .admin-sidebar { transform: translateX(-100%); }
+            .admin-sidebar.show { transform: translateX(0); }
+            .sidebar-overlay.show { display: block; }
+            .admin-header { left: 0; }
+            .admin-main { margin-left: 0; }
+            .admin-footer { margin-left: 0; }
+        }
+
+        /* Cards & Components refinement */
+        .card {
+            border: none;
+            box-shadow: var(--card-shadow);
+            border-radius: .75rem;
+        }
+        .card-header {
+            background: #fff;
+            border-bottom: 1px solid #f1f5f9;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        /* Toggler */
+        .sidebar-toggler {
+            background: none; border: none;
+            font-size: 1.3rem; color: #475569;
+            cursor: pointer; padding: 4px 8px;
+            border-radius: .375rem;
+        }
+        .sidebar-toggler:hover { background: #f1f5f9; }
+
+        /* User dropdown */
+        .user-dropdown .dropdown-toggle::after { display: none; }
+        .user-dropdown .user-avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 600; font-size: .85rem;
+        }
+
+        /* Scrollbar for body */
+        .admin-main::-webkit-scrollbar { width: 6px; }
+        .admin-main::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+        /* Alert / Notification styling */
+        .alert { border-radius: .5rem; border: none; }
+    </style>
 </head>
 
 <body>
-	<!--wrapper-->
-	<div class="wrapper">
-		<!--sidebar wrapper -->
-		<div class="sidebar-wrapper" data-simplebar="true">
-			<div class="sidebar-header">
-				<div>
-					<img src="{{ asset('images/application/'.application()->fav_icon) }}" class="logo-icon" alt="logo icon">
-				</div>
-				<div>
-					<h4 class="logo-text text-danger">AFADBD</h4>
-				</div>
-				<div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left text-danger'></i>
-				</div>
-			</div>
-			<!--navigation-->
-			<ul class="metismenu" id="menu">
-				<li>
-					<a href="{{ route('admin.home') }}">
-						<div class="parent-icon"><i class='bx bx-home-circle'></i>
-						</div>
-						<div class="menu-title">Dashboard</div>
-					</a>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class="fadeIn animated bx bx-slider-alt"></i>
-						</div>
-						<div class="menu-title">Slider</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('slider.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Slider</a>
-						</li>
-						<li>
-                            <a href="{{ route('slider.index') }}"><i class="bx bx-right-arrow-alt"></i>All Slider</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class="fadeIn animated bx bx-shape-square"></i>
-						</div>
-						<div class="menu-title">Ongoing Project</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('project.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Project</a>
-						</li>
-						<li>
-                            <a href="{{ route('project.index') }}"><i class="bx bx-right-arrow-alt"></i>All Project</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class="fadeIn animated bx bx-news"></i>
-						</div>
-						<div class="menu-title">Latest News</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('news.add') }}"><i class="bx bx-right-arrow-alt"></i>Add News</a>
-						</li>
-						<li>
-                            <a href="{{ route('news.index') }}"><i class="bx bx-right-arrow-alt"></i>All News</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class="lni lni-image"></i>
-						</div>
-						<div class="menu-title">Photo Gallery</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('gallery.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Photo</a>
-						</li>
-						<li>
-                            <a href="{{ route('gallery.index') }}"><i class="bx bx-right-arrow-alt"></i>All Photo</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class="fadeIn animated bx bx-bell"></i>
-						</div>
-						<div class="menu-title">Subscribe</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('subscribe.all') }}"><i class="bx bx-right-arrow-alt"></i>All Subscribe</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class="fadeIn animated bx bx-donate-heart"></i>
-						</div>
-						<div class="menu-title">Donate Now</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('admin.payment_methods.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Payment Method</a>
-						</li>
-						<li>
-                            <a href="{{ route('admin.payment_methods.index') }}"><i class="bx bx-right-arrow-alt"></i>All Payment Methods</a>
-						</li>
-						<li>
-                            <a href="{{ route('admin.donations.index') }}"><i class="bx bx-right-arrow-alt"></i>All Donations</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class="fadeIn animated bx bx-target-lock"></i>
-						</div>
-						<div class="menu-title">Key Focus Area</div>
-					</a>
-					<ul>
-						<li>
-							<a href="{{ route('admin.focus_areas.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Focus Area</a>
-						</li>
-						<li>
-							<a href="{{ route('admin.focus_areas.index') }}"><i class="bx bx-right-arrow-alt"></i>All Focus Areas</a>
-						</li>
-					</ul>
-				</li>
-				{{-- <li>
-					<a href="{{ route('logo.create') }}">
-						<div class="parent-icon"><i class='bx bx-cookie'></i>
-						</div>
-						<div class="menu-title">Application</div>
-					</a>
-				</li> --}}
-				<li>
-					<a href="{{ route('logo.create') }}">
-						<div class="parent-icon"><i class='bx bx-folder'></i>
-						</div>
-						<div class="menu-title">Application</div>
-					</a>
-				</li>
-				<li>
-					<a href="{{ route('about.us.create') }}">
-						<div class="parent-icon"><i class='bx bx-folder'></i>
-						</div>
-						<div class="menu-title">About us</div>
-					</a>
-				</li>
-				<li>
-					<a href="{{ route('mission.vision.create') }}">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-calendar-star'></i>
-						</div>
-						<div class="menu-title">Mission Vision</div>
-					</a>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-detail'></i>
-						</div>
-						<div class="menu-title">Origin & Legal Affilation</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('origin.legal_affilation.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Affilation</a>
-						</li>
-						<li>
-                            <a href="{{ route('origin.legal_affilation.index') }}"><i class="bx bx-right-arrow-alt"></i>All Affilation</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-user-circle'></i>
-						</div>
-						<div class="menu-title">Executive Committee</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('executive.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Member</a>
-						</li>
-						<li>
-                            <a href="{{ route('executive.index') }}"><i class="bx bx-right-arrow-alt"></i>All Members</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-group'></i>
-						</div>
-						<div class="menu-title">Team Members</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('team.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Member</a>
-						</li>
-						<li>
-                            <a href="{{ route('team.index') }}"><i class="bx bx-right-arrow-alt"></i>All Members</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-briefcase'></i>
-						</div>
-						<div class="menu-title">Programs</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('programs.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Program</a>
-						</li>
-						<li>
-                            <a href="{{ route('programs.index') }}"><i class="bx bx-right-arrow-alt"></i>All Programs</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-trending-up'></i>
-						</div>
-						<div class="menu-title">Impact Metrics</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('impact.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Impact</a>
-						</li>
-						<li>
-                            <a href="{{ route('impact.index') }}"><i class="bx bx-right-arrow-alt"></i>All Impact</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-book-heart'></i>
-						</div>
-						<div class="menu-title">Success Stories</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('stories.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Story</a>
-						</li>
-						<li>
-                            <a href="{{ route('stories.index') }}"><i class="bx bx-right-arrow-alt"></i>All Stories</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='lni lni-network'></i>
-						</div>
-						<div class="menu-title">Chief Executive Message</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('chief.message.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Message</a>
-						</li>
-						<li>
-                            <a href="{{ route('chief.message.index') }}"><i class="bx bx-right-arrow-alt"></i>All Message</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-help-circle'></i>
-						</div>
-						<div class="menu-title">FAQ</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('faq.add') }}"><i class="bx bx-right-arrow-alt"></i>Add FAQ</a>
-						</li>
-						<li>
-                            <a href="{{ route('faq.index') }}"><i class="bx bx-right-arrow-alt"></i>All FAQ</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-heart'></i>
-						</div>
-						<div class="menu-title">Volunteers</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('volunteers.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Opportunity</a>
-						</li>
-						<li>
-                            <a href="{{ route('volunteers.index') }}"><i class="bx bx-right-arrow-alt"></i>All Opportunities</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-message-rounded-dots'></i>
-						</div>
-						<div class="menu-title">User Message</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('message.index') }}"><i class="bx bx-right-arrow-alt"></i>All Message</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-user-check'></i>
-						</div>
-						<div class="menu-title">Partners & Donor</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('partner.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Partners & Donor</a>
-						</li>
-						<li>
-                            <a href="{{ route('partner.index') }}"><i class="bx bx-right-arrow-alt"></i>All Partners & Donor</a>
-						</li>
-					</ul>
-				</li>
-				{{-- <li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-area'></i>
-						</div>
-						<div class="menu-title">Key Focus Ares</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="#"><i class="bx bx-right-arrow-alt"></i>Add</a>
-						</li>
-						<li>
-                            <a href="#"><i class="bx bx-right-arrow-alt"></i>All</a>
-						</li>
-					</ul>
-				</li> --}}
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-notification'></i>
-						</div>
-						<div class="menu-title">Project Archive</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('project.archive.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Project</a>
-						</li>
-						<li>
-                            <a href="{{ route('project.archive.index') }}"><i class="bx bx-right-arrow-alt"></i>All Project</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-file'></i>
-						</div>
-						<div class="menu-title">Strategic Plan</div>
-					</a>
-					<ul>
-						<li>
-							<a href="{{ route('strategic_plans.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Strategic Plan</a>
-						</li>
-						<li>
-							<a href="{{ route('strategic_plans.index') }}"><i class="bx bx-right-arrow-alt"></i>All Strategic Plan</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-file'></i>
-						</div>
-						<div class="menu-title">Policy and Guideline</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('policy.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Policy and Guideline</a>
-						</li>
-						<li>
-                            <a href="{{ route('policy.index') }}"><i class="bx bx-right-arrow-alt"></i>All Policy and Guideline</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-file'></i>
-						</div>
-						<div class="menu-title">Publication</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('publications.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Publication</a>
-						</li>
-						<li>
-                            <a href="{{ route('publications.index') }}"><i class="bx bx-right-arrow-alt"></i>All Publications</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-star'></i>
-						</div>
-						<div class="menu-title">Career</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('invoked.create') }}"><i class="bx bx-right-arrow-alt"></i>Add Career</a>
-						</li>
-						<li>
-                            <a href="{{ route('invoked.index') }}"><i class="bx bx-right-arrow-alt"></i>All Career</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='fadeIn animated bx bx-phone-call'></i>
-						</div>
-						<div class="menu-title">Contact</div>
-					</a>
-					<ul>
-						<li>
-                            <a href="{{ route('contact.add') }}"><i class="bx bx-right-arrow-alt"></i>Add Contact</a>
-						</li>
-						<li>
-                            <a href="{{ route('contact.index') }}"><i class="bx bx-right-arrow-alt"></i>All Contact</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-			<!--end navigation-->
-		</div>
-		<!--end sidebar wrapper -->
-		<!--start header -->
-		<header>
-			<div class="topbar d-flex align-items-center">
-				<nav class="navbar navbar-expand">
+    <!-- Sidebar Overlay (mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-					<div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
-					</div>
-					<div class="search-bar flex-grow-1">
-						<div class="position-relative search-bar-box">
-							<input type="text" class="form-control search-control" placeholder="Type to search..."> <span class="position-absolute top-50 search-show translate-middle-y"><i class='bx bx-search'></i></span>
-							<span class="position-absolute top-50 search-close translate-middle-y"><i class='bx bx-x'></i></span>
-						</div>
-					</div>
-					<div class="top-menu ms-auto">
-						<ul class="navbar-nav align-items-center">
-							<li class="nav-item mobile-search-icon">
-								<a class="nav-link" href="#">	<i class='bx bx-search'></i>
-								</a>
-							</li>
-							{{-- <li class="nav-item dropdown dropdown-large">
-								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">	<i class='bx bx-category'></i>
-								</a>
-								<div class="dropdown-menu dropdown-menu-end">
-									<div class="row row-cols-3 g-3 p-3">
-										<div class="col text-center">
-											<div class="app-box mx-auto bg-gradient-cosmic text-white"><i class='bx bx-group'></i>
-											</div>
-											<div class="app-title">Teams</div>
-										</div>
-										<div class="col text-center">
-											<div class="app-box mx-auto bg-gradient-burning text-white"><i class='bx bx-atom'></i>
-											</div>
-											<div class="app-title">Projects</div>
-										</div>
-										<div class="col text-center">
-											<div class="app-box mx-auto bg-gradient-lush text-white"><i class='bx bx-shield'></i>
-											</div>
-											<div class="app-title">Tasks</div>
-										</div>
-										<div class="col text-center">
-											<div class="app-box mx-auto bg-gradient-kyoto text-dark"><i class='bx bx-notification'></i>
-											</div>
-											<div class="app-title">Feeds</div>
-										</div>
-										<div class="col text-center">
-											<div class="app-box mx-auto bg-gradient-blues text-dark"><i class='bx bx-file'></i>
-											</div>
-											<div class="app-title">Files</div>
-										</div>
-										<div class="col text-center">
-											<div class="app-box mx-auto bg-gradient-moonlit text-white"><i class='bx bx-filter-alt'></i>
-											</div>
-											<div class="app-title">Alerts</div>
-										</div>
-									</div>
-								</div>
-							</li> --}}
-							<li class="nav-item dropdown dropdown-large d-none">
-								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">7</span>
-									<i class='bx bx-bell'></i>
-								</a>
-								<div class="dropdown-menu dropdown-menu-end">
-									<a href="javascript:;">
-										<div class="msg-header">
-											<p class="msg-header-title">Notifications</p>
-											<p class="msg-header-clear ms-auto">Marks all as read</p>
-										</div>
-									</a>
-									<div class="header-notifications-list">
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-primary text-primary"><i class="bx bx-group"></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">New Customers<span class="msg-time float-end">14 Sec
-												ago</span></h6>
-													<p class="msg-info">5 new user registered</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-danger text-danger"><i class="bx bx-cart-alt"></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">New Orders <span class="msg-time float-end">2 min
-												ago</span></h6>
-													<p class="msg-info">You have recived new orders</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-success text-success"><i class="bx bx-file"></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">24 PDF File<span class="msg-time float-end">19 min
-												ago</span></h6>
-													<p class="msg-info">The pdf files generated</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-warning text-warning"><i class="bx bx-send"></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Time Response <span class="msg-time float-end">28 min
-												ago</span></h6>
-													<p class="msg-info">5.1 min avarage time response</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-info text-info"><i class="bx bx-home-circle"></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">New Product Approved <span
-												class="msg-time float-end">2 hrs ago</span></h6>
-													<p class="msg-info">Your new product has approved</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-danger text-danger"><i class="bx bx-message-detail"></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">New Comments <span class="msg-time float-end">4 hrs
-												ago</span></h6>
-													<p class="msg-info">New customer comments recived</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-success text-success"><i class='bx bx-check-square'></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Your item is shipped <span class="msg-time float-end">5 hrs
-												ago</span></h6>
-													<p class="msg-info">Successfully shipped your item</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-primary text-primary"><i class='bx bx-user-pin'></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">New 24 authors<span class="msg-time float-end">1 day
-												ago</span></h6>
-													<p class="msg-info">24 new authors joined last week</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="notify bg-light-warning text-warning"><i class='bx bx-door-open'></i>
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Defense Alerts <span class="msg-time float-end">2 weeks
-												ago</span></h6>
-													<p class="msg-info">45% less alerts last 4 weeks</p>
-												</div>
-											</div>
-										</a>
-									</div>
-									<a href="javascript:;">
-										<div class="text-center msg-footer">View All Notifications</div>
-									</a>
-								</div>
-							</li>
-							<li class="nav-item dropdown dropdown-large d-none">
-								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">8</span>
-									<i class='bx bx-comment'></i>
-								</a>
-								<div class="dropdown-menu dropdown-menu-end">
-									<a href="javascript:;">
-										<div class="msg-header">
-											<p class="msg-header-title">Messages</p>
-											<p class="msg-header-clear ms-auto">Marks all as read</p>
-										</div>
-									</a>
-									<div class="header-message-list">
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-														<img src="{{ asset('admin/assets/images/avatars/avatar-1.png') }}" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Daisy Anderson <span class="msg-time float-end">5 sec
-												ago</span></h6>
-													<p class="msg-info">The standard chunk of lorem</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-														<img src="{{ asset('admin/assets/images/avatars/avatar-2.png') }}" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Althea Cabardo <span class="msg-time float-end">14
-												sec ago</span></h6>
-													<p class="msg-info">Many desktop publishing packages</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-														<img src="{{ asset('admin/assets/images/avatars/avatar-3.png') }}" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Oscar Garner <span class="msg-time float-end">8 min
-												ago</span></h6>
-													<p class="msg-info">Various versions have evolved over</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-														<img src="{{ asset('admin/assets/images/avatars/avatar-4.png') }}" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Katherine Pechon <span class="msg-time float-end">15
-												min ago</span></h6>
-													<p class="msg-info">Making this the first true generator</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-														<img src="{{ asset('admin/assets/images/avatars/avatar-5.png') }}" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Amelia Doe <span class="msg-time float-end">22 min
-												ago</span></h6>
-													<p class="msg-info">Duis aute irure dolor in reprehenderit</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-														<img src="{{ asset('admin/assets/images/avatars/avatar-6.png') }}" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Cristina Jhons <span class="msg-time float-end">2 hrs
-												ago</span></h6>
-													<p class="msg-info">The passage is attributed to an unknown</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-														<img src="{{ asset('admin/assets/images/avatars/avatar-7.png') }}" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">James Caviness <span class="msg-time float-end">4 hrs
-												ago</span></h6>
-													<p class="msg-info">The point of using Lorem</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-														<img src="{{ asset('admin/assets/images/avatars/avatar-8.png') }}" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Peter Costanzo <span class="msg-time float-end">6 hrs
-												ago</span></h6>
-													<p class="msg-info">It was popularised in the 1960s</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-														<img src="{{ asset('admin/assets/images/avatars/avatar-9.png') }}" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">David Buckley <span class="msg-time float-end">2 hrs
-												ago</span></h6>
-													<p class="msg-info">Various versions have evolved over</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-														<img src="{{ asset('admin/assets/images/avatars/avatar-10.png') }}" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Thomas Wheeler <span class="msg-time float-end">2 days
-												ago</span></h6>
-													<p class="msg-info">If you are going to use a passage</p>
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item" href="javascript:;">
-											<div class="d-flex align-items-center">
-												<div class="user-online">
-														<img src="{{ asset('admin/assets/images/avatars/avatar-11.png') }}" class="msg-avatar" alt="user avatar">
-												</div>
-												<div class="flex-grow-1">
-													<h6 class="msg-name">Johnny Seitz <span class="msg-time float-end">5 days
-												ago</span></h6>
-													<p class="msg-info">All the Lorem Ipsum generators</p>
-												</div>
-											</div>
-										</a>
-									</div>
-									<a href="javascript:;">
-										<div class="text-center msg-footer">View All Messages</div>
-									</a>
-								</div>
-							</li>
-						</ul>
-					</div>
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-brand">
+            <img src="{{ asset('images/application/'.application()->fav_icon) }}" alt="Logo">
+            <h5>AFADBD</h5>
+            <button class="btn-close btn-close-white ms-auto d-lg-none" id="sidebarClose" aria-label="Close"></button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul class="nav flex-column">
+                <li class="nav-label">Main</li>
+                <!-- Dashboard -->
+                <li class="nav-item">
+                    <a href="{{ route('admin.home') }}" class="nav-link {{ request()->routeIs('admin.home') ? 'active' : '' }}">
+                        <i class="bi bi-house"></i> <span>Dashboard</span>
+                    </a>
+                </li>
 
-					<div class="user-box dropdown">
-						<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="bx bx-user"></i>
-							<div class="user-info ps-3">
-								<p class="user-name mb-0">{{ Auth::user()->name }}</p>
-							</div>
-						</a>
-						<ul class="dropdown-menu dropdown-menu-end">
-							{{-- <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a>
-							</li> --}}
-							{{-- <li>
-								<div class="dropdown-divider mb-0"></div>
-							</li> --}}
-							<li>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                    <i class='bx bx-log-out-circle'></i>
-                                    <span>Logout</span>
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-							</li>
-						</ul>
-					</div>
-				</nav>
-			</div>
-		</header>
-		<!--end header -->
-		<!--start page wrapper -->
-		<div class="page-wrapper">
-			<div class="page-content">
+                <li class="nav-label">Content Management</li>
+                <!-- Slider -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-sliders"></i> <span>Slider</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('slider.add') }}" class="nav-link">Add Slider</a></li>
+                        <li><a href="{{ route('slider.index') }}" class="nav-link">All Slider</a></li>
+                    </ul>
+                </li>
+                <!-- Ongoing Project -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-kanban"></i> <span>Ongoing Project</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('project.add') }}" class="nav-link">Add Project</a></li>
+                        <li><a href="{{ route('project.index') }}" class="nav-link">All Project</a></li>
+                    </ul>
+                </li>
+                <!-- Latest News -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-newspaper"></i> <span>Latest News</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('news.add') }}" class="nav-link">Add News</a></li>
+                        <li><a href="{{ route('news.index') }}" class="nav-link">All News</a></li>
+                    </ul>
+                </li>
+                <!-- Photo Gallery -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-images"></i> <span>Photo Gallery</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('gallery.add') }}" class="nav-link">Add Photo</a></li>
+                        <li><a href="{{ route('gallery.index') }}" class="nav-link">All Photo</a></li>
+                    </ul>
+                </li>
+                <!-- Subscribe -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-bell"></i> <span>Subscribe</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('subscribe.all') }}" class="nav-link">All Subscribe</a></li>
+                    </ul>
+                </li>
 
-                @yield('content')
+                <li class="nav-label">Finance & Donations</li>
+                <!-- Donate Now -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-heart"></i> <span>Donate Now</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('admin.payment_methods.add') }}" class="nav-link">Add Payment Method</a></li>
+                        <li><a href="{{ route('admin.payment_methods.index') }}" class="nav-link">All Payment Methods</a></li>
+                        <li><a href="{{ route('admin.donations.index') }}" class="nav-link">All Donations</a></li>
+                    </ul>
+                </li>
+                <!-- Key Focus Area -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-bullseye"></i> <span>Key Focus Area</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('admin.focus_areas.add') }}" class="nav-link">Add Focus Area</a></li>
+                        <li><a href="{{ route('admin.focus_areas.index') }}" class="nav-link">All Focus Areas</a></li>
+                    </ul>
+                </li>
 
+                <li class="nav-label">Organization</li>
+                <!-- Application -->
+                <li class="nav-item">
+                    <a href="{{ route('logo.create') }}" class="nav-link">
+                        <i class="bi bi-gear"></i> <span>Application</span>
+                    </a>
+                </li>
+                <!-- About us -->
+                <li class="nav-item">
+                    <a href="{{ route('about.us.create') }}" class="nav-link">
+                        <i class="bi bi-info-circle"></i> <span>About Us</span>
+                    </a>
+                </li>
+                <!-- Mission Vision -->
+                <li class="nav-item">
+                    <a href="{{ route('mission.vision.create') }}" class="nav-link">
+                        <i class="bi bi-stars"></i> <span>Mission Vision</span>
+                    </a>
+                </li>
+                <!-- Origin & Legal Affilation -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-file-earmark-text"></i> <span>Origin & Legal Affilation</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('origin.legal_affilation.create') }}" class="nav-link">Add Affilation</a></li>
+                        <li><a href="{{ route('origin.legal_affilation.index') }}" class="nav-link">All Affilation</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-label">People & Teams</li>
+                <!-- Executive Committee -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-person-badge"></i> <span>Executive Committee</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('executive.add') }}" class="nav-link">Add Member</a></li>
+                        <li><a href="{{ route('executive.index') }}" class="nav-link">All Members</a></li>
+                    </ul>
+                </li>
+                <!-- Team Members -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-people"></i> <span>Team Members</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('team.add') }}" class="nav-link">Add Member</a></li>
+                        <li><a href="{{ route('team.index') }}" class="nav-link">All Members</a></li>
+                    </ul>
+                </li>
+                <!-- Programs -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-briefcase"></i> <span>Programs</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('programs.add') }}" class="nav-link">Add Program</a></li>
+                        <li><a href="{{ route('programs.index') }}" class="nav-link">All Programs</a></li>
+                    </ul>
+                </li>
+                <!-- Impact Metrics -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-graph-up-arrow"></i> <span>Impact Metrics</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('impact.add') }}" class="nav-link">Add Impact</a></li>
+                        <li><a href="{{ route('impact.index') }}" class="nav-link">All Impact</a></li>
+                    </ul>
+                </li>
+                <!-- Success Stories -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-book-half"></i> <span>Success Stories</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('stories.add') }}" class="nav-link">Add Story</a></li>
+                        <li><a href="{{ route('stories.index') }}" class="nav-link">All Stories</a></li>
+                    </ul>
+                </li>
+                <!-- Chief Executive Message -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-chat-quote"></i> <span>Chief Executive Msg</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('chief.message.add') }}" class="nav-link">Add Message</a></li>
+                        <li><a href="{{ route('chief.message.index') }}" class="nav-link">All Message</a></li>
+                    </ul>
+                </li>
+                <!-- FAQ -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-question-circle"></i> <span>FAQ</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('faq.add') }}" class="nav-link">Add FAQ</a></li>
+                        <li><a href="{{ route('faq.index') }}" class="nav-link">All FAQ</a></li>
+                    </ul>
+                </li>
+                <!-- Volunteers -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-suit-heart"></i> <span>Volunteers</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('volunteers.add') }}" class="nav-link">Add Opportunity</a></li>
+                        <li><a href="{{ route('volunteers.index') }}" class="nav-link">All Opportunities</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-label">Communication</li>
+                <!-- User Message -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-envelope"></i> <span>User Message</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('message.index') }}" class="nav-link">All Message</a></li>
+                    </ul>
+                </li>
+                <!-- Partners & Donor -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-person-check"></i> <span>Partners & Donor</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('partner.create') }}" class="nav-link">Add Partners & Donor</a></li>
+                        <li><a href="{{ route('partner.index') }}" class="nav-link">All Partners & Donor</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-label">Documents & Archives</li>
+                <!-- Project Archive -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-archive"></i> <span>Project Archive</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('project.archive.create') }}" class="nav-link">Add Project</a></li>
+                        <li><a href="{{ route('project.archive.index') }}" class="nav-link">All Project</a></li>
+                    </ul>
+                </li>
+                <!-- Strategic Plan -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-clipboard-data"></i> <span>Strategic Plan</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('strategic_plans.create') }}" class="nav-link">Add Strategic Plan</a></li>
+                        <li><a href="{{ route('strategic_plans.index') }}" class="nav-link">All Strategic Plan</a></li>
+                    </ul>
+                </li>
+                <!-- Policy and Guideline -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-file-earmark-ruled"></i> <span>Policy & Guideline</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('policy.create') }}" class="nav-link">Add Policy & Guideline</a></li>
+                        <li><a href="{{ route('policy.index') }}" class="nav-link">All Policy & Guideline</a></li>
+                    </ul>
+                </li>
+                <!-- Publication -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-journal-text"></i> <span>Publication</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('publications.add') }}" class="nav-link">Add Publication</a></li>
+                        <li><a href="{{ route('publications.index') }}" class="nav-link">All Publications</a></li>
+                    </ul>
+                </li>
+                <!-- Career -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-star"></i> <span>Career</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('invoked.create') }}" class="nav-link">Add Career</a></li>
+                        <li><a href="{{ route('invoked.index') }}" class="nav-link">All Career</a></li>
+                    </ul>
+                </li>
+                <!-- Contact -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                        <i class="bi bi-telephone"></i> <span>Contact</span>
+                        <i class="bi bi-chevron-right menu-arrow"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="{{ route('contact.add') }}" class="nav-link">Add Contact</a></li>
+                        <li><a href="{{ route('contact.index') }}" class="nav-link">All Contact</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Header -->
+    <header class="admin-header">
+        <button class="sidebar-toggler d-lg-none" id="sidebarToggle">
+            <i class="bi bi-list"></i>
+        </button>
+        <button class="sidebar-toggler d-none d-lg-block" id="sidebarToggleDesktop">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <div class="d-flex align-items-center ms-auto gap-3">
+            <!-- User Dropdown -->
+            <div class="dropdown user-dropdown">
+                <a href="#" class="d-flex align-items-center gap-2 text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="user-avatar">
+                        {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                    </div>
+                    <div class="d-none d-md-block">
+                        <span class="fw-semibold text-dark" style="font-size:.85rem;">{{ Auth::user()->name }}</span>
+                    </div>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center gap-2" href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
             </div>
-		</div>
-		<!--end page wrapper -->
-		<!--start overlay-->
-		<div class="overlay toggle-icon"></div>
-		<!--end overlay-->
-		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-		<!--End Back To Top Button-->
-		<footer class="page-footer">
-			<p class="mb-0">Copyright © {{ @date('Y') }}. All right reserved AFADBD</p>
-		</footer>
-	</div>
-	<!--end wrapper-->
-	<!--start switcher-->
-	<div class="switcher-wrapper">
-		<div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
-		</div>
-		<div class="switcher-body">
-			<div class="d-flex align-items-center">
-				<h5 class="mb-0 text-uppercase">Theme Customizer</h5>
-				<button type="button" class="btn-close ms-auto close-switcher" aria-label="Close"></button>
-			</div>
-			<hr/>
-			<h6 class="mb-0">Theme Styles</h6>
-			<hr/>
-			<div class="d-flex align-items-center justify-content-between">
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="lightmode" checked>
-					<label class="form-check-label" for="lightmode">Light</label>
-				</div>
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="darkmode">
-					<label class="form-check-label" for="darkmode">Dark</label>
-				</div>
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="semidark">
-					<label class="form-check-label" for="semidark">Semi Dark</label>
-				</div>
-			</div>
-			<hr/>
-			<div class="form-check">
-				<input class="form-check-input" type="radio" id="minimaltheme" name="flexRadioDefault">
-				<label class="form-check-label" for="minimaltheme">Minimal Theme</label>
-			</div>
-			<hr/>
-			<h6 class="mb-0">Header Colors</h6>
-			<hr/>
-			<div class="header-colors-indigators">
-				<div class="row row-cols-auto g-3">
-					<div class="col">
-						<div class="indigator headercolor1" id="headercolor1"></div>
-					</div>
-					<div class="col">
-						<div class="indigator headercolor2" id="headercolor2"></div>
-					</div>
-					<div class="col">
-						<div class="indigator headercolor3" id="headercolor3"></div>
-					</div>
-					<div class="col">
-						<div class="indigator headercolor4" id="headercolor4"></div>
-					</div>
-					<div class="col">
-						<div class="indigator headercolor5" id="headercolor5"></div>
-					</div>
-					<div class="col">
-						<div class="indigator headercolor6" id="headercolor6"></div>
-					</div>
-					<div class="col">
-						<div class="indigator headercolor7" id="headercolor7"></div>
-					</div>
-					<div class="col">
-						<div class="indigator headercolor8" id="headercolor8"></div>
-					</div>
-				</div>
-			</div>
+        </div>
+    </header>
 
-			<hr/>
-			<h6 class="mb-0">Sidebar Backgrounds</h6>
-			<hr/>
-			<div class="header-colors-indigators">
-				<div class="row row-cols-auto g-3">
-					<div class="col">
-						<div class="indigator sidebarcolor1" id="sidebarcolor1"></div>
-					</div>
-					<div class="col">
-						<div class="indigator sidebarcolor2" id="sidebarcolor2"></div>
-					</div>
-					<div class="col">
-						<div class="indigator sidebarcolor3" id="sidebarcolor3"></div>
-					</div>
-					<div class="col">
-						<div class="indigator sidebarcolor4" id="sidebarcolor4"></div>
-					</div>
-					<div class="col">
-						<div class="indigator sidebarcolor5" id="sidebarcolor5"></div>
-					</div>
-					<div class="col">
-						<div class="indigator sidebarcolor6" id="sidebarcolor6"></div>
-					</div>
-					<div class="col">
-						<div class="indigator sidebarcolor7" id="sidebarcolor7"></div>
-					</div>
-					<div class="col">
-						<div class="indigator sidebarcolor8" id="sidebarcolor8"></div>
-					</div>
-				</div>
-			</div>
+    <!-- Main Content -->
+    <main class="admin-main">
+        @yield('content')
+    </main>
 
-		</div>
-	</div>
-	<!--end switcher-->
+    <!-- Footer -->
+    <footer class="admin-footer">
+        <p class="mb-0">Copyright &copy; {{ @date('Y') }}. All rights reserved <strong>AFADBD</strong></p>
+    </footer>
 
-	<!-- Bootstrap JS -->
-	<script src="{{ asset('admin/assets/js/bootstrap.bundle.min.js') }}"></script>
-	<!--plugins-->
-	<script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
-	<script src="{{ asset('admin/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
-	<script src="{{ asset('admin/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
-	<script src="{{ asset('admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
-	<script src="{{ asset('admin/assets/plugins/chartjs/js/Chart.min.js') }}"></script>
-	<script src="{{ asset('admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-	<script src="{{ asset('admin/assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
-	<script src="{{ asset('admin/assets/plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
-	<script src="{{ asset('admin/assets/plugins/jquery-knob/excanvas.js') }}"></script>
-	<script src="{{ asset('admin/assets/plugins/jquery-knob/jquery.knob.js') }}"></script>
-	  <script>
-		  $(function() {
-			  $(".knob").knob();
-		  });
-	  </script>
-	  <script src="{{ asset('admin/assets/js/index.js') }}"></script>
-	<!--app JS-->
-	<script src="{{ asset('admin/assets/js/app.js') }}"></script>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Sidebar dropdown toggle
+        document.querySelectorAll('.sidebar-dropdown-toggle').forEach(function(toggle) {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const parent = this.closest('.nav-item');
+                // Close all other open menus
+                document.querySelectorAll('.sidebar-nav .nav-item.menu-open').forEach(function(item) {
+                    if (item !== parent) item.classList.remove('menu-open');
+                });
+                parent.classList.toggle('menu-open');
+            });
+        });
+
+        // Mobile sidebar toggle
+        document.getElementById('sidebarToggle').addEventListener('click', function() {
+            document.getElementById('adminSidebar').classList.toggle('show');
+            document.getElementById('sidebarOverlay').classList.toggle('show');
+        });
+
+        // Close sidebar on overlay click
+        document.getElementById('sidebarOverlay').addEventListener('click', function() {
+            document.getElementById('adminSidebar').classList.remove('show');
+            this.classList.remove('show');
+        });
+
+        // Close button inside sidebar (mobile)
+        document.getElementById('sidebarClose').addEventListener('click', function() {
+            document.getElementById('adminSidebar').classList.remove('show');
+            document.getElementById('sidebarOverlay').classList.remove('show');
+        });
+
+        // Desktop sidebar toggle (collapse/expand)
+        document.getElementById('sidebarToggleDesktop').addEventListener('click', function() {
+            const sidebar = document.getElementById('adminSidebar');
+            const header = document.querySelector('.admin-header');
+            const main = document.querySelector('.admin-main');
+            const footer = document.querySelector('.admin-footer');
+
+            sidebar.classList.toggle('collapsed');
+            if (sidebar.classList.contains('collapsed')) {
+                sidebar.style.transform = 'translateX(-100%)';
+                header.style.left = '0';
+                main.style.marginLeft = '0';
+                footer.style.marginLeft = '0';
+            } else {
+                sidebar.style.transform = 'translateX(0)';
+                header.style.left = 'var(--sidebar-width)';
+                main.style.marginLeft = 'var(--sidebar-width)';
+                footer.style.marginLeft = 'var(--sidebar-width)';
+            }
+        });
+
+        // Auto-open submenu based on current URL
+        document.querySelectorAll('.sub-menu .nav-link').forEach(function(link) {
+            if (link.href === window.location.href) {
+                link.closest('.nav-item').classList.add('menu-open');
+                link.style.color = '#fff';
+                link.querySelector('::before') && (link.querySelector('::before').style.background = '#4f46e5');
+            }
+        });
+    </script>
 </body>
 
 </html>
