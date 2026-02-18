@@ -20,11 +20,11 @@
             --header-height: 60px;
             --primary-color: #4f46e5;
             --primary-hover: #4338ca;
-            --sidebar-bg: #1e293b;
-            --sidebar-hover: #334155;
+            --sidebar-bg: #ffffff;
+            --sidebar-hover: #f1f5f9;
             --sidebar-active: #4f46e5;
-            --sidebar-text: #94a3b8;
-            --sidebar-text-active: #ffffff;
+            --sidebar-text: #64748b;
+            --sidebar-text-active: #1e293b;
             --body-bg: #f1f5f9;
             --card-shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
         }
@@ -47,22 +47,23 @@
             overflow-y: auto;
             overflow-x: hidden;
             scrollbar-width: thin;
-            scrollbar-color: #475569 transparent;
+            scrollbar-color: #cbd5e1 transparent;
+            border-right: 1px solid #e2e8f0;
         }
         .admin-sidebar::-webkit-scrollbar { width: 5px; }
-        .admin-sidebar::-webkit-scrollbar-thumb { background: #475569; border-radius: 10px; }
+        .admin-sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
         .sidebar-brand {
             height: var(--header-height);
             display: flex; align-items: center;
             padding: 0 20px; gap: 12px;
-            border-bottom: 1px solid rgba(255,255,255,.08);
+            border-bottom: 1px solid #e2e8f0;
             position: sticky; top: 0;
             background: var(--sidebar-bg);
             z-index: 2;
         }
         .sidebar-brand img { height: 36px; width: 36px; object-fit: contain; border-radius: 8px; }
-        .sidebar-brand h5 { color: #fff; font-weight: 700; margin: 0; font-size: 1.1rem; letter-spacing: .5px; }
+        .sidebar-brand h5 { color: #1e293b; font-weight: 700; margin: 0; font-size: 1.1rem; letter-spacing: .5px; }
 
         .sidebar-nav { padding: 12px 0; }
         .sidebar-nav .nav-label {
@@ -89,9 +90,10 @@
         }
         .sidebar-nav .nav-item > .nav-link.active,
         .sidebar-nav .nav-item.menu-open > .nav-link {
-            color: var(--sidebar-text-active);
-            background: rgba(79,70,229,.15);
+            color: var(--primary-color);
+            background: rgba(79,70,229,.08);
             border-left-color: var(--sidebar-active);
+            font-weight: 500;
         }
         .sidebar-nav .nav-link .bi { font-size: 1.1rem; min-width: 20px; text-align: center; }
         .sidebar-nav .nav-link .menu-arrow {
@@ -105,7 +107,7 @@
             list-style: none; padding: 0; margin: 0;
             max-height: 0; overflow: hidden;
             transition: max-height .35s ease;
-            background: rgba(0,0,0,.12);
+            background: #f8fafc;
         }
         .sidebar-nav .nav-item.menu-open > .sub-menu { max-height: 500px; }
         .sidebar-nav .sub-menu .nav-link {
@@ -121,7 +123,7 @@
             content: '';
             width: 6px; height: 6px;
             border-radius: 50%;
-            background: #64748b;
+            background: #cbd5e1;
             flex-shrink: 0;
             transition: background .2s;
         }
@@ -238,7 +240,7 @@
         <div class="sidebar-brand">
             <img src="{{ asset('images/application/'.application()->fav_icon) }}" alt="Logo">
             <h5>AFADBD</h5>
-            <button class="btn-close btn-close-white ms-auto d-lg-none" id="sidebarClose" aria-label="Close"></button>
+            <button class="btn-close ms-auto d-lg-none" id="sidebarClose" aria-label="Close"></button>
         </div>
         <nav class="sidebar-nav">
             <ul class="nav flex-column">
@@ -650,8 +652,8 @@
         document.querySelectorAll('.sub-menu .nav-link').forEach(function(link) {
             if (link.href === window.location.href) {
                 link.closest('.nav-item').classList.add('menu-open');
-                link.style.color = '#fff';
-                link.querySelector('::before') && (link.querySelector('::before').style.background = '#4f46e5');
+                link.style.color = '#4f46e5';
+                link.style.fontWeight = '500';
             }
         });
     </script>
