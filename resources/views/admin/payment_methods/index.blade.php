@@ -10,7 +10,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h6 class="mb-0">Payment Methods List</h6>
                     <a href="{{ route('admin.payment_methods.add') }}" class="btn btn-primary btn-sm">
-                        <i class="bx bx-plus"></i> Add New Method
+                        <i class="bi bi-plus-lg"></i> Add New Method
                     </a>
                 </div>
             </div>

@@ -255,294 +255,180 @@
                 <li class="nav-label">Content Management</li>
                 <!-- Slider -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('slider.index') }}" class="nav-link {{ request()->routeIs('slider.*') ? 'active' : '' }}">
                         <i class="bi bi-sliders"></i> <span>Slider</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('slider.add') }}" class="nav-link">Add Slider</a></li>
-                        <li><a href="{{ route('slider.index') }}" class="nav-link">All Slider</a></li>
-                    </ul>
                 </li>
                 <!-- Ongoing Project -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('project.index') }}" class="nav-link {{ request()->routeIs('project.index', 'project.add', 'project.edit') ? 'active' : '' }}">
                         <i class="bi bi-kanban"></i> <span>Ongoing Project</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('project.add') }}" class="nav-link">Add Project</a></li>
-                        <li><a href="{{ route('project.index') }}" class="nav-link">All Project</a></li>
-                    </ul>
                 </li>
                 <!-- Latest News -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('news.index') }}" class="nav-link {{ request()->routeIs('news.*') ? 'active' : '' }}">
                         <i class="bi bi-newspaper"></i> <span>Latest News</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('news.add') }}" class="nav-link">Add News</a></li>
-                        <li><a href="{{ route('news.index') }}" class="nav-link">All News</a></li>
-                    </ul>
                 </li>
                 <!-- Photo Gallery -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('gallery.index') }}" class="nav-link {{ request()->routeIs('gallery.*') ? 'active' : '' }}">
                         <i class="bi bi-images"></i> <span>Photo Gallery</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('gallery.add') }}" class="nav-link">Add Photo</a></li>
-                        <li><a href="{{ route('gallery.index') }}" class="nav-link">All Photo</a></li>
-                    </ul>
                 </li>
                 <!-- Subscribe -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('subscribe.all') }}" class="nav-link {{ request()->routeIs('subscribe.*') ? 'active' : '' }}">
                         <i class="bi bi-bell"></i> <span>Subscribe</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('subscribe.all') }}" class="nav-link">All Subscribe</a></li>
-                    </ul>
                 </li>
 
                 <li class="nav-label">Finance & Donations</li>
-                <!-- Donate Now -->
+                <!-- Donate Now (dropdown kept - has 2 entity types) -->
                 <li class="nav-item">
                     <a href="#" class="nav-link sidebar-dropdown-toggle">
                         <i class="bi bi-heart"></i> <span>Donate Now</span>
                         <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="{{ route('admin.payment_methods.add') }}" class="nav-link">Add Payment Method</a></li>
-                        <li><a href="{{ route('admin.payment_methods.index') }}" class="nav-link">All Payment Methods</a></li>
-                        <li><a href="{{ route('admin.donations.index') }}" class="nav-link">All Donations</a></li>
+                        <li><a href="{{ route('admin.payment_methods.index') }}" class="nav-link">Payment Methods</a></li>
+                        <li><a href="{{ route('admin.donations.index') }}" class="nav-link">Donations</a></li>
                     </ul>
                 </li>
                 <!-- Key Focus Area -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('admin.focus_areas.index') }}" class="nav-link {{ request()->routeIs('admin.focus_areas.*') ? 'active' : '' }}">
                         <i class="bi bi-bullseye"></i> <span>Key Focus Area</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('admin.focus_areas.add') }}" class="nav-link">Add Focus Area</a></li>
-                        <li><a href="{{ route('admin.focus_areas.index') }}" class="nav-link">All Focus Areas</a></li>
-                    </ul>
                 </li>
 
                 <li class="nav-label">Organization</li>
                 <!-- Application -->
                 <li class="nav-item">
-                    <a href="{{ route('logo.create') }}" class="nav-link">
+                    <a href="{{ route('logo.create') }}" class="nav-link {{ request()->routeIs('logo.*') ? 'active' : '' }}">
                         <i class="bi bi-gear"></i> <span>Application</span>
                     </a>
                 </li>
                 <!-- About us -->
                 <li class="nav-item">
-                    <a href="{{ route('about.us.create') }}" class="nav-link">
+                    <a href="{{ route('about.us.create') }}" class="nav-link {{ request()->routeIs('about.us.*') ? 'active' : '' }}">
                         <i class="bi bi-info-circle"></i> <span>About Us</span>
                     </a>
                 </li>
                 <!-- Mission Vision -->
                 <li class="nav-item">
-                    <a href="{{ route('mission.vision.create') }}" class="nav-link">
+                    <a href="{{ route('mission.vision.create') }}" class="nav-link {{ request()->routeIs('mission.vision.*') ? 'active' : '' }}">
                         <i class="bi bi-stars"></i> <span>Mission Vision</span>
                     </a>
                 </li>
                 <!-- Origin & Legal Affilation -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('origin.legal_affilation.index') }}" class="nav-link {{ request()->routeIs('origin.legal_affilation.*') ? 'active' : '' }}">
                         <i class="bi bi-file-earmark-text"></i> <span>Origin & Legal Affilation</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('origin.legal_affilation.create') }}" class="nav-link">Add Affilation</a></li>
-                        <li><a href="{{ route('origin.legal_affilation.index') }}" class="nav-link">All Affilation</a></li>
-                    </ul>
                 </li>
 
                 <li class="nav-label">People & Teams</li>
                 <!-- Executive Committee -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('executive.index') }}" class="nav-link {{ request()->routeIs('executive.*') ? 'active' : '' }}">
                         <i class="bi bi-person-badge"></i> <span>Executive Committee</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('executive.add') }}" class="nav-link">Add Member</a></li>
-                        <li><a href="{{ route('executive.index') }}" class="nav-link">All Members</a></li>
-                    </ul>
                 </li>
                 <!-- Team Members -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('team.index') }}" class="nav-link {{ request()->routeIs('team.*') ? 'active' : '' }}">
                         <i class="bi bi-people"></i> <span>Team Members</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('team.add') }}" class="nav-link">Add Member</a></li>
-                        <li><a href="{{ route('team.index') }}" class="nav-link">All Members</a></li>
-                    </ul>
                 </li>
                 <!-- Programs -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('programs.index') }}" class="nav-link {{ request()->routeIs('programs.*') ? 'active' : '' }}">
                         <i class="bi bi-briefcase"></i> <span>Programs</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('programs.add') }}" class="nav-link">Add Program</a></li>
-                        <li><a href="{{ route('programs.index') }}" class="nav-link">All Programs</a></li>
-                    </ul>
                 </li>
                 <!-- Impact Metrics -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('impact.index') }}" class="nav-link {{ request()->routeIs('impact.*') ? 'active' : '' }}">
                         <i class="bi bi-graph-up-arrow"></i> <span>Impact Metrics</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('impact.add') }}" class="nav-link">Add Impact</a></li>
-                        <li><a href="{{ route('impact.index') }}" class="nav-link">All Impact</a></li>
-                    </ul>
                 </li>
                 <!-- Success Stories -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('stories.index') }}" class="nav-link {{ request()->routeIs('stories.*') ? 'active' : '' }}">
                         <i class="bi bi-book-half"></i> <span>Success Stories</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('stories.add') }}" class="nav-link">Add Story</a></li>
-                        <li><a href="{{ route('stories.index') }}" class="nav-link">All Stories</a></li>
-                    </ul>
                 </li>
                 <!-- Chief Executive Message -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('chief.message.index') }}" class="nav-link {{ request()->routeIs('chief.message.*') ? 'active' : '' }}">
                         <i class="bi bi-chat-quote"></i> <span>Chief Executive Msg</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('chief.message.add') }}" class="nav-link">Add Message</a></li>
-                        <li><a href="{{ route('chief.message.index') }}" class="nav-link">All Message</a></li>
-                    </ul>
                 </li>
                 <!-- FAQ -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('faq.index') }}" class="nav-link {{ request()->routeIs('faq.*') ? 'active' : '' }}">
                         <i class="bi bi-question-circle"></i> <span>FAQ</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('faq.add') }}" class="nav-link">Add FAQ</a></li>
-                        <li><a href="{{ route('faq.index') }}" class="nav-link">All FAQ</a></li>
-                    </ul>
                 </li>
                 <!-- Volunteers -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('volunteers.index') }}" class="nav-link {{ request()->routeIs('volunteers.*') ? 'active' : '' }}">
                         <i class="bi bi-suit-heart"></i> <span>Volunteers</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('volunteers.add') }}" class="nav-link">Add Opportunity</a></li>
-                        <li><a href="{{ route('volunteers.index') }}" class="nav-link">All Opportunities</a></li>
-                    </ul>
                 </li>
 
                 <li class="nav-label">Communication</li>
                 <!-- User Message -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('message.index') }}" class="nav-link {{ request()->routeIs('message.*') ? 'active' : '' }}">
                         <i class="bi bi-envelope"></i> <span>User Message</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('message.index') }}" class="nav-link">All Message</a></li>
-                    </ul>
                 </li>
                 <!-- Partners & Donor -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('partner.index') }}" class="nav-link {{ request()->routeIs('partner.*') ? 'active' : '' }}">
                         <i class="bi bi-person-check"></i> <span>Partners & Donor</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('partner.create') }}" class="nav-link">Add Partners & Donor</a></li>
-                        <li><a href="{{ route('partner.index') }}" class="nav-link">All Partners & Donor</a></li>
-                    </ul>
                 </li>
 
                 <li class="nav-label">Documents & Archives</li>
                 <!-- Project Archive -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('project.archive.index') }}" class="nav-link {{ request()->routeIs('project.archive.*') ? 'active' : '' }}">
                         <i class="bi bi-archive"></i> <span>Project Archive</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('project.archive.create') }}" class="nav-link">Add Project</a></li>
-                        <li><a href="{{ route('project.archive.index') }}" class="nav-link">All Project</a></li>
-                    </ul>
                 </li>
                 <!-- Strategic Plan -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('strategic_plans.index') }}" class="nav-link {{ request()->routeIs('strategic_plans.*') ? 'active' : '' }}">
                         <i class="bi bi-clipboard-data"></i> <span>Strategic Plan</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('strategic_plans.create') }}" class="nav-link">Add Strategic Plan</a></li>
-                        <li><a href="{{ route('strategic_plans.index') }}" class="nav-link">All Strategic Plan</a></li>
-                    </ul>
                 </li>
                 <!-- Policy and Guideline -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('policy.index') }}" class="nav-link {{ request()->routeIs('policy.*') ? 'active' : '' }}">
                         <i class="bi bi-file-earmark-ruled"></i> <span>Policy & Guideline</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('policy.create') }}" class="nav-link">Add Policy & Guideline</a></li>
-                        <li><a href="{{ route('policy.index') }}" class="nav-link">All Policy & Guideline</a></li>
-                    </ul>
                 </li>
                 <!-- Publication -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('publications.index') }}" class="nav-link {{ request()->routeIs('publications.*') ? 'active' : '' }}">
                         <i class="bi bi-journal-text"></i> <span>Publication</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('publications.add') }}" class="nav-link">Add Publication</a></li>
-                        <li><a href="{{ route('publications.index') }}" class="nav-link">All Publications</a></li>
-                    </ul>
                 </li>
                 <!-- Career -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('invoked.index') }}" class="nav-link {{ request()->routeIs('invoked.*') ? 'active' : '' }}">
                         <i class="bi bi-star"></i> <span>Career</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('invoked.create') }}" class="nav-link">Add Career</a></li>
-                        <li><a href="{{ route('invoked.index') }}" class="nav-link">All Career</a></li>
-                    </ul>
                 </li>
                 <!-- Contact -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link sidebar-dropdown-toggle">
+                    <a href="{{ route('contact.index') }}" class="nav-link {{ request()->routeIs('contact.*') ? 'active' : '' }}">
                         <i class="bi bi-telephone"></i> <span>Contact</span>
-                        <i class="bi bi-chevron-right menu-arrow"></i>
                     </a>
-                    <ul class="sub-menu">
-                        <li><a href="{{ route('contact.add') }}" class="nav-link">Add Contact</a></li>
-                        <li><a href="{{ route('contact.index') }}" class="nav-link">All Contact</a></li>
-                    </ul>
                 </li>
             </ul>
         </nav>

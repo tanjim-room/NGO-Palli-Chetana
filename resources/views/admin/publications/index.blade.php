@@ -14,7 +14,7 @@
                 @endif
                 <div class="mb-3">
                     <a href="{{ route('publications.add') }}" class="btn btn-primary">
-                        <i class="bx bx-plus"></i> Add New Publication
+                        <i class="bi bi-plus-lg"></i> Add New Publication
                     </a>
                 </div>
                 <div class="p-4 border rounded table-responsive">

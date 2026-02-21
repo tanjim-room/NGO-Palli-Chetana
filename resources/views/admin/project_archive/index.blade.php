@@ -3,7 +3,12 @@
 @section('content')
 <div class="row">
     <div class="col-md-12 mx-auto">
-        <h6 class="mb-0 text-uppercase">All Project Archive</h6>
+        <div class="d-flex justify-content-between align-items-center">
+            <h6 class="mb-0 text-uppercase">All Project Archive</h6>
+            <a href="{{ route('project.archive.create') }}" class="btn btn-primary btn-sm">
+                <i class="bi bi-plus-lg"></i> Add Project
+            </a>
+        </div>
         <hr/>
         <div class="card">
             <div class="card-body">

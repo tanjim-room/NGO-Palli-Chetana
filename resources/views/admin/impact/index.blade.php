@@ -10,7 +10,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h6 class="mb-0">Impact Metrics List</h6>
                     <a href="{{ route('impact.add') }}" class="btn btn-primary btn-sm">
-                        <i class="bx bx-plus"></i> Add New Impact
+                        <i class="bi bi-plus-lg"></i> Add New Impact
                     </a>
                 </div>
             </div>
