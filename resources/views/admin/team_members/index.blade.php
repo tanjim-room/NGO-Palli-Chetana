@@ -50,7 +50,7 @@
                                     <a href="{{ route('team.edit',$item->id) }}" class="btn btn-sm btn-primary text-white text-center">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <a href="{{ route('team.delete',$item->id) }}" class="btn btn-sm btn-danger text-white text-center">
+                                    <a href="{{ route('team.delete',$item->id) }}" class="btn btn-sm btn-danger text-white text-center" data-confirm="Are you sure you want to delete this team member?">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </td>

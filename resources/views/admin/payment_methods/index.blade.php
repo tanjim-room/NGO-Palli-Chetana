@@ -78,7 +78,7 @@
                                         </a>
                                         <a href="{{ route('admin.payment_methods.delete', $item->id) }}" 
                                            class="btn btn-sm btn-danger" 
-                                           onclick="return confirm('Are you sure you want to delete this payment method?')"
+                                           data-confirm="Are you sure you want to delete this payment method?"
                                            title="Delete">
                                             <i class="bi bi-trash"></i>
                                         </a>

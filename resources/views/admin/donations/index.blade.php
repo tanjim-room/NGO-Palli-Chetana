@@ -84,7 +84,7 @@
                                         <form action="{{ route('admin.donations.verify', $item->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             <button type="submit" class="btn btn-sm btn-success" 
-                                                    onclick="return confirm('Verify this donation?')"
+                                                    data-confirm="Verify this donation?" data-confirm-type="verify" data-confirm-label="Verify"
                                                     title="Verify">
                                                 <i class="bi bi-check-lg"></i>
                                             </button>
@@ -92,7 +92,7 @@
                                         <form action="{{ route('admin.donations.reject', $item->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             <button type="submit" class="btn btn-sm btn-warning" 
-                                                    onclick="return confirm('Reject this donation?')"
+                                                    data-confirm="Reject this donation?" data-confirm-type="reject" data-confirm-label="Reject"
                                                     title="Reject">
                                                 <i class="bi bi-x-lg"></i>
                                             </button>
@@ -100,7 +100,7 @@
                                         @endif
                                         <a href="{{ route('admin.donations.delete', $item->id) }}" 
                                            class="btn btn-sm btn-danger" 
-                                           onclick="return confirm('Are you sure you want to delete this donation?')"
+                                           data-confirm="Are you sure you want to delete this donation?"
                                            title="Delete">
                                             <i class="bi bi-trash"></i>
                                         </a>

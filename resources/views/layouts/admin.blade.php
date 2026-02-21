@@ -479,8 +479,111 @@
         <p class="mb-0">Copyright &copy; {{ @date('Y') }}. All rights reserved <strong>AFADBD</strong></p>
     </footer>
 
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header border-0 pb-0">
+                    <div class="d-flex align-items-center">
+                        <div class="confirm-icon-wrapper bg-danger bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
+                            <i class="bi bi-exclamation-triangle-fill text-danger" style="font-size: 1.4rem;"></i>
+                        </div>
+                        <h5 class="modal-title fw-semibold mb-0" id="confirmModalLabel">Confirm Action</h5>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-2 pb-1">
+                    <p class="text-muted mb-0" id="confirmModalMessage">Are you sure you want to proceed?</p>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-light px-4" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger px-4" id="confirmModalAction">
+                        <i class="bi bi-trash me-1"></i> Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Interactive confirmation modal
+        (function() {
+            const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+            const modalMessage = document.getElementById('confirmModalMessage');
+            const modalAction = document.getElementById('confirmModalAction');
+            const modalTitle = document.getElementById('confirmModalLabel');
+            let pendingAction = null;
+
+            document.addEventListener('click', function(e) {
+                const trigger = e.target.closest('[data-confirm]');
+                if (!trigger) return;
+                e.preventDefault();
+
+                const message = trigger.getAttribute('data-confirm');
+                const actionType = trigger.getAttribute('data-confirm-type') || 'delete';
+                const actionLabel = trigger.getAttribute('data-confirm-label') || 'Delete';
+
+                modalMessage.textContent = message;
+
+                // Style based on action type
+                const btnClasses = {
+                    'delete': 'btn-danger',
+                    'verify': 'btn-success',
+                    'reject': 'btn-warning'
+                };
+                const btnIcons = {
+                    'delete': 'bi-trash',
+                    'verify': 'bi-check-circle',
+                    'reject': 'bi-x-circle'
+                };
+                const iconBg = {
+                    'delete': 'bg-danger',
+                    'verify': 'bg-success',
+                    'reject': 'bg-warning'
+                };
+                const iconClass = {
+                    'delete': 'text-danger',
+                    'verify': 'text-success',
+                    'reject': 'text-warning'
+                };
+                const titles = {
+                    'delete': 'Confirm Delete',
+                    'verify': 'Confirm Verification',
+                    'reject': 'Confirm Rejection'
+                };
+
+                modalTitle.textContent = titles[actionType] || 'Confirm Action';
+                modalAction.className = 'btn px-4 ' + (btnClasses[actionType] || 'btn-danger');
+                modalAction.innerHTML = '<i class="bi ' + (btnIcons[actionType] || 'bi-check-lg') + ' me-1"></i> ' + actionLabel;
+
+                const iconWrapper = document.querySelector('.confirm-icon-wrapper');
+                iconWrapper.className = 'confirm-icon-wrapper bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3 ' + (iconBg[actionType] || 'bg-danger');
+                iconWrapper.style.cssText = 'width: 48px; height: 48px;';
+                iconWrapper.querySelector('i').className = 'bi ' + (btnIcons[actionType] || 'bi-exclamation-triangle-fill') + ' ' + (iconClass[actionType] || 'text-danger');
+                iconWrapper.querySelector('i').style.fontSize = '1.4rem';
+
+                // Determine action: form submit or link navigation
+                const form = trigger.closest('form');
+                if (trigger.tagName === 'BUTTON' && form) {
+                    pendingAction = function() { form.submit(); };
+                } else if (trigger.tagName === 'A' && trigger.href) {
+                    pendingAction = function() { window.location.href = trigger.href; };
+                }
+
+                modal.show();
+            });
+
+            modalAction.addEventListener('click', function() {
+                if (pendingAction) {
+                    pendingAction();
+                    pendingAction = null;
+                }
+                modal.hide();
+            });
+        })();
+    </script>
     <script>
         // Sidebar dropdown toggle
         document.querySelectorAll('.sidebar-dropdown-toggle').forEach(function(toggle) {

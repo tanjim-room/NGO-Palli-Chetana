@@ -44,7 +44,7 @@
                                     <a href="{{ route('chief.message.edit',$item->id) }}" class="btn btn-sm btn-primary text-white text-center">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <a href="{{ route('chief.message.delete',$item->id) }}" class="btn btn-sm btn-danger text-white text-center">
+                                    <a href="{{ route('chief.message.delete',$item->id) }}" class="btn btn-sm btn-danger text-white text-center" data-confirm="Are you sure you want to delete this message?">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </td>

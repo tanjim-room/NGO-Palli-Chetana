@@ -44,7 +44,7 @@
                                     <a href="{{ route('project.archive.edit',$value->id) }}" class="btn btn-sm btn-primary text-white text-center">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <a href="{{ route('project.archive.delete',$value->id) }}" class="btn btn-sm btn-danger text-white text-center">
+                                    <a href="{{ route('project.archive.delete',$value->id) }}" class="btn btn-sm btn-danger text-white text-center" data-confirm="Are you sure you want to delete this archived project?">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </td>

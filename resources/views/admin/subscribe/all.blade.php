@@ -29,7 +29,7 @@
                                     <td>{{ $subscribe->name }}</td>
                                     <td>{{ $subscribe->email }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('subscribe.delete',$subscribe->id) }}" class="btn btn-sm btn-danger text-white text-center">
+                                        <a href="{{ route('subscribe.delete',$subscribe->id) }}" class="btn btn-sm btn-danger text-white text-center" data-confirm="Are you sure you want to delete this subscriber?">
                                             <i class="bi bi-trash"></i>
                                         </a>
                                     </td>

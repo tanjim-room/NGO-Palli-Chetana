@@ -49,7 +49,7 @@
                                     <a href="{{ route('gallery.edit',$data->id) }}" class="btn btn-sm btn-primary text-white text-center">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <a href="{{ route('gallery.delete',$data->id) }}" class="btn btn-sm btn-danger text-white text-center">
+                                    <a href="{{ route('gallery.delete',$data->id) }}" class="btn btn-sm btn-danger text-white text-center" data-confirm="Are you sure you want to delete this application?">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </td>

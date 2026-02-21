@@ -85,7 +85,7 @@
                                     </a>
                                     <a href="{{ route('impact.delete',$item->id) }}" 
                                        class="btn btn-sm btn-danger text-white" 
-                                       onclick="return confirm('Are you sure you want to delete this impact metric?')"
+                                       data-confirm="Are you sure you want to delete this impact metric?"
                                        title="Delete">
                                         <i class="bi bi-trash"></i>
                                     </a>

@@ -49,7 +49,7 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('admin.focus_areas.edit', $item->id) }}" class="btn btn-sm btn-info">Edit</a>
-                                        <a href="{{ route('admin.focus_areas.delete', $item->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Delete this focus area?')">Delete</a>
+                                        <a href="{{ route('admin.focus_areas.delete', $item->id) }}" class="btn btn-sm btn-danger" data-confirm="Are you sure you want to delete this focus area?">Delete</a>
                                     </td>
                                 </tr>
                             @empty

@@ -58,7 +58,7 @@
                                         <a href="{{ route('publications.edit', $publication->id) }}" class="btn btn-sm btn-primary text-white" title="Edit">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
-                                        <a href="{{ route('publications.delete', $publication->id) }}" class="btn btn-sm btn-danger text-white" title="Delete" onclick="return confirm('Are you sure you want to delete this publication?')">
+                                        <a href="{{ route('publications.delete', $publication->id) }}" class="btn btn-sm btn-danger text-white" title="Delete" data-confirm="Are you sure you want to delete this publication?">
                                             <i class="bi bi-trash"></i>
                                         </a>
                                     </div>

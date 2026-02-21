@@ -129,7 +129,7 @@
                                                   placeholder="Add any note about this donation..."></textarea>
                                     </div>
                                     <button type="submit" class="btn btn-success" 
-                                            onclick="return confirm('Are you sure you want to verify this donation?')">
+                                            data-confirm="Are you sure you want to verify this donation?" data-confirm-type="verify" data-confirm-label="Verify">
                                         <i class="bi bi-check-circle"></i> Verify Donation
                                     </button>
                                 </form>
@@ -137,7 +137,7 @@
                                 <form action="{{ route('admin.donations.reject', $data->id) }}" method="POST" class="d-inline ms-2">
                                     @csrf
                                     <button type="submit" class="btn btn-warning" 
-                                            onclick="return confirm('Are you sure you want to reject this donation?')">
+                                            data-confirm="Are you sure you want to reject this donation?" data-confirm-type="reject" data-confirm-label="Reject">
                                         <i class="bi bi-x-circle"></i> Reject Donation
                                     </button>
                                 </form>
@@ -151,7 +151,7 @@
 
                                 <a href="{{ route('admin.donations.delete', $data->id) }}" 
                                    class="btn btn-danger" 
-                                   onclick="return confirm('Are you sure you want to delete this donation? This action cannot be undone.')">
+                                   data-confirm="Are you sure you want to delete this donation? This action cannot be undone.">
                                     <i class="bi bi-trash"></i> Delete Donation
                                 </a>
                             </div>
