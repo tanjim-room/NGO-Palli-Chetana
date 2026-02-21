@@ -44,10 +44,10 @@
                                 <td class="align-middle">{{ $gallery->description }}</td>
                                 <td class="text-center align-middle">
                                     <a href="{{ route('gallery.edit',$gallery->id) }}" class="btn btn-sm btn-primary text-white text-center">
-                                        <i class="fadeIn animated bx bx-edit"></i>
+                                        <i class="bi bi-pencil-square"></i>
                                     </a>
                                     <a href="{{ route('gallery.delete',$gallery->id) }}" class="btn btn-sm btn-danger text-white text-center">
-                                        <i class="fadeIn animated bx bx-trash-alt"></i>
+                                        <i class="bi bi-trash"></i>
                                     </a>
                                 </td>
                             </tr>

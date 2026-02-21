@@ -30,7 +30,7 @@
                                     <td>{{ $subscribe->email }}</td>
                                     <td class="text-center">
                                         <a href="{{ route('subscribe.delete',$subscribe->id) }}" class="btn btn-sm btn-danger text-white text-center">
-                                            <i class="fadeIn animated bx bx-trash-alt"></i>
+                                            <i class="bi bi-trash"></i>
                                         </a>
                                     </td>
                                 </tr>

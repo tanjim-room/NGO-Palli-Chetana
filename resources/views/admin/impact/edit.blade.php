@@ -126,7 +126,7 @@
                                         @if($data->icon)
                                             <i class="{{ $data->icon }}" style="font-size: 60px; color: #0d6efd;"></i>
                                         @else
-                                            <i class="bx bx-image-add" style="font-size: 48px; color: #ccc;"></i>
+                                            <i class="bi bi-image" style="font-size: 48px; color: #ccc;"></i>
                                             <p class="mt-2 mb-0 text-muted small">Select icon to preview</p>
                                         @endif
                                     </div>
@@ -136,10 +136,10 @@
 
                         <div class="col-12">
                             <button class="btn btn-primary px-4" type="submit">
-                                <i class="bx bx-save"></i> Update Impact
+                                <i class="bi bi-save"></i> Update Impact
                             </button>
                             <a href="{{ route('impact.index') }}" class="btn btn-secondary px-4">
-                                <i class="bx bx-x"></i> Cancel
+                                <i class="bi bi-x-lg"></i> Cancel
                             </a>
                         </div>
                     </form>
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 '<p class="mt-2 mb-0 text-muted small">' + iconText + '</p>';
         } else {
             iconPreview.innerHTML = 
-                '<i class="bx bx-image-add" style="font-size: 48px; color: #ccc;"></i>' +
+                '<i class="bi bi-image" style="font-size: 48px; color: #ccc;"></i>' +
                 '<p class="mt-2 mb-0 text-muted small">Select icon to preview</p>';
         }
     });

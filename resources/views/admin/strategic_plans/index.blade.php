@@ -52,10 +52,10 @@
                                     <td class="text-center align-middle">
                                         <div class="d-flex align-items-center justify-content-center gap-1">
                                             <a href="{{ route('strategic_plans.edit', $strategicPlan->id) }}" class="btn btn-sm btn-primary text-white" title="Edit">
-                                                <i class="fadeIn animated bx bx-edit"></i>
+                                                <i class="bi bi-pencil-square"></i>
                                             </a>
                                             <a href="{{ route('strategic_plans.delete', $strategicPlan->id) }}" class="btn btn-sm btn-danger text-white" title="Delete">
-                                                <i class="fadeIn animated bx bx-trash-alt"></i>
+                                                <i class="bi bi-trash"></i>
                                             </a>
                                         </div>
                                     </td>
@@ -64,7 +64,7 @@
                                 <tr>
                                     <td colspan="6" class="text-center py-4">
                                         <div class="text-muted">
-                                            <i class="bx bx-file bx-lg"></i>
+                                            <i class="bi bi-file-earmark fs-4"></i>
                                             <p class="mt-2">No strategic plans found. <a href="{{ route('strategic_plans.create') }}">Add the first one</a></p>
                                         </div>
                                     </td>

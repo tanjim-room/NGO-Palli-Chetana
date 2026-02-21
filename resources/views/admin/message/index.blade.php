@@ -32,10 +32,10 @@
                                 <td class="align-middle">{{ $message->subject }}</td>
                                 <td class="text-center align-middle">
                                     <a href="{{ route('message.delete',$message->id) }}" class="btn btn-sm btn-danger text-white text-center">
-                                        <i class="fadeIn animated bx bx-trash-alt"></i>
+                                        <i class="bi bi-trash"></i>
                                     </a>
                                     <a href="{{ route('message.view',$message->id) }}" class="btn btn-sm btn-info text-white text-center">
-                                        <i class="lni lni-eye"></i>
+                                        <i class="bi bi-eye"></i>
                                     </a>
                                 </td>
                             </tr>

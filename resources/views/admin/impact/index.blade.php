@@ -81,20 +81,20 @@
                                     <a href="{{ route('impact.edit',$item->id) }}" 
                                        class="btn btn-sm btn-primary text-white" 
                                        title="Edit">
-                                        <i class="bx bx-edit"></i>
+                                        <i class="bi bi-pencil-square"></i>
                                     </a>
                                     <a href="{{ route('impact.delete',$item->id) }}" 
                                        class="btn btn-sm btn-danger text-white" 
                                        onclick="return confirm('Are you sure you want to delete this impact metric?')"
                                        title="Delete">
-                                        <i class="bx bx-trash-alt"></i>
+                                        <i class="bi bi-trash"></i>
                                     </a>
                                 </td>
                             </tr>
                             @empty
                             <tr>
                                 <td colspan="8" class="text-center py-4">
-                                    <i class="bx bx-folder-open" style="font-size: 48px; color: #ccc;"></i>
+                                    <i class="bi bi-folder2-open" style="font-size: 48px; color: #ccc;"></i>
                                     <p class="text-muted mt-2">No impact metrics found. <a href="{{ route('impact.add') }}">Add one now</a></p>
                                 </td>
                             </tr>

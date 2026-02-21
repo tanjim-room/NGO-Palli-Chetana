@@ -78,7 +78,7 @@
                                         <a href="{{ route('admin.donations.show', $item->id) }}" 
                                            class="btn btn-sm btn-info" 
                                            title="View Details">
-                                            <i class="bx bx-show"></i>
+                                            <i class="bi bi-eye"></i>
                                         </a>
                                         @if($item->status == 'pending')
                                         <form action="{{ route('admin.donations.verify', $item->id) }}" method="POST" class="d-inline">
@@ -86,7 +86,7 @@
                                             <button type="submit" class="btn btn-sm btn-success" 
                                                     onclick="return confirm('Verify this donation?')"
                                                     title="Verify">
-                                                <i class="bx bx-check"></i>
+                                                <i class="bi bi-check-lg"></i>
                                             </button>
                                         </form>
                                         <form action="{{ route('admin.donations.reject', $item->id) }}" method="POST" class="d-inline">
@@ -94,7 +94,7 @@
                                             <button type="submit" class="btn btn-sm btn-warning" 
                                                     onclick="return confirm('Reject this donation?')"
                                                     title="Reject">
-                                                <i class="bx bx-x"></i>
+                                                <i class="bi bi-x-lg"></i>
                                             </button>
                                         </form>
                                         @endif
@@ -102,7 +102,7 @@
                                            class="btn btn-sm btn-danger" 
                                            onclick="return confirm('Are you sure you want to delete this donation?')"
                                            title="Delete">
-                                            <i class="bx bx-trash"></i>
+                                            <i class="bi bi-trash"></i>
                                         </a>
                                     </div>
                                 </td>
@@ -110,7 +110,7 @@
                             @empty
                             <tr>
                                 <td colspan="9" class="text-center text-muted py-4">
-                                    <i class="bx bx-info-circle" style="font-size: 24px;"></i>
+                                    <i class="bi bi-info-circle" style="font-size: 24px;"></i>
                                     <p class="mb-0 mt-2">No donations found.</p>
                                 </td>
                             </tr>

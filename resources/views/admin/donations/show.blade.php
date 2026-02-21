@@ -10,7 +10,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h6 class="mb-0">Donation #{{ $data->id }}</h6>
                     <a href="{{ route('admin.donations.index') }}" class="btn btn-secondary btn-sm">
-                        <i class="bx bx-arrow-back"></i> Back to List
+                        <i class="bi bi-arrow-left"></i> Back to List
                     </a>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                                     </div>
                                     <button type="submit" class="btn btn-success" 
                                             onclick="return confirm('Are you sure you want to verify this donation?')">
-                                        <i class="bx bx-check-circle"></i> Verify Donation
+                                        <i class="bi bi-check-circle"></i> Verify Donation
                                     </button>
                                 </form>
 
@@ -138,7 +138,7 @@
                                     @csrf
                                     <button type="submit" class="btn btn-warning" 
                                             onclick="return confirm('Are you sure you want to reject this donation?')">
-                                        <i class="bx bx-x-circle"></i> Reject Donation
+                                        <i class="bi bi-x-circle"></i> Reject Donation
                                     </button>
                                 </form>
                                 @else
@@ -152,7 +152,7 @@
                                 <a href="{{ route('admin.donations.delete', $data->id) }}" 
                                    class="btn btn-danger" 
                                    onclick="return confirm('Are you sure you want to delete this donation? This action cannot be undone.')">
-                                    <i class="bx bx-trash"></i> Delete Donation
+                                    <i class="bi bi-trash"></i> Delete Donation
                                 </a>
                             </div>
                         </div>

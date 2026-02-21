@@ -61,10 +61,10 @@
                                 </td>
                                 <td class="text-center align-middle">
                                     <a href="{{ route('contact.edit', $contact->id) }}" class="btn btn-sm btn-primary text-white">
-                                        <i class="fadeIn animated bx bx-edit"></i>
+                                        <i class="bi bi-pencil-square"></i>
                                     </a>
                                     <a href="{{ route('contact.delete', $contact->id) }}" class="btn btn-sm btn-danger text-white" onclick="return confirm('Are you sure you want to delete this contact?')">
-                                        <i class="fadeIn animated bx bx-trash-alt"></i>
+                                        <i class="bi bi-trash"></i>
                                     </a>
                                 </td>
                             </tr>

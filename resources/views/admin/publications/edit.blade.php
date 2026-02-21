@@ -49,7 +49,7 @@
                             <label for="current_pdf" class="form-label">Current PDF File:</label>
                             <div>
                                 <a href="{{ asset('images/publications/pdfs/'.$publication->pdf_file) }}" target="_blank" class="btn btn-outline-primary">
-                                    <i class="bx bx-download"></i> View Current PDF
+                                    <i class="bi bi-download"></i> View Current PDF
                                 </a>
                                 <span class="text-muted ms-2">{{ $publication->pdf_file }}</span>
                             </div>

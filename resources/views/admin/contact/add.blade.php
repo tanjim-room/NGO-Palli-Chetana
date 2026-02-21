@@ -120,10 +120,10 @@
 
                         <div class="col-12">
                             <button class="btn btn-primary" type="submit">
-                                <i class="bx bx-save"></i> Save Contact
+                                <i class="bi bi-save"></i> Save Contact
                             </button>
                             <a href="{{ route('contact.index') }}" class="btn btn-secondary">
-                                <i class="bx bx-x"></i> Cancel
+                                <i class="bi bi-x-lg"></i> Cancel
                             </a>
                         </div>
                     </form>

@@ -69,18 +69,18 @@
                                         <a href="{{ route('admin.payment_methods.toggle', $item->id) }}" 
                                            class="btn btn-sm {{ $item->is_active ? 'btn-warning' : 'btn-success' }}" 
                                            title="{{ $item->is_active ? 'Deactivate' : 'Activate' }}">
-                                            <i class="bx {{ $item->is_active ? 'bx-hide' : 'bx-show' }}"></i>
+                                            <i class="bi {{ $item->is_active ? 'bi-eye-slash' : 'bi-eye' }}"></i>
                                         </a>
                                         <a href="{{ route('admin.payment_methods.edit', $item->id) }}" 
                                            class="btn btn-sm btn-primary" 
                                            title="Edit">
-                                            <i class="bx bx-edit"></i>
+                                            <i class="bi bi-pencil-square"></i>
                                         </a>
                                         <a href="{{ route('admin.payment_methods.delete', $item->id) }}" 
                                            class="btn btn-sm btn-danger" 
                                            onclick="return confirm('Are you sure you want to delete this payment method?')"
                                            title="Delete">
-                                            <i class="bx bx-trash"></i>
+                                            <i class="bi bi-trash"></i>
                                         </a>
                                     </div>
                                 </td>
@@ -88,7 +88,7 @@
                             @empty
                             <tr>
                                 <td colspan="8" class="text-center text-muted py-4">
-                                    <i class="bx bx-info-circle" style="font-size: 24px;"></i>
+                                    <i class="bi bi-info-circle" style="font-size: 24px;"></i>
                                     <p class="mb-0 mt-2">No payment methods found. Add your first payment method!</p>
                                 </td>
                             </tr>

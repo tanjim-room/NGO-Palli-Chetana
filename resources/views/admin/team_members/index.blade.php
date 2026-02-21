@@ -48,10 +48,10 @@
                                 <td class="align-middle">{{ $item->order }}</td>
                                 <td class="text-center align-middle">
                                     <a href="{{ route('team.edit',$item->id) }}" class="btn btn-sm btn-primary text-white text-center">
-                                        <i class="fadeIn animated bx bx-edit"></i>
+                                        <i class="bi bi-pencil-square"></i>
                                     </a>
                                     <a href="{{ route('team.delete',$item->id) }}" class="btn btn-sm btn-danger text-white text-center">
-                                        <i class="fadeIn animated bx bx-trash-alt"></i>
+                                        <i class="bi bi-trash"></i>
                                     </a>
                                 </td>
                             </tr>

@@ -39,10 +39,10 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('invoked.edit',$value->id) }}" class="btn btn-sm btn-primary text-white text-center">
-                                            <i class="fadeIn animated bx bx-edit"></i>
+                                            <i class="bi bi-pencil-square"></i>
                                         </a>
                                         <a href="{{ route('invoked.delete',$value->id) }}" class="btn btn-sm btn-danger text-white text-center">
-                                            <i class="fadeIn animated bx bx-trash-alt"></i>
+                                            <i class="bi bi-trash"></i>
                                         </a>
                                     </td>
                                 </tr>

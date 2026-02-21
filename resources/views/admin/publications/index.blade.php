@@ -45,7 +45,7 @@
                                 <td class="align-middle">
                                     @if ($publication->pdf_file)
                                         <a href="{{ asset('images/publications/pdfs/'.$publication->pdf_file) }}" target="_blank" class="btn btn-sm btn-outline-primary">
-                                            <i class="bx bx-download"></i> View PDF
+                                            <i class="bi bi-download"></i> View PDF
                                         </a>
                                     @else
                                         <span class="text-muted">No PDF</span>
@@ -56,10 +56,10 @@
                                 <td class="text-center align-middle">
                                     <div class="d-flex align-items-center justify-content-center gap-1">
                                         <a href="{{ route('publications.edit', $publication->id) }}" class="btn btn-sm btn-primary text-white" title="Edit">
-                                            <i class="fadeIn animated bx bx-edit"></i>
+                                            <i class="bi bi-pencil-square"></i>
                                         </a>
                                         <a href="{{ route('publications.delete', $publication->id) }}" class="btn btn-sm btn-danger text-white" title="Delete" onclick="return confirm('Are you sure you want to delete this publication?')">
-                                            <i class="fadeIn animated bx bx-trash-alt"></i>
+                                            <i class="bi bi-trash"></i>
                                         </a>
                                     </div>
                                 </td>
@@ -68,7 +68,7 @@
                             <tr>
                                 <td colspan="7" class="text-center py-4">
                                     <div class="text-muted">
-                                        <i class="bx bx-file bx-lg"></i>
+                                        <i class="bi bi-file-earmark fs-4"></i>
                                         <p class="mt-2">No publications found. <a href="{{ route('publications.add') }}">Add your first publication</a></p>
                                     </div>
                                 </td>
