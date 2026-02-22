@@ -5,7 +5,7 @@
 @section('content')
 
 <!-- Page Header -->
-<section class="pc-page-header" style="background-image: url('{{ asset('frontend/img/page-header-bg.jpg') }}');">
+<section class="pc-page-header">
     <div class="pc-page-header-overlay"></div>
     <div class="container position-relative" style="z-index:2;">
         <h1 class="text-white fw-bold mb-3" data-aos="fade-right">Project Details</h1>

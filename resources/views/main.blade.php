@@ -190,21 +190,27 @@
 
         /* Page Header / Breadcrumb */
         .pc-page-header {
-            background: linear-gradient(135deg, var(--pc-dark) 0%, var(--pc-dark-light) 100%);
+            background: linear-gradient(135deg, #1b2a6b 0%, #2a8547 100%);
             padding: 60px 0 50px;
             position: relative;
             overflow: hidden;
         }
+        .pc-page-header-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15,23,42,.25);
+            z-index: 1;
+        }
         .pc-page-header::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 400px;
-            height: 400px;
-            background: var(--pc-primary);
+            top: -30%;
+            right: -5%;
+            width: 350px;
+            height: 350px;
+            background: rgba(255,255,255,.08);
             border-radius: 50%;
-            opacity: .1;
+            z-index: 1;
         }
         .pc-page-header::after {
             content: '';
@@ -213,9 +219,9 @@
             left: -5%;
             width: 300px;
             height: 300px;
-            background: var(--pc-secondary);
+            background: rgba(255,255,255,.06);
             border-radius: 50%;
-            opacity: .08;
+            z-index: 1;
         }
         .pc-page-header h1 {
             color: #fff;
