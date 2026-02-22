@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('content')
 <!-- Page Header -->
@@ -33,7 +33,7 @@
                 <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden pc-card">
                     <div class="card-body p-4 p-lg-5 text-center">
                         {{-- Icon --}}
-                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-4" style="width:80px; height:80px; background: rgba(22,163,74,0.1);">
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-4" style="width:80px; height:80px; background: rgba(42,133,71,0.1);">
                             @if($item->icon)
                             <i class="bi bi-{{ $item->icon }} fs-2" style="color: var(--pc-primary);"></i>
                             @else
@@ -59,7 +59,7 @@
 
                         {{-- Year Badge --}}
                         @if($item->year)
-                        <span class="badge rounded-pill" style="background: rgba(22,163,74,0.1); color: var(--pc-primary); font-weight: 600;">
+                        <span class="badge rounded-pill" style="background: rgba(42,133,71,0.1); color: var(--pc-primary); font-weight: 600;">
                             <i class="bi bi-calendar3 me-1"></i> {{ $item->year }}
                         </span>
                         @endif

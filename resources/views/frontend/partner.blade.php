@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('content')
 <!-- Page Header -->
@@ -32,7 +32,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 50 }}">
                 <div class="card border-0 shadow-sm rounded-4 h-100 text-center overflow-hidden pc-card" style="transition: all 0.3s ease;">
                     <div class="card-body p-4 d-flex flex-column align-items-center justify-content-center">
-                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width:64px; height:64px; background: rgba(22,163,74,0.1);">
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width:64px; height:64px; background: rgba(42,133,71,0.1);">
                             <i class="bi bi-building fs-3" style="color: var(--pc-primary);"></i>
                         </div>
                         <h6 class="fw-bold mb-0">{{ $partner->name }}</h6>

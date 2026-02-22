@@ -19,19 +19,19 @@
 
     <style>
         :root {
-            --pc-primary: #16a34a;
-            --pc-primary-dark: #15803d;
-            --pc-primary-light: #dcfce7;
-            --pc-secondary: #0ea5e9;
-            --pc-accent: #f59e0b;
+            --pc-primary: #2a8547;
+            --pc-primary-dark: #1f6b38;
+            --pc-primary-light: #e8f5e9;
+            --pc-secondary: #1b2a6b;
+            --pc-accent: #e53935;
             --pc-dark: #0f172a;
             --pc-dark-light: #1e293b;
             --pc-gray: #64748b;
             --pc-gray-light: #f1f5f9;
             --pc-body: #ffffff;
             --pc-text: #334155;
-            --pc-gradient: linear-gradient(135deg, #16a34a, #0ea5e9);
-            --pc-gradient-warm: linear-gradient(135deg, #f59e0b, #ef4444);
+            --pc-gradient: linear-gradient(135deg, #2a8547, #1b2a6b);
+            --pc-gradient-warm: linear-gradient(135deg, #e53935, #ff6b35);
             --pc-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1);
             --pc-shadow-lg: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
             --pc-shadow-xl: 0 20px 25px -5px rgba(0,0,0,.1), 0 8px 10px -6px rgba(0,0,0,.1);
@@ -64,13 +64,13 @@
             font-weight: 600;
             font-size: .95rem;
             transition: all .3s ease;
-            box-shadow: 0 4px 14px rgba(22,163,74,.3);
+            box-shadow: 0 4px 14px rgba(42,133,71,.3);
         }
         .btn-pc-primary:hover {
             background: var(--pc-primary-dark);
             color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(22,163,74,.4);
+            box-shadow: 0 6px 20px rgba(42,133,71,.4);
         }
         .btn-pc-outline {
             background: transparent;
@@ -95,10 +95,10 @@
             border-radius: 50px;
             font-weight: 600;
             transition: all .3s ease;
-            box-shadow: 0 4px 14px rgba(245,158,11,.3);
+            box-shadow: 0 4px 14px rgba(229,57,53,.3);
         }
         .btn-pc-accent:hover {
-            background: #d97706;
+            background: #c62828;
             color: #fff;
             transform: translateY(-2px);
         }

@@ -6,12 +6,12 @@
 <div class="card">
     <div class="card-body">
         <div class="text-center p-5">
-            <h2 class="text-danger">Palli Chetana</h2>
-            <h6>Palli Chetana</h6>
+            <h2 style="color:#1b2a6b; font-weight:700;">Palli Chetana</h2>
+            <h6 class="text-muted">Admin Dashboard</h6>
         </div>
         <hr>
         <div class="text-center">
-            <h1 class="text-success">Admin Dashboard</h1>
+            <h1 style="color:#2a8547; font-weight:700;">Admin Dashboard</h1>
         </div>
 
         <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">

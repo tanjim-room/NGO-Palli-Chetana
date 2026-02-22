@@ -18,15 +18,23 @@
             --sidebar-width: 280px;
             --sidebar-collapsed-width: 0px;
             --header-height: 60px;
-            --primary-color: #4f46e5;
-            --primary-hover: #4338ca;
+            --primary-color: #2a8547;
+            --primary-hover: #1f6b38;
+            --primary-navy: #1b2a6b;
+            --primary-red: #e53935;
             --sidebar-bg: #ffffff;
-            --sidebar-hover: #f1f5f9;
-            --sidebar-active: #4f46e5;
+            --sidebar-hover: #f0faf3;
+            --sidebar-active: #2a8547;
             --sidebar-text: #64748b;
             --sidebar-text-active: #1e293b;
             --body-bg: #f1f5f9;
             --card-shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+            --bs-primary: #2a8547;
+            --bs-primary-rgb: 42,133,71;
+            --bs-success: #2a8547;
+            --bs-success-rgb: 42,133,71;
+            --bs-info: #1b2a6b;
+            --bs-info-rgb: 27,42,107;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -91,7 +99,7 @@
         .sidebar-nav .nav-item > .nav-link.active,
         .sidebar-nav .nav-item.menu-open > .nav-link {
             color: var(--primary-color);
-            background: rgba(79,70,229,.08);
+            background: rgba(42,133,71,.08);
             border-left-color: var(--sidebar-active);
             font-weight: 500;
         }
@@ -193,15 +201,6 @@
             font-weight: 600;
         }
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
-            border-color: var(--primary-hover);
-        }
-
         /* Toggler */
         .sidebar-toggler {
             background: none; border: none;
@@ -228,6 +227,42 @@
 
         /* Alert / Notification styling */
         .alert { border-radius: .5rem; border: none; }
+
+        /* Bootstrap color overrides to match logo */
+        .btn-primary { background-color: var(--primary-color) !important; border-color: var(--primary-color) !important; }
+        .btn-primary:hover, .btn-primary:focus { background-color: var(--primary-hover) !important; border-color: var(--primary-hover) !important; }
+        .btn-outline-primary { color: var(--primary-color) !important; border-color: var(--primary-color) !important; }
+        .btn-outline-primary:hover { background-color: var(--primary-color) !important; color: #fff !important; }
+        .bg-primary { background-color: var(--primary-color) !important; }
+        .text-primary { color: var(--primary-color) !important; }
+        .btn-success { background-color: var(--primary-color) !important; border-color: var(--primary-color) !important; }
+        .btn-success:hover { background-color: var(--primary-hover) !important; border-color: var(--primary-hover) !important; }
+        .bg-success { background-color: var(--primary-color) !important; }
+        .text-success { color: var(--primary-color) !important; }
+        .btn-info { background-color: var(--primary-navy) !important; border-color: var(--primary-navy) !important; color: #fff !important; }
+        .btn-info:hover { background-color: #142050 !important; border-color: #142050 !important; color: #fff !important; }
+        .bg-info { background-color: rgba(27,42,107,.12) !important; color: var(--primary-navy) !important; }
+        .text-info { color: var(--primary-navy) !important; }
+        .btn-danger { background-color: var(--primary-red) !important; border-color: var(--primary-red) !important; }
+        .btn-danger:hover { background-color: #c62828 !important; border-color: #c62828 !important; }
+        .text-danger { color: var(--primary-red) !important; }
+        .badge.bg-info { background-color: rgba(27,42,107,.12) !important; color: var(--primary-navy) !important; }
+        .badge.bg-primary { background-color: var(--primary-color) !important; color: #fff !important; }
+        .badge.bg-success { background-color: var(--primary-color) !important; color: #fff !important; }
+
+        /* Link color */
+        a { color: var(--primary-color); }
+        a:hover { color: var(--primary-hover); }
+
+        /* Focus ring */
+        .btn:focus, .form-control:focus, .form-select:focus {
+            box-shadow: 0 0 0 .25rem rgba(42,133,71,.25) !important;
+            border-color: var(--primary-color) !important;
+        }
+        .form-check-input:checked {
+            background-color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+        }
     </style>
 </head>
 
@@ -476,7 +511,7 @@
 
     <!-- Footer -->
     <footer class="admin-footer">
-        <p class="mb-0">Copyright &copy; {{ @date('Y') }}. All rights reserved <strong>AFADBD</strong></p>
+        <p class="mb-0">Copyright &copy; {{ @date('Y') }}. All rights reserved <strong>Palli Chetana</strong></p>
     </footer>
 
     <!-- Delete Confirmation Modal -->
@@ -641,7 +676,7 @@
         document.querySelectorAll('.sub-menu .nav-link').forEach(function(link) {
             if (link.href === window.location.href) {
                 link.closest('.nav-item').classList.add('menu-open');
-                link.style.color = '#4f46e5';
+                link.style.color = '#2a8547';
                 link.style.fontWeight = '500';
             }
         });

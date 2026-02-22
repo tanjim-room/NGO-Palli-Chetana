@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('content')
 <!-- Page Header -->
@@ -49,7 +49,7 @@
                             <div class="row g-4 text-center">
                                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                                     <div class="p-3">
-                                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width:60px; height:60px; background: rgba(22,163,74,0.1);">
+                                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width:60px; height:60px; background: rgba(42,133,71,0.1);">
                                             <i class="bi bi-people-fill fs-4" style="color: var(--pc-primary);"></i>
                                         </div>
                                         <h6 class="fw-bold">Community Focused</h6>
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                                     <div class="p-3">
-                                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width:60px; height:60px; background: rgba(22,163,74,0.1);">
+                                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width:60px; height:60px; background: rgba(42,133,71,0.1);">
                                             <i class="bi bi-globe-americas fs-4" style="color: var(--pc-primary);"></i>
                                         </div>
                                         <h6 class="fw-bold">Sustainable Growth</h6>
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
                                     <div class="p-3">
-                                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width:60px; height:60px; background: rgba(22,163,74,0.1);">
+                                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width:60px; height:60px; background: rgba(42,133,71,0.1);">
                                             <i class="bi bi-heart-fill fs-4" style="color: var(--pc-primary);"></i>
                                         </div>
                                         <h6 class="fw-bold">Driven by Passion</h6>

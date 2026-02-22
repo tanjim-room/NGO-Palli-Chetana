@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('title', 'Key Focus Areas')
 
@@ -26,14 +26,14 @@
             <span class="pc-badge"><i class="bi bi-bullseye me-1"></i> WHAT WE DO</span>
             <h2 class="pc-section-title">Our Focus Areas</h2>
             <p class="pc-section-subtitle">
-                A brief overview of the key areas our projects prioritize — infrastructure support for women, community empowerment, livelihood development, and social protection.
+                A brief overview of the key areas our projects prioritize â€” infrastructure support for women, community empowerment, livelihood development, and social protection.
             </p>
         </div>
 
         @php
             $badgeStyles = [
-                ['bg' => 'rgba(22,163,74,.12)', 'color' => 'var(--pc-primary)'],
-                ['bg' => 'rgba(14,165,233,.12)', 'color' => 'var(--pc-secondary)'],
+                ['bg' => 'rgba(42,133,71,.12)', 'color' => 'var(--pc-primary)'],
+                ['bg' => 'rgba(27,42,107,.12)', 'color' => 'var(--pc-secondary)'],
                 ['bg' => 'rgba(245,158,11,.12)', 'color' => 'var(--pc-accent)'],
                 ['bg' => 'rgba(239,68,68,.12)', 'color' => '#ef4444'],
                 ['bg' => 'rgba(139,92,246,.12)', 'color' => '#8b5cf6'],

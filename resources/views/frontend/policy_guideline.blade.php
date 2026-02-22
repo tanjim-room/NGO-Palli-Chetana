@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('content')
 
@@ -33,7 +33,7 @@
                 <a href="{{ asset('images/policy_guideline/'.$data->file) }}" target="_blank" class="text-decoration-none">
                     <div class="pc-card h-100 border-0 shadow-sm text-center transition-all" style="transition:transform 0.3s;">
                         <div class="card-body p-4 p-lg-5">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width:80px;height:80px;background:rgba(22,163,74,0.1);">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width:80px;height:80px;background:rgba(42,133,71,0.1);">
                                 <i class="bi bi-file-earmark-arrow-down fs-2" style="color:var(--pc-primary);"></i>
                             </div>
                             <h5 class="fw-bold text-dark mb-3">{{ $data->name }}</h5>
@@ -49,7 +49,7 @@
         @else
         <!-- Empty State -->
         <div class="text-center py-5" data-aos="fade-up">
-            <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width:100px;height:100px;background:rgba(22,163,74,0.1);">
+            <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width:100px;height:100px;background:rgba(42,133,71,0.1);">
                 <i class="bi bi-shield-check fs-1" style="color:var(--pc-primary);"></i>
             </div>
             <h4 class="fw-bold text-dark">No Policies Available</h4>

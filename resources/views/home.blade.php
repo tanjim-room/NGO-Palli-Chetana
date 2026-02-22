@@ -57,7 +57,7 @@ Palli Chetana - Empowering Communities
             <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="0">
                 <div class="text-center p-4 rounded-4 bg-white" style="box-shadow: var(--pc-shadow-lg);">
                     <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" style="width:50px;height:50px;background:var(--pc-primary-light);">
-                        <i class="bi bi-calendar-check text-success fs-4"></i>
+                        <i class="bi bi-calendar-check fs-4" style="color:var(--pc-primary);"></i>
                     </div>
                     <h3 class="fw-bold mb-0" style="color:var(--pc-primary);">25+</h3>
                     <small class="text-muted">Years of Service</small>
@@ -65,7 +65,7 @@ Palli Chetana - Empowering Communities
             </div>
             <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
                 <div class="text-center p-4 rounded-4 bg-white" style="box-shadow: var(--pc-shadow-lg);">
-                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" style="width:50px;height:50px;background:#e0f2fe;">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" style="width:50px;height:50px;background:#e8eaf6;">
                         <i class="bi bi-geo-alt fs-4" style="color:var(--pc-secondary);"></i>
                     </div>
                     <h3 class="fw-bold mb-0" style="color:var(--pc-secondary);">3+</h3>
@@ -74,7 +74,7 @@ Palli Chetana - Empowering Communities
             </div>
             <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
                 <div class="text-center p-4 rounded-4 bg-white" style="box-shadow: var(--pc-shadow-lg);">
-                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" style="width:50px;height:50px;background:#fef3c7;">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" style="width:50px;height:50px;background:#ffebee;">
                         <i class="bi bi-clipboard2-check fs-4" style="color:var(--pc-accent);"></i>
                     </div>
                     <h3 class="fw-bold mb-0" style="color:var(--pc-accent);">41+</h3>
@@ -83,10 +83,10 @@ Palli Chetana - Empowering Communities
             </div>
             <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
                 <div class="text-center p-4 rounded-4 bg-white" style="box-shadow: var(--pc-shadow-lg);">
-                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" style="width:50px;height:50px;background:#fce7f3;">
-                        <i class="bi bi-people-fill fs-4" style="color:#ec4899;"></i>
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" style="width:50px;height:50px;background:var(--pc-primary-light);">
+                        <i class="bi bi-people-fill fs-4" style="color:var(--pc-primary);"></i>
                     </div>
-                    <h3 class="fw-bold mb-0" style="color:#ec4899;">1.3M+</h3>
+                    <h3 class="fw-bold mb-0" style="color:var(--pc-primary);">1.3M+</h3>
                     <small class="text-muted">Lives Impacted</small>
                 </div>
             </div>
@@ -123,25 +123,25 @@ Palli Chetana - Empowering Communities
                 <div class="row g-3 mb-4">
                     <div class="col-6">
                         <div class="d-flex align-items-center gap-2">
-                            <i class="bi bi-check-circle-fill text-success"></i>
+                            <i class="bi bi-check-circle-fill" style="color:var(--pc-primary);"></i>
                             <span class="fw-medium">Women Empowerment</span>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="d-flex align-items-center gap-2">
-                            <i class="bi bi-check-circle-fill text-success"></i>
+                            <i class="bi bi-check-circle-fill" style="color:var(--pc-primary);"></i>
                             <span class="fw-medium">Education & Health</span>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="d-flex align-items-center gap-2">
-                            <i class="bi bi-check-circle-fill text-success"></i>
+                            <i class="bi bi-check-circle-fill" style="color:var(--pc-primary);"></i>
                             <span class="fw-medium">Livelihood Support</span>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="d-flex align-items-center gap-2">
-                            <i class="bi bi-check-circle-fill text-success"></i>
+                            <i class="bi bi-check-circle-fill" style="color:var(--pc-primary);"></i>
                             <span class="fw-medium">Community Development</span>
                         </div>
                     </div>
@@ -167,7 +167,7 @@ Palli Chetana - Empowering Communities
                 <div class="h-100 p-4 p-lg-5 rounded-4 bg-white" style="box-shadow: var(--pc-shadow); border-left: 4px solid var(--pc-primary);">
                     <div class="d-flex align-items-center gap-3 mb-3">
                         <div class="d-flex align-items-center justify-content-center rounded-circle" style="width:56px;height:56px;background:var(--pc-primary-light);flex-shrink:0;">
-                            <i class="bi bi-bullseye fs-4 text-success"></i>
+                            <i class="bi bi-bullseye fs-4" style="color:var(--pc-primary);"></i>
                         </div>
                         <h3 class="fw-bold mb-0">Our Mission</h3>
                     </div>
@@ -179,7 +179,7 @@ Palli Chetana - Empowering Communities
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="h-100 p-4 p-lg-5 rounded-4 bg-white" style="box-shadow: var(--pc-shadow); border-left: 4px solid var(--pc-secondary);">
                     <div class="d-flex align-items-center gap-3 mb-3">
-                        <div class="d-flex align-items-center justify-content-center rounded-circle" style="width:56px;height:56px;background:#e0f2fe;flex-shrink:0;">
+                        <div class="d-flex align-items-center justify-content-center rounded-circle" style="width:56px;height:56px;background:#e8eaf6;flex-shrink:0;">
                             <i class="bi bi-eye fs-4" style="color:var(--pc-secondary);"></i>
                         </div>
                         <h3 class="fw-bold mb-0">Our Vision</h3>
@@ -241,7 +241,7 @@ Palli Chetana - Empowering Communities
 </section>
 
 {{-- ===== CTA - MAKE A DIFFERENCE ===== --}}
-<section class="position-relative py-5" style="background: linear-gradient(135deg, var(--pc-dark) 0%, #1e3a2f 100%); overflow:hidden;">
+<section class="position-relative py-5" style="background: linear-gradient(135deg, var(--pc-dark) 0%, #162052 100%); overflow:hidden;">
     <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10">
         <div class="position-absolute" style="width:300px;height:300px;background:var(--pc-primary);border-radius:50%;top:-100px;right:-50px;"></div>
         <div class="position-absolute" style="width:200px;height:200px;background:var(--pc-accent);border-radius:50%;bottom:-80px;left:-40px;"></div>
@@ -341,7 +341,7 @@ Palli Chetana - Empowering Communities
 
 {{-- ===== SUCCESS STORIES ===== --}}
 @if(isset($stories) && count($stories) > 0)
-<section class="pc-section" style="background: linear-gradient(135deg, var(--pc-dark) 0%, #1a2e3a 100%);">
+<section class="pc-section" style="background: linear-gradient(135deg, var(--pc-dark) 0%, #162052 100%);">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="pc-badge">VOICES OF CHANGE</span>
@@ -414,7 +414,7 @@ Palli Chetana - Empowering Communities
             <div class="col-md-4 col-6" data-aos="zoom-in" data-aos-delay="{{ $gkey * 50 }}">
                 <div class="position-relative overflow-hidden rounded-3" style="cursor:pointer;">
                     <img src="{{ asset('images/gallery/'.$photo->image) }}" alt="Gallery" class="w-100" style="height:220px; object-fit:cover; transition: transform .5s ease;">
-                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background:rgba(22,163,74,.0); transition: all .3s; opacity:0;" onmouseover="this.style.opacity='1';this.style.background='rgba(22,163,74,.4)';this.previousElementSibling.style.transform='scale(1.1)';" onmouseout="this.style.opacity='0';this.style.background='rgba(22,163,74,.0)';this.previousElementSibling.style.transform='scale(1)';">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background:rgba(42,133,71,.0); transition: all .3s; opacity:0;" onmouseover="this.style.opacity='1';this.style.background='rgba(27,42,107,.4)';this.previousElementSibling.style.transform='scale(1.1)';" onmouseout="this.style.opacity='0';this.style.background='rgba(42,133,71,.0)';this.previousElementSibling.style.transform='scale(1)';">
                         <i class="bi bi-zoom-in text-white fs-2"></i>
                     </div>
                 </div>
@@ -447,7 +447,7 @@ Palli Chetana - Empowering Communities
     .pc-hero-overlay {
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(135deg, rgba(15,23,42,.75) 0%, rgba(15,23,42,.4) 100%);
+        background: linear-gradient(135deg, rgba(15,23,42,.75) 0%, rgba(27,42,107,.4) 100%);
         z-index: 1;
     }
     .ms-n3 { margin-left: -1.5rem !important; }

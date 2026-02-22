@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('content')
 
@@ -32,7 +32,7 @@
                 <div class="pc-card h-100 border-0 shadow-sm">
                     <div class="card-body p-4">
                         <div class="d-flex align-items-center mb-3">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width:48px;height:48px;background:rgba(22,163,74,0.1);">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width:48px;height:48px;background:rgba(42,133,71,0.1);">
                                 <i class="bi bi-building fs-5" style="color:var(--pc-primary);"></i>
                             </div>
                             <h5 class="fw-bold mb-0">{{ $head_office->title ?: 'Head Office' }}</h5>
@@ -58,7 +58,7 @@
                 <div class="pc-card h-100 border-0 shadow-sm">
                     <div class="card-body p-4">
                         <div class="d-flex align-items-center mb-3">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width:48px;height:48px;background:rgba(14,165,233,0.1);">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width:48px;height:48px;background:rgba(27,42,107,0.1);">
                                 <i class="bi bi-geo-alt-fill fs-5" style="color:var(--pc-secondary);"></i>
                             </div>
                             <h5 class="fw-bold mb-0">{{ $branch->title ?: 'Branch Office' }}</h5>
@@ -200,7 +200,7 @@
 
             <!-- Sidebar Info -->
             <div class="col-lg-5" data-aos="fade-up" data-aos-delay="200">
-                <div class="pc-card border-0 shadow-sm h-100" style="background: linear-gradient(135deg, rgba(22,163,74,0.03), rgba(14,165,233,0.03));">
+                <div class="pc-card border-0 shadow-sm h-100" style="background: linear-gradient(135deg, rgba(42,133,71,0.03), rgba(27,42,107,0.03));">
                     <div class="card-body p-4 p-lg-5">
                         <div class="text-center mb-4">
                             <i class="bi bi-envelope-paper fs-1" style="color:var(--pc-primary);"></i>
@@ -219,7 +219,7 @@
                             <i class="bi bi-globe fs-5 me-3" style="color:var(--pc-secondary);"></i>
                             <div>
                                 <h6 class="fw-bold mb-1">Available</h6>
-                                <p class="text-muted small mb-0">Saturday – Thursday, 9:00 AM – 5:00 PM</p>
+                                <p class="text-muted small mb-0">Saturday â€“ Thursday, 9:00 AM â€“ 5:00 PM</p>
                             </div>
                         </div>
                     </div>

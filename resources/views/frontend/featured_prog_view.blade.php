@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('title', $program->title ?? 'Program Details')
 

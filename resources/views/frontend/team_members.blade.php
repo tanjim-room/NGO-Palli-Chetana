@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('content')
 <!-- Page Header -->
@@ -54,22 +54,22 @@
                         {{-- Social Links --}}
                         <div class="d-flex justify-content-center gap-2">
                             @if($member->facebook)
-                            <a href="{{ $member->facebook }}" target="_blank" class="btn btn-sm rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px; height:36px; background: rgba(22,163,74,0.1); color: var(--pc-primary); transition: all 0.3s;" onmouseover="this.style.background='var(--pc-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(22,163,74,0.1)'; this.style.color='var(--pc-primary)'">
+                            <a href="{{ $member->facebook }}" target="_blank" class="btn btn-sm rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px; height:36px; background: rgba(42,133,71,0.1); color: var(--pc-primary); transition: all 0.3s;" onmouseover="this.style.background='var(--pc-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(42,133,71,0.1)'; this.style.color='var(--pc-primary)'">
                                 <i class="bi bi-facebook"></i>
                             </a>
                             @endif
                             @if($member->twitter)
-                            <a href="{{ $member->twitter }}" target="_blank" class="btn btn-sm rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px; height:36px; background: rgba(22,163,74,0.1); color: var(--pc-primary); transition: all 0.3s;" onmouseover="this.style.background='var(--pc-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(22,163,74,0.1)'; this.style.color='var(--pc-primary)'">
+                            <a href="{{ $member->twitter }}" target="_blank" class="btn btn-sm rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px; height:36px; background: rgba(42,133,71,0.1); color: var(--pc-primary); transition: all 0.3s;" onmouseover="this.style.background='var(--pc-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(42,133,71,0.1)'; this.style.color='var(--pc-primary)'">
                                 <i class="bi bi-twitter-x"></i>
                             </a>
                             @endif
                             @if($member->instagram)
-                            <a href="{{ $member->instagram }}" target="_blank" class="btn btn-sm rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px; height:36px; background: rgba(22,163,74,0.1); color: var(--pc-primary); transition: all 0.3s;" onmouseover="this.style.background='var(--pc-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(22,163,74,0.1)'; this.style.color='var(--pc-primary)'">
+                            <a href="{{ $member->instagram }}" target="_blank" class="btn btn-sm rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px; height:36px; background: rgba(42,133,71,0.1); color: var(--pc-primary); transition: all 0.3s;" onmouseover="this.style.background='var(--pc-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(42,133,71,0.1)'; this.style.color='var(--pc-primary)'">
                                 <i class="bi bi-instagram"></i>
                             </a>
                             @endif
                             @if($member->youtube)
-                            <a href="{{ $member->youtube }}" target="_blank" class="btn btn-sm rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px; height:36px; background: rgba(22,163,74,0.1); color: var(--pc-primary); transition: all 0.3s;" onmouseover="this.style.background='var(--pc-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(22,163,74,0.1)'; this.style.color='var(--pc-primary)'">
+                            <a href="{{ $member->youtube }}" target="_blank" class="btn btn-sm rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px; height:36px; background: rgba(42,133,71,0.1); color: var(--pc-primary); transition: all 0.3s;" onmouseover="this.style.background='var(--pc-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(42,133,71,0.1)'; this.style.color='var(--pc-primary)'">
                                 <i class="bi bi-youtube"></i>
                             </a>
                             @endif

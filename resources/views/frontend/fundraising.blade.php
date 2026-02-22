@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('content')
 {{-- ===== PAGE HEADER ===== --}}
@@ -21,14 +21,14 @@
     <img src="{{ asset('img/fund.jpg') }}" alt="Fundraising"
          class="position-absolute top-0 start-0 w-100 h-100" style="object-fit:cover;">
     <div class="position-absolute top-0 start-0 w-100 h-100"
-         style="background: linear-gradient(135deg, rgba(22,163,74,0.85), rgba(14,165,233,0.80));"></div>
+         style="background: linear-gradient(135deg, rgba(42,133,71,0.85), rgba(27,42,107,0.80));"></div>
     <div class="container position-relative d-flex flex-column justify-content-center align-items-center text-center text-white"
          style="z-index:2; min-height:480px;">
         <i class="bi bi-megaphone-fill display-2 mb-3" data-aos="zoom-in" style="color:var(--pc-accent);"></i>
         <h2 class="display-5 fw-bold mb-3" data-aos="fade-up">Join Our Fundraising Campaign</h2>
         <p class="lead mb-4 mx-auto" data-aos="fade-up" data-aos-delay="100" style="max-width:680px;">
             Palli Chetana is committed to uplifting rural communities. Your support fuels our programs in education,
-            healthcare, and livelihood development. Be a part of the change — start or support a fundraising initiative today!
+            healthcare, and livelihood development. Be a part of the change â€” start or support a fundraising initiative today!
         </p>
         <a href="{{ url('/contact') }}" class="btn btn-pc-accent btn-lg px-5 rounded-pill shadow" data-aos="fade-up" data-aos-delay="200">
             <i class="bi bi-envelope-heart me-2"></i>Get in Touch to Join

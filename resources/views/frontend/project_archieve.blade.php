@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('title', 'Project Archive')
 
@@ -49,7 +49,7 @@
                                     <td class="pe-4">
                                         <span class="d-inline-flex align-items-center gap-1">
                                             <i class="bi bi-calendar3 text-muted" style="font-size:.8rem;"></i>
-                                            {{ $proj->from_date }} — {{ $proj->to_date }}
+                                            {{ $proj->from_date }} â€” {{ $proj->to_date }}
                                         </span>
                                     </td>
                                 </tr>

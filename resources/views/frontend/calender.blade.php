@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @push('css')
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.2.0/main.min.css'>
@@ -6,7 +6,7 @@
     <style>
     .pc-calendar-wrapper {
         position: relative;
-        background: linear-gradient(135deg, rgba(22,163,74,0.05), rgba(14,165,233,0.05));
+        background: linear-gradient(135deg, rgba(42,133,71,0.05), rgba(27,42,107,0.05));
         border-radius: 1rem;
         padding: 1.5rem;
     }
@@ -45,15 +45,15 @@
         border-color: var(--pc-primary) !important;
     }
     .fc-button-primary:hover {
-        background-color: #15803d !important;
-        border-color: #15803d !important;
+        background-color: #1f6b38 !important;
+        border-color: #1f6b38 !important;
     }
     .fc-today-button {
         background-color: var(--pc-secondary) !important;
         border-color: var(--pc-secondary) !important;
     }
     .fc-day-today {
-        background-color: rgba(22,163,74,0.05) !important;
+        background-color: rgba(42,133,71,0.05) !important;
     }
     .form-group {
         margin-bottom: 1rem;
@@ -159,12 +159,12 @@
                                         <input type="date" class="form-control rounded-3" id="start-date" placeholder="start-date" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="end-date" class="form-label">End date <small class="text-muted">— Optional</small></label>
+                                        <label for="end-date" class="form-label">End date <small class="text-muted">â€” Optional</small></label>
                                         <input type="date" class="form-control rounded-3" id="end-date" placeholder="end-date">
                                     </div>
                                     <div class="form-group">
                                         <label for="event-color" class="form-label">Color</label>
-                                        <input type="color" class="form-control form-control-color rounded-3" id="event-color" value="#16a34a">
+                                        <input type="color" class="form-control form-control-color rounded-3" id="event-color" value="#2a8547">
                                     </div>
                                 </div>
                                 <div class="modal-footer border-0 px-4 pb-4 pt-0 d-flex justify-content-center">

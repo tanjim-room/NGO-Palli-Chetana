@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('title', $project->title ?? 'Project Details')
 

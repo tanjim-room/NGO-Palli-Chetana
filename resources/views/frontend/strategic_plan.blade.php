@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('content')
 
@@ -61,7 +61,7 @@
             <!-- Empty State -->
             <div class="col-12">
                 <div class="text-center py-5" data-aos="fade-up">
-                    <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width:100px;height:100px;background:rgba(22,163,74,0.1);">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width:100px;height:100px;background:rgba(42,133,71,0.1);">
                         <i class="bi bi-map fs-1" style="color:var(--pc-primary);"></i>
                     </div>
                     <h4 class="fw-bold text-dark">No Strategic Plans Available</h4>

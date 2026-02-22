@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('title', 'Success Stories')
 
@@ -25,7 +25,7 @@
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="pc-badge"><i class="bi bi-chat-quote me-1"></i> SUCCESS STORIES</span>
             <h2 class="pc-section-title">Voices of Change</h2>
-            <p class="pc-section-subtitle">Real stories from the communities we serve — testimonies of hope, resilience, and transformation.</p>
+            <p class="pc-section-subtitle">Real stories from the communities we serve â€” testimonies of hope, resilience, and transformation.</p>
         </div>
 
         @if(isset($stories) && count($stories) > 0)

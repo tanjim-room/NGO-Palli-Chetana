@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('content')
 {{-- ===== PAGE HEADER ===== --}}
@@ -45,7 +45,7 @@
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <h5 class="fw-bold mb-0 pe-2">{{ $volunteer->title }}</h5>
                                 @if(strtolower($volunteer->status) === 'open')
-                                    <span class="badge rounded-pill bg-success flex-shrink-0">
+                                    <span class="badge rounded-pill flex-shrink-0" style="background-color:var(--pc-primary);">
                                         <i class="bi bi-check-circle me-1"></i>Open
                                     </span>
                                 @else

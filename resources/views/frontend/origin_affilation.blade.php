@@ -1,4 +1,4 @@
-@extends('main')
+﻿@extends('main')
 
 @section('content')
 <!-- Page Header -->
@@ -32,7 +32,7 @@
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                 <div class="card border-0 shadow-sm rounded-4 h-100 text-center overflow-hidden pc-card">
                     <div class="card-body p-4 p-lg-5 d-flex flex-column align-items-center">
-                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-4" style="width:80px; height:80px; background: rgba(22,163,74,0.1);">
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-4" style="width:80px; height:80px; background: rgba(42,133,71,0.1);">
                             <i class="bi bi-file-earmark-pdf fs-2" style="color: var(--pc-primary);"></i>
                         </div>
                         <h5 class="fw-bold mb-3">{{ $item->name }}</h5>

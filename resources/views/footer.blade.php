@@ -1,4 +1,4 @@
-<!-- Newsletter Section -->
+﻿<!-- Newsletter Section -->
 <section class="pc-section-sm" style="background: var(--pc-gradient);">
     <div class="container">
         <div class="row align-items-center">
@@ -8,7 +8,7 @@
             </div>
             <div class="col-lg-7">
                 @if (session()->has('success'))
-                    <div class="alert alert-light mb-3 py-2 rounded-pill text-center fw-semibold text-success">
+                    <div class="alert alert-light mb-3 py-2 rounded-pill text-center fw-semibold text-white-50">
                         {{ session()->get('success') }}
                     </div>
                 @endif
@@ -104,15 +104,15 @@
                 <h6 class="text-white fw-bold mb-3">Contact</h6>
                 <ul style="font-size:.88rem;">
                     <li class="mb-3 d-flex gap-2">
-                        <i class="bi bi-geo-alt text-success flex-shrink-0 mt-1"></i>
+                        <i class="bi bi-geo-alt text-white-50 flex-shrink-0 mt-1"></i>
                         <span class="text-white text-opacity-75">R.K Road Khalilganj Bazar, Kurigram</span>
                     </li>
                     <li class="mb-3 d-flex gap-2">
-                        <i class="bi bi-telephone text-success flex-shrink-0"></i>
+                        <i class="bi bi-telephone text-white-50 flex-shrink-0"></i>
                         <span class="text-white text-opacity-75">01719-691409</span>
                     </li>
                     <li class="mb-3 d-flex gap-2">
-                        <i class="bi bi-envelope text-success flex-shrink-0"></i>
+                        <i class="bi bi-envelope text-white-50 flex-shrink-0"></i>
                         <span class="text-white text-opacity-75">info@pallichetanabd.org</span>
                     </li>
                 </ul>
