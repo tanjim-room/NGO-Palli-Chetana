@@ -1,52 +1,86 @@
 @extends('main')
 
 @section('content')
-  <!-- ======= Breadcrumbs ======= -->
-  <section class="breadcrumbs">
+<!-- Page Header -->
+<section class="pc-page-header" style="background-image: url('{{ asset('frontend/img/page-header-bg.jpg') }}');">
+    <div class="pc-page-header-overlay"></div>
+    <div class="container position-relative" style="z-index:2;">
+        <h1 class="text-white fw-bold mb-3" data-aos="fade-right">Our Impact</h1>
+        <nav aria-label="breadcrumb" data-aos="fade-right" data-aos-delay="100">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="{{ url('/') }}" class="text-white text-decoration-none"><i class="bi bi-house-door"></i> Home</a></li>
+                <li class="breadcrumb-item"><a href="#" class="text-white text-decoration-none">What We Do</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">Impact</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Impact Section -->
+<section class="pc-section" style="background-color: var(--pc-gray-light);">
     <div class="container">
-      <ol>
-        <li><a href="{{ url('/') }}">Home</a></li>
-        <li>About us</li>
-      </ol>
-      <h2>Impact</h2>
-    </div>
-  </section>
-  <!-- End Breadcrumbs -->
-
-    <!-- ======= Impact Section ======= -->
-  <section id="contact" class="contact bg-light p-0">
-    <div class="container bg-white py-5" data-aos="fade-up">
-      <div class="section-title">
-        <h2>Our Impact</h2>
-        @if(isset($impact) && count($impact) > 0)
-        <div class="row mt-5">
-          @foreach($impact as $item)
-          <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-            <div class="card text-center h-100 shadow-sm border-0">
-              <div class="card-body">
-                @if($item->icon)
-                <i class="{{ $item->icon }} text-primary" style="font-size: 3rem;"></i>
-                @endif
-                <h3 class="mt-3 mb-2">{{ $item->metric_value }}</h3>
-                <h5 class="text-muted">{{ $item->metric_unit }}</h5>
-                <p class="card-title font-weight-bold">{{ $item->title }}</p>
-                @if($item->description)
-                <p class="card-text small text-secondary">{{ $item->description }}</p>
-                @endif
-                @if($item->year)
-                <p class="text-muted small">Year: {{ $item->year }}</p>
-                @endif
-              </div>
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center" data-aos="fade-up">
+                <span class="pc-badge"><i class="bi bi-graph-up-arrow me-1"></i> Results</span>
+                <h2 class="pc-section-title mt-3">Measuring Our Impact</h2>
+                <p class="text-muted">The numbers that reflect our commitment to creating meaningful change in communities through Palli Chetana's programs.</p>
             </div>
-          </div>
-          @endforeach
         </div>
-        @else
-        <p class="fs-4 text-secondary">The content will be updated soon.</p>
-        @endif
-      </div>
-    </div>
-  </section>
-  <!-- End Impact Section -->
 
+        <div class="row g-4">
+            @foreach($impact as $item)
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden pc-card">
+                    <div class="card-body p-4 p-lg-5 text-center">
+                        {{-- Icon --}}
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-4" style="width:80px; height:80px; background: rgba(22,163,74,0.1);">
+                            @if($item->icon)
+                            <i class="bi bi-{{ $item->icon }} fs-2" style="color: var(--pc-primary);"></i>
+                            @else
+                            <i class="bi bi-bar-chart-line fs-2" style="color: var(--pc-primary);"></i>
+                            @endif
+                        </div>
+
+                        {{-- Metric --}}
+                        <div class="mb-3">
+                            <span class="d-block fw-bold" style="font-size: 2.5rem; color: var(--pc-primary); line-height: 1.1;">
+                                {{ $item->metric_value }}
+                            </span>
+                            @if($item->metric_unit)
+                            <span class="text-muted text-uppercase small fw-semibold letter-spacing-1">{{ $item->metric_unit }}</span>
+                            @endif
+                        </div>
+
+                        {{-- Title & Description --}}
+                        <h5 class="fw-bold mb-2">{{ $item->title }}</h5>
+                        @if($item->description)
+                        <p class="text-muted small mb-2">{{ $item->description }}</p>
+                        @endif
+
+                        {{-- Year Badge --}}
+                        @if($item->year)
+                        <span class="badge rounded-pill" style="background: rgba(22,163,74,0.1); color: var(--pc-primary); font-weight: 600;">
+                            <i class="bi bi-calendar3 me-1"></i> {{ $item->year }}
+                        </span>
+                        @endif
+                    </div>
+                    <div style="height:4px; background: linear-gradient(90deg, var(--pc-primary), var(--pc-accent));"></div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+
+        @if($impact->isEmpty())
+        <div class="row justify-content-center" data-aos="fade-up">
+            <div class="col-lg-6 text-center">
+                <div class="card border-0 shadow-sm rounded-4 p-5">
+                    <i class="bi bi-bar-chart-line fs-1 text-muted mb-3"></i>
+                    <h5 class="fw-bold text-muted">Impact Data Coming Soon</h5>
+                    <p class="text-muted mb-0">We're compiling our impact data. Check back soon for updates.</p>
+                </div>
+            </div>
+        </div>
+        @endif
+    </div>
+</section>
 @endsection

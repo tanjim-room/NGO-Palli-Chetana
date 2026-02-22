@@ -1,96 +1,84 @@
 @extends('main')
 
 @section('content')
-
-  <!-- Breadcrumbs -->
-  <section class="breadcrumbs">
-    <div class="container">
-      <ol>
-        <li><a href="{{ url('/') }}">Home</a></li>
-        <li>About us</li>
-      </ol>
-      <h2>Team Members</h2>
+<!-- Page Header -->
+<section class="pc-page-header" style="background-image: url('{{ asset('frontend/img/page-header-bg.jpg') }}');">
+    <div class="pc-page-header-overlay"></div>
+    <div class="container position-relative" style="z-index:2;">
+        <h1 class="text-white fw-bold mb-3" data-aos="fade-right">Our Team</h1>
+        <nav aria-label="breadcrumb" data-aos="fade-right" data-aos-delay="100">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="{{ url('/') }}" class="text-white text-decoration-none"><i class="bi bi-house-door"></i> Home</a></li>
+                <li class="breadcrumb-item"><a href="#" class="text-white text-decoration-none">Who We Are</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">Team Members</li>
+            </ol>
+        </nav>
     </div>
-  </section>
-  <!-- End Breadcrumbs -->
+</section>
 
-<!-- Contact Section -->
-  <section id="contact" class="contact p-0 m-0">
-    <div class="container" data-aos="fade-up">
-        <div class="section-title">
-            <section class="bg-light py-3 py-md-5 py-xl-8">
-                <div class="container">
-                    <div class="row justify-content-md-center">
-                    <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
-                        <h2 class="mb-3 display-5 text-center">Our Team</h2>
-                        <p class="text-secondary mb-4 text-center lead fs-4">We are a group of innovative, experienced, and proficient teams. You will love to collaborate with us.</p>
-                    </div>
-                    </div>
-                </div>
+<!-- Team Members Section -->
+<section class="pc-section" style="background-color: var(--pc-gray-light);">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center" data-aos="fade-up">
+                <span class="pc-badge"><i class="bi bi-people me-1"></i> Our People</span>
+                <h2 class="pc-section-title mt-3">Meet the Team</h2>
+                <p class="text-muted">The passionate individuals driving change at Palli Chetana.</p>
+            </div>
+        </div>
 
-                <div class="container overflow-hidden">
-                    <div class="row gy-4 gy-lg-0 gx-xxl-5">
-                        @if(isset($team) && count($team) > 0)
-                            @foreach($team as $member)
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="card border-0 border-bottom border-primary shadow-sm overflow-hidden">
-                                    <div class="card-body p-0">
-                                        <figure class="m-0 p-0">
-                                        @if($member->photo)
-                                        <img class="img-fluid" loading="lazy" src="{{ asset('images/team_members/'.$member->photo) }}" alt="{{ $member->name }}">
-                                        @else
-                                        <img class="img-fluid" loading="lazy" src="{{ asset('img/testimonial.jpg') }}" alt="{{ $member->name }}">
-                                        @endif
-                                        <figcaption class="m-0 p-4">
-                                            <h4 class="mb-1">{{ $member->name }}</h4>
-                                            <p class="text-secondary mb-0">{{ $member->designation }}</p>
-                                            @if($member->department)
-                                            <p class="text-muted small mb-2">{{ $member->department }}</p>
-                                            @endif
-                                            @if($member->bio)
-                                            <p class="small">{{ Str::limit($member->bio, 80) }}</p>
-                                            @endif
-                                            <div class="d-flex justify-content-center mt-3">
-                                                @if($member->facebook)
-                                                <a href="{{ $member->facebook }}" target="_blank"><i class="fa-brands fa-facebook-f p-3 border m-1 rounded"></i></a>
-                                                @elseif(application()->facebook)
-                                                <a href="{{ application()->facebook }}" target="_blank"><i class="fa-brands fa-facebook-f p-3 border m-1 rounded"></i></a>
-                                                @endif
-                                                
-                                                @if($member->twitter)
-                                                <a href="{{ $member->twitter }}" target="_blank"><i class="fa-brands fa-twitter p-3 border m-1 rounded"></i></a>
-                                                @elseif(application()->twitter)
-                                                <a href="{{ application()->twitter }}" target="_blank"><i class="fa-brands fa-twitter p-3 border m-1 rounded"></i></a>
-                                                @endif
-                                                
-                                                @if($member->instagram)
-                                                <a href="{{ $member->instagram }}" target="_blank"><i class="fa-brands fa-instagram p-3 border m-1 rounded"></i></a>
-                                                @elseif(application()->instagram)
-                                                <a href="{{ application()->instagram }}" target="_blank"><i class="fa-brands fa-instagram p-3 border m-1 rounded"></i></a>
-                                                @endif
-                                                
-                                                @if($member->youtube)
-                                                <a href="{{ $member->youtube }}" target="_blank"><i class="fa-brands fa-youtube p-3 border m-1 rounded"></i></a>
-                                                @elseif(application()->youtube)
-                                                <a href="{{ application()->youtube }}" target="_blank"><i class="fa-brands fa-youtube p-3 border m-1 rounded"></i></a>
-                                                @endif
-                                            </div>
-                                        </figcaption>
-                                        </figure>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        @else
-                        <div class="col-12">
-                            <p class="text-center text-muted fs-5">No team members found.</p>
-                        </div>
+        <div class="row g-4">
+            @foreach($team as $member)
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden pc-card">
+                    <div class="position-relative overflow-hidden" style="height: 300px;">
+                        <img src="{{ asset('images/team_members/' . $member->photo) }}"
+                             class="w-100 h-100"
+                             style="object-fit: cover; transition: transform 0.4s ease;"
+                             alt="{{ $member->name }}"
+                             onmouseover="this.style.transform='scale(1.05)'"
+                             onmouseout="this.style.transform='scale(1)'">
+                        @if($member->department)
+                        <span class="position-absolute top-0 end-0 m-3 badge rounded-pill" style="background: var(--pc-primary);">
+                            {{ $member->department }}
+                        </span>
                         @endif
                     </div>
+                    <div class="card-body p-4 text-center">
+                        <h5 class="fw-bold mb-1">{{ $member->name }}</h5>
+                        <p class="mb-2" style="color: var(--pc-primary); font-weight: 500; font-size: 0.9rem;">{{ $member->designation }}</p>
+                        @if($member->bio)
+                        <p class="text-muted small mb-3">{{ Str::limit(strip_tags($member->bio), 100) }}</p>
+                        @endif
+
+                        {{-- Social Links --}}
+                        <div class="d-flex justify-content-center gap-2">
+                            @if($member->facebook)
+                            <a href="{{ $member->facebook }}" target="_blank" class="btn btn-sm rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px; height:36px; background: rgba(22,163,74,0.1); color: var(--pc-primary); transition: all 0.3s;" onmouseover="this.style.background='var(--pc-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(22,163,74,0.1)'; this.style.color='var(--pc-primary)'">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                            @endif
+                            @if($member->twitter)
+                            <a href="{{ $member->twitter }}" target="_blank" class="btn btn-sm rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px; height:36px; background: rgba(22,163,74,0.1); color: var(--pc-primary); transition: all 0.3s;" onmouseover="this.style.background='var(--pc-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(22,163,74,0.1)'; this.style.color='var(--pc-primary)'">
+                                <i class="bi bi-twitter-x"></i>
+                            </a>
+                            @endif
+                            @if($member->instagram)
+                            <a href="{{ $member->instagram }}" target="_blank" class="btn btn-sm rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px; height:36px; background: rgba(22,163,74,0.1); color: var(--pc-primary); transition: all 0.3s;" onmouseover="this.style.background='var(--pc-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(22,163,74,0.1)'; this.style.color='var(--pc-primary)'">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                            @endif
+                            @if($member->youtube)
+                            <a href="{{ $member->youtube }}" target="_blank" class="btn btn-sm rounded-circle d-inline-flex align-items-center justify-content-center" style="width:36px; height:36px; background: rgba(22,163,74,0.1); color: var(--pc-primary); transition: all 0.3s;" onmouseover="this.style.background='var(--pc-primary)'; this.style.color='#fff'" onmouseout="this.style.background='rgba(22,163,74,0.1)'; this.style.color='var(--pc-primary)'">
+                                <i class="bi bi-youtube"></i>
+                            </a>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
+            @endforeach
         </div>
     </div>
-  </section>
-<!-- End Contact Section -->
+</section>
 @endsection

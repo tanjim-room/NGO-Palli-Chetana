@@ -2,57 +2,64 @@
 
 @section('content')
 
-  <!-- ======= Breadcrumbs ======= -->
-  <section class="breadcrumbs">
-    <div class="container">
-      <ol>
-        <li><a href="{{ url('/') }}">Home</a></li>
-        <li>What We Do</li>
-      </ol>
-      <h2>Latest News</h2>
-    </div>
-  </section>
-  <!-- End Breadcrumbs -->
+    <!-- ======= Page Header ======= -->
+    <section class="pc-page-header" style="background-image: url('{{ asset('frontend/img/page-header-bg.jpg') }}');">
+        <div class="pc-page-header-overlay"></div>
+        <div class="container position-relative" style="z-index:2;">
+            <h1 class="text-white fw-bold mb-3" data-aos="fade-right">Latest News & Events</h1>
+            <nav aria-label="breadcrumb" data-aos="fade-right" data-aos-delay="100">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}" class="text-white text-decoration-none"><i class="bi bi-house-door"></i> Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="text-white text-decoration-none">Media</a></li>
+                    <li class="breadcrumb-item active text-white-50" aria-current="page">Latest News</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+    <!-- End Page Header -->
 
-    <!-- ======= Ongoing Project Section ======= -->
-  <section id="contact" class="contact">
-    <div class="container" data-aos="fade-up">
+    <!-- ======= News Cards Section ======= -->
+    <section class="pc-section" style="background: var(--pc-gray-light);">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="pc-badge mb-2 d-inline-block"><i class="bi bi-newspaper me-1"></i> Stay Informed</span>
+                <h2 class="pc-section-title">Latest News & Events</h2>
+                <p class="text-muted mx-auto" style="max-width: 600px;">Stay updated with the latest happenings, achievements, and events from Palli Chetana.</p>
+            </div>
 
-      <div class="section-title">
-        <h2>Latest News</h2>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            @foreach ($news as $key=>$data)
-                <div class="col">
-                    <div class="card border-0 shadow">
-                        <img src="{{ asset('images/news/'.$data->image) }}" class="card-img-top" alt="activity" width="100%" height="200px">
-                        <div class="card-body ">
-                            <h5 class="card-title text-start">{{ Str::limit($data->title, 25, '...') }}</h5>
-                            <p class="text-secondary text-start" style="font-size: 12px;">
-                                <i class="fas fa-calendar-minus"></i>
-                                {{ date("d/m/Y  h:i:s a") }}
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                @foreach ($news as $key => $data)
+                <div class="col" data-aos="fade-up" data-aos-delay="{{ ($key % 3) * 100 }}">
+                    <div class="pc-card h-100">
+                        <div class="position-relative overflow-hidden">
+                            <img src="{{ asset('images/news/'.$data->image) }}" class="card-img" alt="{{ $data->title }}" style="height: 220px; object-fit: cover;">
+                            <div class="position-absolute top-0 end-0 m-3">
+                                <span class="badge rounded-pill text-white px-3 py-2" style="background: var(--pc-primary);">
+                                    <i class="bi bi-calendar3 me-1"></i>
+                                    {{ date('M d, Y', strtotime($data->created_at)) }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">{{ Str::limit($data->title, 50, '...') }}</h5>
+                            <p class="card-text text-muted flex-grow-1">
+                                {{ Str::limit($data->description, 100, '...') }}
                             </p>
-                            <p class="card-text py-3 text-start">
-                                {{ Str::limit($data->description,75,"...") }}
-                            </p>
-                            <p class="text-start">
-                                <a href="{{ route('latest.news.view',$data->id) }}" class="text-primary"><i class="fa fa-arrow-right" aria-hidden="true"></i> Read More</a>
-                            </p>
+                            <a href="{{ route('latest.news.view', $data->id) }}" class="card-link fw-semibold mt-auto" style="color: var(--pc-primary);">
+                                Read More <i class="bi bi-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-            @endforeach
+                @endforeach
+            </div>
+
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center mt-5" data-aos="fade-up">
+                {{ $news->links() }}
+            </div>
         </div>
-    </div>
-
-    <div class="d-flex justify-content-center">
-        {{ $news->links() }}
-    </div>
-
-    <div class="row" data-aos="fade-up" data-aos-delay="100">
-
-    </div>
-
-    </div>
-  </section><!-- End Ongoing Project Section -->
+    </section>
+    <!-- End News Cards Section -->
 
 @endsection

@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>AFADBD | Admin</title>
+    <title>Palli Chetana | Admin</title>
     <style>
         :root {
             --sidebar-width: 280px;
@@ -239,7 +239,7 @@
     <aside class="admin-sidebar" id="adminSidebar">
         <div class="sidebar-brand">
             <img src="{{ asset('images/application/'.application()->fav_icon) }}" alt="Logo">
-            <h5>AFADBD</h5>
+            <h5>Palli Chetana</h5>
             <button class="btn-close ms-auto d-lg-none" id="sidebarClose" aria-label="Close"></button>
         </div>
         <nav class="sidebar-nav">

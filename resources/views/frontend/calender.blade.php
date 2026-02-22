@@ -1,22 +1,27 @@
 @extends('main')
+
 @push('css')
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.2.0/main.min.css'>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.3.0/main.min.css'>
     <style>
-    .cd__main{
-    position: relative;
-    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6) !important;
+    .pc-calendar-wrapper {
+        position: relative;
+        background: linear-gradient(135deg, rgba(22,163,74,0.05), rgba(14,165,233,0.05));
+        border-radius: 1rem;
+        padding: 1.5rem;
     }
     #calendar {
         max-width: 100%;
-        margin: 40px auto;
+        margin: 0 auto;
         background: #fff;
-        padding: 15px;
-        border-radius:10px;
+        padding: 20px;
+        border-radius: 0.75rem;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
     .fc-event {
-        border: 1px solid #eee !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+        border-radius: 4px !important;
+        cursor: pointer;
     }
     .fc-content {
         padding: 3px !important;
@@ -27,26 +32,40 @@
         text-align: center;
         font-size: 12px;
         font-weight: 500;
-        text-align: center;
     }
     .fc-customButton-button {
         font-size: 13px !important;
         position: absolute;
-        top:  0px;
+        top: 0;
         left: 50%;
         transform: translateY(-50%);
+    }
+    .fc-button-primary {
+        background-color: var(--pc-primary) !important;
+        border-color: var(--pc-primary) !important;
+    }
+    .fc-button-primary:hover {
+        background-color: #15803d !important;
+        border-color: #15803d !important;
+    }
+    .fc-today-button {
+        background-color: var(--pc-secondary) !important;
+        border-color: var(--pc-secondary) !important;
+    }
+    .fc-day-today {
+        background-color: rgba(22,163,74,0.05) !important;
     }
     .form-group {
         margin-bottom: 1rem;
     }
-    .form-group>label {
-        margin-bottom: 10px;
+    .form-group > label {
+        margin-bottom: 8px;
+        font-weight: 500;
     }
     #delete-modal .modal-footer > .btn {
-
-        border-radius: 3px !important;
-        padding: 0px 8px !important;
-        font-size: 15px;
+        border-radius: 6px !important;
+        padding: 6px 16px !important;
+        font-size: 14px;
     }
     .fc-scroller {
         overflow-y: hidden !important;
@@ -55,95 +74,103 @@
         position: absolute;
         z-index: 1000;
         background-color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-        padding: 5px;
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        padding: 6px;
+        min-width: 150px;
     }
     .context-menu ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
-
     }
-    .context-menu ul>li {
+    .context-menu ul > li {
         display: block;
-        ;
-        padding: 5px 15px;
-        list-style-type: none;
+        padding: 8px 16px;
         color: #333;
-        display: block;
         cursor: pointer;
-        margin: 0 auto;
-        transition: 0.10s;
+        border-radius: 6px;
+        transition: all 0.15s;
         font-size: 13px;
     }
-    .context-menu ul>li:hover {
+    .context-menu ul > li:hover {
         color: #fff;
-        background-color: #007bff;
-        border-radius: 2px;
+        background-color: var(--pc-primary);
     }
-    .fa,
-    .fas {
+    .context-menu ul > li i {
         font-size: 13px;
-        margin-right: 4px;
+        margin-right: 6px;
     }
     </style>
 @endpush
 
 @section('content')
-  <!-- ======= Breadcrumbs ======= -->
-  <section class="breadcrumbs">
-    <div class="container">
-      <ol>
-        <li><a href="{{ url('/') }}">Home</a></li>
-        <li>News & Events</li>
-      </ol>
-      <h2>Events Calender</h2>
-    </div>
-  </section>
-  <!-- End Breadcrumbs -->
 
-<!-- Calender Section -->
-  <section id="contact" class="contact bg-light p-0">
-    <div class="container bg-white py-5" data-aos="fade-up">
-      <div class="section-title">
-        <h2>Events Calender</h2>
-        <p class="fs-5 text-secondary">From this calendar, you can view the names, dates, and durations of our upcoming events and programs</p> <br>
-            <main class="cd__main p-4 mt-3">
+<!-- ====== Page Header ====== -->
+<section class="pc-page-header" style="background-image: url('{{ asset('frontend/img/page-header-bg.jpg') }}');">
+    <div class="pc-page-header-overlay"></div>
+    <div class="container position-relative" style="z-index:2;">
+        <h1 class="text-white fw-bold mb-3" data-aos="fade-right">Events Calendar</h1>
+        <nav aria-label="breadcrumb" data-aos="fade-right" data-aos-delay="100">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="{{ url('/') }}" class="text-white text-decoration-none"><i class="bi bi-house-door"></i> Home</a></li>
+                <li class="breadcrumb-item text-white-50">News & Events</li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">Calendar</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- ====== Calendar Section ====== -->
+<section class="pc-section">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="pc-badge"><i class="bi bi-calendar-event me-1"></i> Events</span>
+            <h2 class="pc-section-title mt-3">Events Calendar</h2>
+            <p class="text-muted mx-auto" style="max-width:600px;">View the names, dates, and durations of our upcoming events and programs from this calendar.</p>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="100">
+            <div class="pc-calendar-wrapper">
                 <div id='calendar'></div>
-                <!-- Add modal -->
+
+                <!-- Add/Edit Modal -->
                 <div class="modal fade edit-form" id="form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header border-bottom-0">
-                                <h5 class="modal-title" id="modal-title">Add Event</h5>
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content border-0 shadow-lg rounded-4">
+                            <div class="modal-header border-0 pb-0 px-4 pt-4">
+                                <h5 class="modal-title fw-bold" id="modal-title">
+                                    <i class="bi bi-calendar-plus me-2" style="color:var(--pc-primary);"></i>Add Event
+                                </h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <form id="myForm">
-                                <div class="modal-body">
-                                    <div class="alert alert-danger" role="alert" id="danger-alert" style="display: none;">
-                                        End date should be greater than start date.
+                                <div class="modal-body px-4 py-3">
+                                    <div class="alert alert-danger border-0 rounded-3" role="alert" id="danger-alert" style="display: none;">
+                                        <i class="bi bi-exclamation-triangle me-2"></i>End date should be greater than start date.
                                     </div>
                                     <div class="form-group">
-                                        <label for="event-title">Event name <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="event-title" placeholder="Enter event name" required>
+                                        <label for="event-title" class="form-label">Event name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control rounded-3" id="event-title" placeholder="Enter event name" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="start-date">Start date <span class="text-danger">*</span></label>
-                                        <input type="date" class="form-control" id="start-date" placeholder="start-date" required>
+                                        <label for="start-date" class="form-label">Start date <span class="text-danger">*</span></label>
+                                        <input type="date" class="form-control rounded-3" id="start-date" placeholder="start-date" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="end-date">End date - <small class="text-muted">Optional</small></label>
-                                        <input type="date" class="form-control" id="end-date" placeholder="end-date">
+                                        <label for="end-date" class="form-label">End date <small class="text-muted">— Optional</small></label>
+                                        <input type="date" class="form-control rounded-3" id="end-date" placeholder="end-date">
                                     </div>
                                     <div class="form-group">
-                                        <label for="event-color">Color</label>
-                                        <input type="color" class="form-control" id="event-color" value="#3788d8">
+                                        <label for="event-color" class="form-label">Color</label>
+                                        <input type="color" class="form-control form-control-color rounded-3" id="event-color" value="#16a34a">
                                     </div>
                                 </div>
-                                <div class="modal-footer border-top-0 d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-success" id="submit-button">Submit</button>
+                                <div class="modal-footer border-0 px-4 pb-4 pt-0 d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-pc-primary px-4 py-2 rounded-3" id="submit-button">
+                                        <i class="bi bi-plus-circle me-1"></i> Submit
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -152,29 +179,33 @@
 
                 <!-- Delete Modal -->
                 <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="delete-modal-title" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="delete-modal-title">Confirm Deletion</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content border-0 shadow-lg rounded-4">
+                            <div class="modal-header border-0 px-4 pt-4 pb-0">
+                                <h5 class="modal-title fw-bold" id="delete-modal-title">
+                                    <i class="bi bi-trash3 me-2 text-danger"></i>Confirm Deletion
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center px-4 py-4" id="delete-modal-body">
+                                Are you sure you want to delete the event?
+                            </div>
+                            <div class="modal-footer border-0 px-4 pb-4 pt-0 justify-content-center">
+                                <button type="button" class="btn btn-light px-4 rounded-3" data-dismiss="modal" id="cancel-button">Cancel</button>
+                                <button type="button" class="btn btn-danger px-4 rounded-3" id="delete-button">
+                                    <i class="bi bi-trash3 me-1"></i> Delete
+                                </button>
+                            </div>
                         </div>
-                        <div class="modal-body text-center" id="delete-modal-body">
-                        Are you sure you want to delete the event?
-                        </div>
-                        <div class="modal-footer border-0">
-                            <button type="button" class="btn btn-secondary rounded-sm" data-dismiss="modal" id="cancel-button">Cancel</button>
-                        <button type="button" class="btn btn-danger rounded-lg" id="delete-button">Delete</button>
-                        </div>
-                    </div>
                     </div>
                 </div>
-            </main>
+            </div>
         </div>
     </div>
-  </section>
-<!-- End of Calender Section -->
+</section>
 
 @endsection
+
 @push('js')
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.2.0/main.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.2.0/main.js'></script>
@@ -220,10 +251,10 @@ const myEvents = JSON.parse(localStorage.getItem('events')) || [
           myModal.show();
           const modalTitle = document.getElementById('modal-title');
           const submitButton = document.getElementById('submit-button');
-          modalTitle.innerHTML = 'Add Event'
-          submitButton.innerHTML = 'Add Event'
+          modalTitle.innerHTML = '<i class="bi bi-calendar-plus me-2" style="color:var(--pc-primary);"></i>Add Event'
+          submitButton.innerHTML = '<i class="bi bi-plus-circle me-1"></i> Add Event'
           submitButton.classList.remove('btn-primary');
-          submitButton.classList.add('btn-success');
+          submitButton.classList.add('btn-pc-primary');
 
 
 
@@ -255,8 +286,8 @@ const myEvents = JSON.parse(localStorage.getItem('events')) || [
         let menu = document.createElement('div');
         menu.className = 'context-menu';
         menu.innerHTML = `<ul>
-        <li><i class="fas fa-edit"></i>Edit</li>
-        <li><i class="fas fa-trash-alt"></i>Delete</li>
+        <li><i class="bi bi-pencil-square"></i>Edit</li>
+        <li><i class="bi bi-trash3"></i>Delete</li>
         </ul>`;
 
         const eventIndex = myEvents.findIndex(event => event.id === info.event.id);
@@ -279,12 +310,12 @@ const myEvents = JSON.parse(localStorage.getItem('events')) || [
           const colorInput = document.getElementById('event-color');
           const submitButton = document.getElementById('submit-button');
           const cancelButton = document.getElementById('cancel-button');
-          modalTitle.innerHTML = 'Edit Event';
+          modalTitle.innerHTML = '<i class="bi bi-pencil-square me-2" style="color:var(--pc-secondary);"></i>Edit Event';
           titleInput.value = info.event.title;
           startDateInput.value = moment(info.event.start).format('YYYY-MM-DD');
           endDateInput.value = moment(info.event.end, 'YYYY-MM-DD').subtract(1, 'day').format('YYYY-MM-DD');
           colorInput.value = info.event.backgroundColor;
-          submitButton.innerHTML = 'Save Changes';
+          submitButton.innerHTML = '<i class="bi bi-check-circle me-1"></i> Save Changes';
 
 
 
@@ -292,7 +323,7 @@ const myEvents = JSON.parse(localStorage.getItem('events')) || [
 
           editModal.show();
 
-          submitButton.classList.remove('btn-success')
+          submitButton.classList.remove('btn-pc-primary')
           submitButton.classList.add('btn-primary')
 
           // Edit button
@@ -335,7 +366,7 @@ const myEvents = JSON.parse(localStorage.getItem('events')) || [
           const deleteModal = new bootstrap.Modal(document.getElementById('delete-modal'));
           const modalBody = document.getElementById('delete-modal-body');
           const cancelModal = document.getElementById('cancel-button');
-          modalBody.innerHTML = `Are you sure you want to delete <b>"${info.event.title}"</b>`
+          modalBody.innerHTML = `Are you sure you want to delete <b>"${info.event.title}"</b>?`
           deleteModal.show();
 
           const deleteButton = document.getElementById('delete-button');

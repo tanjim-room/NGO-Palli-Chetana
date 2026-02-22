@@ -1,139 +1,51 @@
 @extends('main')
 
-@section('content')
-<style>
-    .focus-area-kicker{
-        letter-spacing: 0.12em;
-        font-size: 12px;
-        font-weight: 700;
-        color: var(--bs-secondary-color);
-    }
-    .focus-area-card{
-        background: #fff;
-        border: 1px solid var(--bs-border-color);
-        border-radius: 16px;
-        padding: 24px;
-        height: 100%;
-        transition: transform 180ms ease, box-shadow 180ms ease;
-        will-change: transform;
-        position: relative;
-        overflow: hidden;
-    }
-    .focus-area-card--image{
-        background-size: cover;
-        background-position: center;
-        border-color: transparent;
-        padding: 28px;
-    }
-    .focus-area-card--image::before{
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0.65) 100%);
-        pointer-events: none;
-    }
-    .focus-area-card-content{
-        position: relative;
-        z-index: 1;
-    }
-    .focus-area-card:hover{
-        transform: translateY(-4px);
-        box-shadow: 0 .75rem 2rem rgba(var(--bs-body-color-rgb), .10);
-    }
-    .focus-area-icon{
-        width: 56px;
-        height: 56px;
-        border-radius: 14px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 14px;
-        overflow: hidden;
-    }
-    .focus-area-icon img{
-        width: 28px;
-        height: 28px;
-        object-fit: contain;
-        display: block;
-    }
-    .focus-area-icon i{
-        font-size: 22px;
-    }
-    .focus-area-card-title{
-        font-size: 18px;
-        font-weight: 800;
-        margin-bottom: 8px;
-    }
-    .focus-area-card-text{
-        color: var(--bs-secondary-color);
-        margin-bottom: 0;
-    }
-    .focus-area-card--image .focus-area-card-title,
-    .focus-area-card--image .focus-area-card-text{
-        color: rgba(255,255,255,.92);
-        text-shadow: 0 2px 10px rgba(0,0,0,.45);
-    }
-    .focus-area-card--image .focus-area-card-text{
-        color: rgba(255,255,255,.80);
-    }
-    .focus-area-card--image .focus-area-card-content{
-        background: rgba(0,0,0,.22);
-        border-radius: 14px;
-        padding: 14px;
-    }
-    .focus-area-card--image .focus-area-icon{
-        background: rgba(255,255,255,.14) !important;
-        color: rgba(255,255,255,.95) !important;
-    }
-    @media (prefers-reduced-motion: reduce){
-        .focus-area-card{
-            transition: none;
-        }
-        .focus-area-card:hover{
-            transform: none;
-            box-shadow: none;
-        }
-    }
-</style>
+@section('title', 'Key Focus Areas')
 
-<!-- ======= Breadcrumbs ======= -->
-<section class="breadcrumbs">
-    <div class="container">
-        <ol>
-            <li><a href="{{ url('/') }}">Home</a></li>
-            <li>What we do</li>
-        </ol>
-        <h2>Key Focus Area</h2>
+@section('content')
+
+<!-- Page Header -->
+<section class="pc-page-header" style="background-image: url('{{ asset('frontend/img/page-header-bg.jpg') }}');">
+    <div class="pc-page-header-overlay"></div>
+    <div class="container position-relative" style="z-index:2;">
+        <h1 class="text-white fw-bold mb-3" data-aos="fade-right">Key Focus Areas</h1>
+        <nav aria-label="breadcrumb" data-aos="fade-right" data-aos-delay="100">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="{{ url('/') }}" class="text-white text-decoration-none"><i class="bi bi-house-door"></i> Home</a></li>
+                <li class="breadcrumb-item"><a href="#" class="text-white text-decoration-none">What We Do</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">Key Focus Areas</li>
+            </ol>
+        </nav>
     </div>
 </section>
-<!-- End Breadcrumbs -->
 
-<section class="bg-light p-0">
-    <div class="container bg-white py-5" data-aos="fade-up">
-        <div class="text-center mb-4">
-            <div class="focus-area-kicker">WHAT WE DO</div>
-            <h2 class="fw-bold mb-2">Our Focus Areas</h2>
-            <p class="text-secondary mx-auto mb-0" style="max-width: 720px;">
-                The Focus Area section provides a brief overview of the key areas our projects will prioritize—such as infrastructure support for women, community empowerment, livelihood development, and social protection.
+<!-- Focus Areas Section -->
+<section class="pc-section">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="pc-badge"><i class="bi bi-bullseye me-1"></i> WHAT WE DO</span>
+            <h2 class="pc-section-title">Our Focus Areas</h2>
+            <p class="pc-section-subtitle">
+                A brief overview of the key areas our projects prioritize — infrastructure support for women, community empowerment, livelihood development, and social protection.
             </p>
         </div>
 
         @php
-            $iconBadgeClasses = [
-                'bg-primary bg-opacity-10 text-primary',
-                'bg-danger bg-opacity-10 text-danger',
-                'bg-warning bg-opacity-10 text-warning',
-                'bg-info bg-opacity-10 text-info',
-                'bg-success bg-opacity-10 text-success',
-                'bg-secondary bg-opacity-10 text-secondary',
+            $badgeStyles = [
+                ['bg' => 'rgba(22,163,74,.12)', 'color' => 'var(--pc-primary)'],
+                ['bg' => 'rgba(14,165,233,.12)', 'color' => 'var(--pc-secondary)'],
+                ['bg' => 'rgba(245,158,11,.12)', 'color' => 'var(--pc-accent)'],
+                ['bg' => 'rgba(239,68,68,.12)', 'color' => '#ef4444'],
+                ['bg' => 'rgba(139,92,246,.12)', 'color' => '#8b5cf6'],
+                ['bg' => 'rgba(20,184,166,.12)', 'color' => '#14b8a6'],
             ];
         @endphp
 
         <div class="row g-4">
-            @foreach(($focus_areas ?? collect()) as $item)
+            @forelse(($focus_areas ?? collect()) as $item)
                 @php
-                    $badgeClass = $iconBadgeClasses[$loop->index % count($iconBadgeClasses)];
-                    $iconClass = !empty($item->icon_class) ? $item->icon_class : 'fa-solid fa-bullseye';
+                    $style = $badgeStyles[$loop->index % count($badgeStyles)];
+                    $iconClass = !empty($item->icon_class) ? $item->icon_class : 'bi bi-bullseye';
 
                     $iconUrl = null;
                     if (!empty($item->icon_path)) {
@@ -146,26 +58,50 @@
                     } elseif (!empty($item->default_image)) {
                         $imageUrl = asset($item->default_image);
                     }
-
-                    $cardClass = !empty($imageUrl) ? 'focus-area-card--image' : '';
-                    $cardStyle = !empty($imageUrl) ? "background-image: url('{$imageUrl}');" : '';
                 @endphp
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="focus-area-card {{ $cardClass }}" style="{{ $cardStyle }}">
-                        <div class="focus-area-card-content">
-                            <div class="focus-area-icon {{ $badgeClass }}">
-                                @if (!empty($iconUrl))
-                                    <img src="{{ $iconUrl }}" alt="{{ $item->title }} icon">
-                                @else
-                                    <i class="{{ $iconClass }}"></i>
-                                @endif
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
+                    <div class="pc-card h-100 position-relative overflow-hidden">
+                        @if(!empty($imageUrl))
+                            <div class="position-relative" style="height:200px; overflow:hidden;">
+                                <img src="{{ $imageUrl }}" alt="{{ $item->title }}" class="w-100 h-100" style="object-fit:cover;">
+                                <div class="position-absolute top-0 start-0 w-100 h-100" style="background:linear-gradient(180deg,rgba(0,0,0,.1) 0%,rgba(0,0,0,.55) 100%);"></div>
+                                <div class="position-absolute bottom-0 start-0 p-3">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-3 mb-2"
+                                         style="width:48px; height:48px; background:rgba(255,255,255,.2); backdrop-filter:blur(8px);">
+                                        @if(!empty($iconUrl))
+                                            <img src="{{ $iconUrl }}" alt="{{ $item->title }} icon" style="width:24px; height:24px; object-fit:contain;">
+                                        @else
+                                            <i class="{{ $iconClass }} text-white" style="font-size:1.25rem;"></i>
+                                        @endif
+                                    </div>
+                                    <h5 class="text-white fw-bold mb-0 text-shadow">{{ $item->title }}</h5>
+                                </div>
                             </div>
-                            <div class="focus-area-card-title">{{ $item->title }}</div>
-                            <p class="focus-area-card-text" style="text-align: justify;">{{ $item->description }}</p>
-                        </div>
+                            <div class="card-body">
+                                <p class="card-text" style="text-align:justify;">{{ $item->description }}</p>
+                            </div>
+                        @else
+                            <div class="card-body">
+                                <div class="d-inline-flex align-items-center justify-content-center rounded-3 mb-3"
+                                     style="width:56px; height:56px; background:{{ $style['bg'] }};">
+                                    @if(!empty($iconUrl))
+                                        <img src="{{ $iconUrl }}" alt="{{ $item->title }} icon" style="width:28px; height:28px; object-fit:contain;">
+                                    @else
+                                        <i class="{{ $iconClass }}" style="font-size:1.4rem; color:{{ $style['color'] }};"></i>
+                                    @endif
+                                </div>
+                                <h5 class="card-title">{{ $item->title }}</h5>
+                                <p class="card-text" style="text-align:justify;">{{ $item->description }}</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div class="col-12 text-center py-5">
+                    <i class="bi bi-folder2-open" style="font-size:3rem; color:var(--pc-gray);"></i>
+                    <p class="text-muted mt-3 fs-5">No focus areas available at the moment.</p>
+                </div>
+            @endforelse
         </div>
     </div>
 </section>

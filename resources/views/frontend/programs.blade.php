@@ -1,50 +1,81 @@
 @extends('main')
 
-@section('content')
-  <!-- ======= Breadcrumbs ======= -->
-  <section class="breadcrumbs">
-    <div class="container">
-      <ol>
-        <li><a href="{{ url('/') }}">Home</a></li>
-        <li>Programs</li>
-      </ol>
-      <h2>Featured Programs</h2>
-    </div>
-  </section>
-  <!-- End Breadcrumbs -->
+@section('title', 'Featured Programs')
 
-  <section id="contact" class="contact bg-light p-0">
-    <div class="container bg-white py-5" data-aos="fade-up">
-      <div class="section-title">
-        <h2>Featured Programs</h2>
+@section('content')
+
+<!-- Page Header -->
+<section class="pc-page-header" style="background-image: url('{{ asset('frontend/img/page-header-bg.jpg') }}');">
+    <div class="pc-page-header-overlay"></div>
+    <div class="container position-relative" style="z-index:2;">
+        <h1 class="text-white fw-bold mb-3" data-aos="fade-right">Featured Programs</h1>
+        <nav aria-label="breadcrumb" data-aos="fade-right" data-aos-delay="100">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="{{ url('/') }}" class="text-white text-decoration-none"><i class="bi bi-house-door"></i> Home</a></li>
+                <li class="breadcrumb-item"><a href="#" class="text-white text-decoration-none">Programs</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">Featured Programs</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Programs Section -->
+<section class="pc-section">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="pc-badge"><i class="bi bi-grid me-1"></i> OUR PROGRAMS</span>
+            <h2 class="pc-section-title">Featured Programs</h2>
+            <p class="pc-section-subtitle">Explore the impactful programs Palli Chetana is running to transform communities and uplift lives.</p>
+        </div>
+
         @if(isset($programs) && count($programs) > 0)
-            <div class="row p-3">
+            <div class="row g-4">
                 @foreach($programs as $program)
-                <div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1 px-0 mb-3">
-                    <a href="{{ route('programs.view', $program->id) }}">
-                        <div class="featuredImage">
-                            @if($program->image)
-                            <img src="{{ asset('images/programs/'.$program->image) }}" alt="{{ $program->title }}">
-                            @else
-                            <img src="https://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="{{ $program->title }}">
-                            @endif
-                            <div class="overlay">
-                                <p class="h4">{{ $program->title }}</p>
-                                <p class="textmuted">{{ Str::limit($program->description, 120) }}</p>
-                                <span class="badge bg-{{ $program->status == 'active' ? 'success' : ($program->status == 'completed' ? 'secondary' : 'info') }} mt-2">{{ ucfirst($program->status) }}</span>
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
+                        <div class="pc-card h-100">
+                            <div class="position-relative overflow-hidden">
+                                @if($program->image)
+                                    <img src="{{ asset('images/programs/'.$program->image) }}" alt="{{ $program->title }}" class="card-img">
+                                @else
+                                    <div class="card-img d-flex align-items-center justify-content-center" style="background:var(--pc-gray-light);">
+                                        <i class="bi bi-image" style="font-size:3rem; color:var(--pc-gray);"></i>
+                                    </div>
+                                @endif
+                                <div class="position-absolute top-0 end-0 m-3">
+                                    @php
+                                        $statusColor = match($program->status) {
+                                            'active' => 'background:var(--pc-primary);',
+                                            'completed' => 'background:var(--pc-gray);',
+                                            'upcoming' => 'background:var(--pc-secondary);',
+                                            default => 'background:var(--pc-gray);',
+                                        };
+                                    @endphp
+                                    <span class="badge rounded-pill text-white px-3 py-2" style="{{ $statusColor }} font-size:.8rem;">
+                                        <i class="bi bi-circle-fill me-1" style="font-size:.5rem;"></i> {{ ucfirst($program->status) }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">{{ $program->title }}</h5>
+                                <p class="card-text flex-grow-1">{{ Str::limit($program->description, 120) }}</p>
+                                <a href="{{ route('programs.view', $program->id) }}" class="card-link mt-2">
+                                    View Details <i class="bi bi-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
-                    </a>
-                </div>
+                    </div>
                 @endforeach
             </div>
         @else
-            <p class="text-center text-muted fs-5">No programs available at the moment.</p>
+            <div class="text-center py-5" data-aos="fade-up">
+                <i class="bi bi-clipboard-x" style="font-size:3.5rem; color:var(--pc-gray);"></i>
+                <p class="text-muted mt-3 fs-5">No programs available at the moment.</p>
+                <a href="{{ url('/') }}" class="btn-pc-outline mt-2">
+                    <i class="bi bi-house-door me-1"></i> Back to Home
+                </a>
+            </div>
         @endif
-        </div>
-      </div>
     </div>
-  </section>
-  <!-- End of Featured Programs -->
+</section>
 
 @endsection

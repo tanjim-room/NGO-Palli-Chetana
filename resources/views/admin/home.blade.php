@@ -6,8 +6,8 @@
 <div class="card">
     <div class="card-body">
         <div class="text-center p-5">
-            <h2 class="text-danger">AFADBD</h2>
-            <h6>Association for Alternative Development</h6>
+            <h2 class="text-danger">Palli Chetana</h2>
+            <h6>Palli Chetana</h6>
         </div>
         <hr>
         <div class="text-center">
