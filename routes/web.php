@@ -19,8 +19,10 @@ Route::get('/', function () {
     $application = DB::table('applications')->get()->first();
     $programs = DB::table('programs')->orderBy('created_at', 'desc')->take(6)->get();
     $stories = DB::table('stories')->orderBy('id', 'desc')->get();
+    $impacts = DB::table('impact')->orderBy('order', 'asc')->take(4)->get();
+    $mission_vision = DB::table('mission_vision')->first();
 
-    return view('home', compact('slider', 'project', 'news', 'gallery', 'application', 'programs', 'stories'));
+    return view('home', compact('slider', 'project', 'news', 'gallery', 'application', 'programs', 'stories', 'impacts', 'mission_vision'));
 });
 
 Route::post('user/subscribe', [frontController::class, 'subscribe'])->name('user.subscribe');

@@ -14,7 +14,7 @@
                     </div>
                 @endif
                 <div class="p-4 border rounded">
-                    <form class="row g-3" action="{{ route('impact.store') }}" method="post">
+                    <form class="row g-3" action="{{ route('impact.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         
                         <div class="col-md-8">
@@ -74,59 +74,16 @@
                                     <h6 class="mb-0">Icon Selection</h6>
                                 </div>
                                 <div class="card-body">
-                                    <label for="icon" class="form-label">Choose Icon</label>
-                                    <select class="form-select" id="icon" name="icon">
-                                        <option value="">-- Select Icon --</option>
-                                        <optgroup label="People & Community">
-                                            <option value="bx bx-group">👥 Group/People</option>
-                                            <option value="bx bx-user-plus">👤 User Plus</option>
-                                            <option value="bx bxs-user-detail">👨‍💼 User Detail</option>
-                                            <option value="bx bx-happy-heart-eyes">😍 Happy</option>
-                                        </optgroup>
-                                        <optgroup label="Medical & Health">
-                                            <option value="bx bx-heart">❤️ Heart</option>
-                                            <option value="bx bxs-heart">💖 Heart Filled</option>
-                                            <option value="bx bx-donate-heart">💝 Donate Heart</option>
-                                            <option value="bx bx-clinic">🏥 Clinic</option>
-                                            <option value="bx bx-first-aid">⚕️ First Aid</option>
-                                        </optgroup>
-                                        <optgroup label="Education">
-                                            <option value="bx bxs-graduation">🎓 Graduation</option>
-                                            <option value="bx bx-book">📖 Book</option>
-                                            <option value="bx bxs-school">🏫 School</option>
-                                            <option value="bx bx-book-reader">📚 Book Reader</option>
-                                        </optgroup>
-                                        <optgroup label="Projects & Goals">
-                                            <option value="bx bx-bar-chart-alt-2">📊 Chart</option>
-                                            <option value="bx bx-trending-up">📈 Trending Up</option>
-                                            <option value="bx bx-line-chart">📉 Line Chart</option>
-                                            <option value="bx bx-bullseye">🎯 Target</option>
-                                            <option value="bx bx-trophy">🏆 Trophy</option>
-                                            <option value="bx bx-task">✓ Task</option>
-                                        </optgroup>
-                                        <optgroup label="Location & Global">
-                                            <option value="bx bx-globe">🌍 Globe</option>
-                                            <option value="bx bx-map">🗺️ Map</option>
-                                            <option value="bx bx-map-pin">📍 Map Pin</option>
-                                            <option value="bx bx-buildings">🏢 Buildings</option>
-                                        </optgroup>
-                                        <optgroup label="Finance">
-                                            <option value="bx bx-donate-blood">🩸 Donate</option>
-                                            <option value="bx bx-coin-stack">🪙 Coins</option>
-                                            <option value="bx bx-money">💵 Money</option>
-                                        </optgroup>
-                                        <optgroup label="Other">
-                                            <option value="bx bx-star">⭐ Star</option>
-                                            <option value="bx bxs-star">🌟 Star Filled</option>
-                                            <option value="bx bx-smile">😊 Smile</option>
-                                            <option value="bx bx-like">👍 Like</option>
-                                            <option value="bx bx-award">🏅 Award</option>
-                                        </optgroup>
-                                    </select>
+                                    <label for="icon" class="form-label">Upload Icon</label>
+                                    <input type="file" name="icon" id="icon" class="form-control @error('icon') is-invalid @enderror" accept="image/*">
+                                    @error('icon')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    <small class="text-muted">PNG, JPG, SVG (max 2MB)</small>
                                     
                                     <div class="text-center p-4 mt-3 bg-light border rounded" id="iconPreview">
                                         <i class="bi bi-image" style="font-size: 48px; color: #ccc;"></i>
-                                        <p class="mt-2 mb-0 text-muted small">Select icon to preview</p>
+                                        <p class="mt-2 mb-0 text-muted small">Upload icon to preview</p>
                                     </div>
                                 </div>
                             </div>
@@ -149,21 +106,23 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const iconSelect = document.getElementById('icon');
+    const iconInput = document.getElementById('icon');
     const iconPreview = document.getElementById('iconPreview');
     
-    iconSelect.addEventListener('change', function() {
-        const iconClass = this.value;
-        const iconText = this.options[this.selectedIndex].text;
-        
-        if (iconClass) {
-            iconPreview.innerHTML = 
-                '<i class="' + iconClass + '" style="font-size: 60px; color: #0d6efd;"></i>' +
-                '<p class="mt-2 mb-0 text-muted small">' + iconText + '</p>';
+    iconInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                iconPreview.innerHTML = 
+                    '<img src="' + e.target.result + '" style="max-width:80px;max-height:80px;" class="rounded">' +
+                    '<p class="mt-2 mb-0 text-muted small">' + file.name + '</p>';
+            };
+            reader.readAsDataURL(file);
         } else {
             iconPreview.innerHTML = 
                 '<i class="bi bi-image" style="font-size: 48px; color: #ccc;"></i>' +
-                '<p class="mt-2 mb-0 text-muted small">Select icon to preview</p>';
+                '<p class="mt-2 mb-0 text-muted small">Upload icon to preview</p>';
         }
     });
 });

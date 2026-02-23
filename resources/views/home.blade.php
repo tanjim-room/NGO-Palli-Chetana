@@ -51,45 +51,33 @@ Palli Chetana - Empowering Communities
 </section>
 
 {{-- ===== QUICK STATS BAR ===== --}}
+@php
+    $statColors = [
+        ['bg' => 'var(--pc-primary-light)', 'color' => 'var(--pc-primary)'],
+        ['bg' => '#e8eaf6', 'color' => 'var(--pc-secondary)'],
+        ['bg' => '#ffebee', 'color' => 'var(--pc-accent)'],
+        ['bg' => 'var(--pc-primary-light)', 'color' => 'var(--pc-primary)'],
+    ];
+@endphp
 <section class="position-relative" style="margin-top:-50px; z-index:10;">
     <div class="container">
         <div class="row g-3 justify-content-center">
-            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="0">
+            @foreach($impacts as $index => $impact)
+            @php $c = $statColors[$index % count($statColors)]; @endphp
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
                 <div class="text-center p-4 rounded-4 bg-white" style="box-shadow: var(--pc-shadow-lg);">
-                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" style="width:50px;height:50px;background:var(--pc-primary-light);">
-                        <i class="bi bi-calendar-check fs-4" style="color:var(--pc-primary);"></i>
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" style="width:50px;height:50px;background:{{ $c['bg'] }};">
+                        @if($impact->icon && file_exists(public_path('images/impact/' . $impact->icon)))
+                            <img src="{{ asset('images/impact/' . $impact->icon) }}" alt="{{ $impact->title }}" style="width:28px;height:28px;object-fit:contain;">
+                        @else
+                            <i class="bi bi-bar-chart-fill fs-4" style="color:{{ $c['color'] }};"></i>
+                        @endif
                     </div>
-                    <h3 class="fw-bold mb-0" style="color:var(--pc-primary);">25+</h3>
-                    <small class="text-muted">Years of Service</small>
+                    <h3 class="fw-bold mb-0" style="color:{{ $c['color'] }};">{{ $impact->metric_value }}</h3>
+                    <small class="text-muted">{{ $impact->title }}</small>
                 </div>
             </div>
-            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
-                <div class="text-center p-4 rounded-4 bg-white" style="box-shadow: var(--pc-shadow-lg);">
-                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" style="width:50px;height:50px;background:#e8eaf6;">
-                        <i class="bi bi-geo-alt fs-4" style="color:var(--pc-secondary);"></i>
-                    </div>
-                    <h3 class="fw-bold mb-0" style="color:var(--pc-secondary);">3+</h3>
-                    <small class="text-muted">Districts Covered</small>
-                </div>
-            </div>
-            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
-                <div class="text-center p-4 rounded-4 bg-white" style="box-shadow: var(--pc-shadow-lg);">
-                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" style="width:50px;height:50px;background:#ffebee;">
-                        <i class="bi bi-clipboard2-check fs-4" style="color:var(--pc-accent);"></i>
-                    </div>
-                    <h3 class="fw-bold mb-0" style="color:var(--pc-accent);">41+</h3>
-                    <small class="text-muted">Projects Completed</small>
-                </div>
-            </div>
-            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
-                <div class="text-center p-4 rounded-4 bg-white" style="box-shadow: var(--pc-shadow-lg);">
-                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" style="width:50px;height:50px;background:var(--pc-primary-light);">
-                        <i class="bi bi-people-fill fs-4" style="color:var(--pc-primary);"></i>
-                    </div>
-                    <h3 class="fw-bold mb-0" style="color:var(--pc-primary);">1.3M+</h3>
-                    <small class="text-muted">Lives Impacted</small>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -101,13 +89,13 @@ Palli Chetana - Empowering Communities
             <div class="col-lg-6" data-aos="fade-right">
                 <div class="position-relative">
                     <img src="{{ asset('images/application/'.application()->main_logo) }}" alt="About Palli Chetana" class="rounded-4" style="width:100%; max-width:500px;">
-                    <div class="position-absolute bottom-0 start-0 translate-middle-y ms-n3 d-none d-md-block" style="z-index:2;">
+                    <div class="position-absolute bottom-2 start-0 translate-middle-y ms-n3 d-none d-md-block" style="z-index:2;">
                         <div class="bg-white p-3 rounded-3 shadow-lg d-flex align-items-center gap-3">
                             <div class="d-flex align-items-center justify-content-center rounded-circle" style="width:50px;height:50px;background:var(--pc-primary);flex-shrink:0;">
                                 <i class="bi bi-heart-fill text-white"></i>
                             </div>
                             <div>
-                                <h6 class="fw-bold mb-0">Since 1999</h6>
+                                <h6 class="fw-bold mb-0">Since 1996</h6>
                                 <small class="text-muted">Serving Communities</small>
                             </div>
                         </div>
@@ -118,7 +106,7 @@ Palli Chetana - Empowering Communities
                 <span class="pc-badge">WHO WE ARE</span>
                 <h2 class="pc-section-title">Empowering Communities <br>Across <span style="color:var(--pc-primary);">Bangladesh</span></h2>
                 <p class="text-muted mb-4" style="line-height:1.8;">
-                    Palli Chetana is a community-driven organization working in northern Bangladesh since 1999. Registered with the NGO Affairs Bureau of the Prime Minister's Office, we focus on empowering marginalized communities, especially women, through education, skill-building, healthcare, and sustainable livelihoods. We believe every person deserves the opportunity to live with dignity and hope.
+                    Palli Chetana is a community-driven organization working in northern Bangladesh since 1996. Registered with the NGO Affairs Bureau of the Prime Minister's Office, we focus on empowering marginalized communities, especially women, through education, skill-building, healthcare, and sustainable livelihoods. We believe every person deserves the opportunity to live with dignity and hope.
                 </p>
                 <div class="row g-3 mb-4">
                     <div class="col-6">
@@ -156,6 +144,7 @@ Palli Chetana - Empowering Communities
 </section>
 
 {{-- ===== MISSION & VISION ===== --}}
+@if($mission_vision)
 <section class="pc-section" style="background: var(--pc-gray-light);">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
@@ -172,7 +161,7 @@ Palli Chetana - Empowering Communities
                         <h3 class="fw-bold mb-0">Our Mission</h3>
                     </div>
                     <p class="text-muted" style="line-height:1.8;">
-                        To empower women, particularly young women, towards building a better world by developing their capacities and making them active contributors within society. Palli Chetana undertakes initiatives that empower the neglected portion of women who are deprived of rights, to ensure equal rights and opportunities for all.
+                        {{ $mission_vision->mission }}
                     </p>
                 </div>
             </div>
@@ -185,13 +174,14 @@ Palli Chetana - Empowering Communities
                         <h3 class="fw-bold mb-0">Our Vision</h3>
                     </div>
                     <p class="text-muted" style="line-height:1.8;">
-                        Contribute to establish an enabling environment for realization and protection of fundamental human rights of men and women where people are self-reliant as individuals. We envision a society where every person — regardless of gender, class, or background — can live with dignity, opportunity, and hope.
+                        {{ $mission_vision->vision }}
                     </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+@endif
 
 {{-- ===== FEATURED PROGRAMS ===== --}}
 <section class="pc-section">

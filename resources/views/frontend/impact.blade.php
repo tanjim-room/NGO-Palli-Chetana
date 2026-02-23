@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-lg-8 text-center" data-aos="fade-up">
-                <span class="pc-badge"><i class="bi bi-graph-up-arrow me-1"></i> Results</span>
+                <span class="pc-badge"><i class="bi bi-graph-up-arrow me-1"></i> Impacts</span>
                 <h2 class="pc-section-title mt-3">Measuring Our Impact</h2>
                 <p class="text-muted">The numbers that reflect our commitment to creating meaningful change in communities through Palli Chetana's programs.</p>
             </div>
@@ -34,8 +34,8 @@
                     <div class="card-body p-4 p-lg-5 text-center">
                         {{-- Icon --}}
                         <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-4" style="width:80px; height:80px; background: rgba(42,133,71,0.1);">
-                            @if($item->icon)
-                            <i class="bi bi-{{ $item->icon }} fs-2" style="color: var(--pc-primary);"></i>
+                            @if($item->icon && file_exists(public_path('images/impact/' . $item->icon)))
+                            <img src="{{ asset('images/impact/' . $item->icon) }}" alt="{{ $item->title }}" style="width:40px;height:40px;object-fit:contain;">
                             @else
                             <i class="bi bi-bar-chart-line fs-2" style="color: var(--pc-primary);"></i>
                             @endif

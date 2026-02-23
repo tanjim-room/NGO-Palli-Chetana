@@ -20,7 +20,7 @@
 </div>
 
 <!-- Main Navbar -->
-<nav class="navbar navbar-expand-lg pc-navbar sticky-top" style="background:#fff; box-shadow: var(--pc-shadow); z-index:1030; transition: all .3s ease;">
+<nav class="navbar navbar-expand-lg pc-navbar sticky-top" style="background:transparent; box-shadow: var(--pc-shadow); z-index:1030; transition: all .3s ease;">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center py-1" href="{{ url('/') }}">
             <img src="{{ asset('images/application/'.application()->main_logo) }}" alt="Palli Chetana" style="height: 50px; width: auto;">
@@ -45,15 +45,15 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle fw-semibold px-3" href="#" data-bs-toggle="dropdown" style="color: var(--pc-dark);">About Us</a>
                         <ul class="dropdown-menu border-0 shadow-lg" style="border-radius: var(--pc-radius); min-width: 240px;">
-                            <li><a class="dropdown-item py-2" href="{{ route('about.us') }}"><i class="bi bi-info-circle me-2" style="color:#2a8547;"></i>About Palli Chetana</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('vision.mission') }}"><i class="bi bi-bullseye me-2" style="color:#2a8547;"></i>Mission, Vision & Values</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('key.focus.area') }}"><i class="bi bi-crosshair me-2" style="color:#2a8547;"></i>Focus Area</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('team.members') }}"><i class="bi bi-people me-2" style="color:#2a8547;"></i>Team Members</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('origin_affilation') }}"><i class="bi bi-award me-2" style="color:#2a8547;"></i>Origin & Legal Affiliation</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('executive.committee') }}"><i class="bi bi-person-badge me-2" style="color:#2a8547;"></i>Executive Committee</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('cheif.message') }}"><i class="bi bi-chat-quote me-2" style="color:#2a8547;"></i>Chief Executive Message</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('partner.donor') }}"><i class="bi bi-handshake me-2" style="color:#2a8547;"></i>Partners & Donors</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('about.impact') }}"><i class="bi bi-graph-up-arrow me-2" style="color:#2a8547;"></i>Our Impact</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('about.us') }}">About Palli Chetana</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('vision.mission') }}">Mission, Vision & Values</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('key.focus.area') }}">Area</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('team.members') }}">Team Members</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('origin_affilation') }}">Origin & Legal Affiliation</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('executive.committee') }}">Executive Committee</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('cheif.message') }}">Chief Executive Message</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('partner.donor') }}">Partners & Donors</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('about.impact') }}">Our Impact</a></li>
                         </ul>
                     </li>
 
@@ -61,10 +61,10 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle fw-semibold px-3" href="#" data-bs-toggle="dropdown" style="color: var(--pc-dark);">Programs</a>
                         <ul class="dropdown-menu border-0 shadow-lg" style="border-radius: var(--pc-radius); min-width: 220px;">
-                            <li><a class="dropdown-item py-2" href="{{ route('programs.all') }}"><i class="bi bi-grid me-2" style="color:#2a8547;"></i>Featured Programs</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('ongoing.project') }}"><i class="bi bi-play-circle me-2" style="color:#2a8547;"></i>Ongoing Programs</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('project.archieve') }}"><i class="bi bi-archive me-2" style="color:#2a8547;"></i>Project Archive</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('success.stories') }}"><i class="bi bi-star me-2" style="color:#2a8547;"></i>Success Stories</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('programs.all') }}">Featured Programs</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('ongoing.project') }}">Ongoing Programs</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('project.archieve') }}">Project Archive</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('success.stories') }}">Success Stories</a></li>
                         </ul>
                     </li>
 
@@ -72,11 +72,11 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle fw-semibold px-3" href="#" data-bs-toggle="dropdown" style="color: var(--pc-dark);">Get Involved</a>
                         <ul class="dropdown-menu border-0 shadow-lg" style="border-radius: var(--pc-radius); min-width: 220px;">
-                            <li><a class="dropdown-item py-2" href="{{ route('volunterr.opportunities') }}"><i class="bi bi-person-raised-hand me-2" style="color:#2a8547;"></i>Volunteer</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('donate') }}"><i class="bi bi-heart me-2" style="color:#2a8547;"></i>Donate</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('fundraising') }}"><i class="bi bi-piggy-bank me-2" style="color:#2a8547;"></i>Fundraising</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('corporate.partnership') }}"><i class="bi bi-building me-2" style="color:#2a8547;"></i>Corporate Partnership</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('invoked.career') }}"><i class="bi bi-briefcase me-2" style="color:#2a8547;"></i>Career</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('volunterr.opportunities') }}">Volunteer</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('donate') }}">Donate</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('fundraising') }}">Fundraising</a></li>
+                            <!-- <li><a class="dropdown-item py-2" href="{{ route('corporate.partnership') }}">Corporate Partnership</a></li> -->
+                            <li><a class="dropdown-item py-2" href="{{ route('invoked.career') }}">Career</a></li>
                         </ul>
                     </li>
 
@@ -84,12 +84,12 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle fw-semibold px-3" href="#" data-bs-toggle="dropdown" style="color: var(--pc-dark);">News & Media</a>
                         <ul class="dropdown-menu border-0 shadow-lg" style="border-radius: var(--pc-radius); min-width: 220px;">
-                            <li><a class="dropdown-item py-2" href="{{ route('latest.news.all') }}"><i class="bi bi-newspaper me-2" style="color:#2a8547;"></i>News & Events</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('photo.all') }}"><i class="bi bi-images me-2" style="color:#2a8547;"></i>Photo Gallery</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('youtube.video') }}"><i class="bi bi-youtube me-2" style="color:#2a8547;"></i>Videos</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('publication') }}"><i class="bi bi-journal-text me-2" style="color:#2a8547;"></i>Publications</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('strategic.plan') }}"><i class="bi bi-map me-2" style="color:#2a8547;"></i>Strategic Plan</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('policy.guideline') }}"><i class="bi bi-file-earmark-text me-2" style="color:#2a8547;"></i>Policy & Guidelines</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('latest.news.all') }}">News & Events</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('photo.all') }}">Photo Gallery</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('youtube.video') }}">Videos</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('publication') }}">Publications</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('strategic.plan') }}">Strategic Plan</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('policy.guideline') }}">Policy & Guidelines</a></li>
                         </ul>
                     </li>
 

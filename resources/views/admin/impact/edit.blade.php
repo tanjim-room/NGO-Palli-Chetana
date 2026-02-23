@@ -14,7 +14,7 @@
                     </div>
                 @endif
                 <div class="p-4 border rounded">
-                    <form class="row g-3" action="{{ route('impact.update',$data->id) }}" method="post">
+                    <form class="row g-3" action="{{ route('impact.update',$data->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         
                         <div class="col-md-8">
@@ -72,62 +72,20 @@
                                     <h6 class="mb-0">Icon Selection</h6>
                                 </div>
                                 <div class="card-body">
-                                    <label for="icon" class="form-label">Choose Icon</label>
-                                    <select class="form-select" id="icon" name="icon">
-                                        <option value="">-- Select Icon --</option>
-                                        <optgroup label="People & Community">
-                                            <option value="bx bx-group" {{ old('icon', $data->icon) == 'bx bx-group' ? 'selected' : '' }}>👥 Group/People</option>
-                                            <option value="bx bx-user-plus" {{ old('icon', $data->icon) == 'bx bx-user-plus' ? 'selected' : '' }}>👤 User Plus</option>
-                                            <option value="bx bxs-user-detail" {{ old('icon', $data->icon) == 'bx bxs-user-detail' ? 'selected' : '' }}>👨‍💼 User Detail</option>
-                                            <option value="bx bx-happy-heart-eyes" {{ old('icon', $data->icon) == 'bx bx-happy-heart-eyes' ? 'selected' : '' }}>😍 Happy</option>
-                                        </optgroup>
-                                        <optgroup label="Medical & Health">
-                                            <option value="bx bx-heart" {{ old('icon', $data->icon) == 'bx bx-heart' ? 'selected' : '' }}>❤️ Heart</option>
-                                            <option value="bx bxs-heart" {{ old('icon', $data->icon) == 'bx bxs-heart' ? 'selected' : '' }}>💖 Heart Filled</option>
-                                            <option value="bx bx-donate-heart" {{ old('icon', $data->icon) == 'bx bx-donate-heart' ? 'selected' : '' }}>💝 Donate Heart</option>
-                                            <option value="bx bx-clinic" {{ old('icon', $data->icon) == 'bx bx-clinic' ? 'selected' : '' }}>🏥 Clinic</option>
-                                            <option value="bx bx-first-aid" {{ old('icon', $data->icon) == 'bx bx-first-aid' ? 'selected' : '' }}>⚕️ First Aid</option>
-                                        </optgroup>
-                                        <optgroup label="Education">
-                                            <option value="bx bxs-graduation" {{ old('icon', $data->icon) == 'bx bxs-graduation' ? 'selected' : '' }}>🎓 Graduation</option>
-                                            <option value="bx bx-book" {{ old('icon', $data->icon) == 'bx bx-book' ? 'selected' : '' }}>📖 Book</option>
-                                            <option value="bx bxs-school" {{ old('icon', $data->icon) == 'bx bxs-school' ? 'selected' : '' }}>🏫 School</option>
-                                            <option value="bx bx-book-reader" {{ old('icon', $data->icon) == 'bx bx-book-reader' ? 'selected' : '' }}>📚 Book Reader</option>
-                                        </optgroup>
-                                        <optgroup label="Projects & Goals">
-                                            <option value="bx bx-bar-chart-alt-2" {{ old('icon', $data->icon) == 'bx bx-bar-chart-alt-2' ? 'selected' : '' }}>📊 Chart</option>
-                                            <option value="bx bx-trending-up" {{ old('icon', $data->icon) == 'bx bx-trending-up' ? 'selected' : '' }}>📈 Trending Up</option>
-                                            <option value="bx bx-line-chart" {{ old('icon', $data->icon) == 'bx bx-line-chart' ? 'selected' : '' }}>📉 Line Chart</option>
-                                            <option value="bx bx-bullseye" {{ old('icon', $data->icon) == 'bx bx-bullseye' ? 'selected' : '' }}>🎯 Target</option>
-                                            <option value="bx bx-trophy" {{ old('icon', $data->icon) == 'bx bx-trophy' ? 'selected' : '' }}>🏆 Trophy</option>
-                                            <option value="bx bx-task" {{ old('icon', $data->icon) == 'bx bx-task' ? 'selected' : '' }}>✓ Task</option>
-                                        </optgroup>
-                                        <optgroup label="Location & Global">
-                                            <option value="bx bx-globe" {{ old('icon', $data->icon) == 'bx bx-globe' ? 'selected' : '' }}>🌍 Globe</option>
-                                            <option value="bx bx-map" {{ old('icon', $data->icon) == 'bx bx-map' ? 'selected' : '' }}>🗺️ Map</option>
-                                            <option value="bx bx-map-pin" {{ old('icon', $data->icon) == 'bx bx-map-pin' ? 'selected' : '' }}>📍 Map Pin</option>
-                                            <option value="bx bx-buildings" {{ old('icon', $data->icon) == 'bx bx-buildings' ? 'selected' : '' }}>🏢 Buildings</option>
-                                        </optgroup>
-                                        <optgroup label="Finance">
-                                            <option value="bx bx-donate-blood" {{ old('icon', $data->icon) == 'bx bx-donate-blood' ? 'selected' : '' }}>🩸 Donate</option>
-                                            <option value="bx bx-coin-stack" {{ old('icon', $data->icon) == 'bx bx-coin-stack' ? 'selected' : '' }}>🪙 Coins</option>
-                                            <option value="bx bx-money" {{ old('icon', $data->icon) == 'bx bx-money' ? 'selected' : '' }}>💵 Money</option>
-                                        </optgroup>
-                                        <optgroup label="Other">
-                                            <option value="bx bx-star" {{ old('icon', $data->icon) == 'bx bx-star' ? 'selected' : '' }}>⭐ Star</option>
-                                            <option value="bx bxs-star" {{ old('icon', $data->icon) == 'bx bxs-star' ? 'selected' : '' }}>🌟 Star Filled</option>
-                                            <option value="bx bx-smile" {{ old('icon', $data->icon) == 'bx bx-smile' ? 'selected' : '' }}>😊 Smile</option>
-                                            <option value="bx bx-like" {{ old('icon', $data->icon) == 'bx bx-like' ? 'selected' : '' }}>👍 Like</option>
-                                            <option value="bx bx-award" {{ old('icon', $data->icon) == 'bx bx-award' ? 'selected' : '' }}>🏅 Award</option>
-                                        </optgroup>
-                                    </select>
+                                    <label for="icon" class="form-label">Upload Icon</label>
+                                    <input type="file" name="icon" id="icon" class="form-control @error('icon') is-invalid @enderror" accept="image/*">
+                                    @error('icon')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    <small class="text-muted">PNG, JPG, SVG (max 2MB). Leave empty to keep current icon.</small>
                                     
                                     <div class="text-center p-4 mt-3 bg-light border rounded" id="iconPreview">
-                                        @if($data->icon)
-                                            <i class="{{ $data->icon }}" style="font-size: 60px; color: #0d6efd;"></i>
+                                        @if($data->icon && file_exists(public_path('images/impact/' . $data->icon)))
+                                            <img src="{{ asset('images/impact/' . $data->icon) }}" style="max-width:80px;max-height:80px;" class="rounded">
+                                            <p class="mt-2 mb-0 text-muted small">Current icon</p>
                                         @else
                                             <i class="bi bi-image" style="font-size: 48px; color: #ccc;"></i>
-                                            <p class="mt-2 mb-0 text-muted small">Select icon to preview</p>
+                                            <p class="mt-2 mb-0 text-muted small">No icon uploaded</p>
                                         @endif
                                     </div>
                                 </div>
@@ -151,21 +109,19 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const iconSelect = document.getElementById('icon');
+    const iconInput = document.getElementById('icon');
     const iconPreview = document.getElementById('iconPreview');
     
-    iconSelect.addEventListener('change', function() {
-        const iconClass = this.value;
-        const iconText = this.options[this.selectedIndex].text;
-        
-        if (iconClass) {
-            iconPreview.innerHTML = 
-                '<i class="' + iconClass + '" style="font-size: 60px; color: #0d6efd;"></i>' +
-                '<p class="mt-2 mb-0 text-muted small">' + iconText + '</p>';
-        } else {
-            iconPreview.innerHTML = 
-                '<i class="bi bi-image" style="font-size: 48px; color: #ccc;"></i>' +
-                '<p class="mt-2 mb-0 text-muted small">Select icon to preview</p>';
+    iconInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                iconPreview.innerHTML = 
+                    '<img src="' + e.target.result + '" style="max-width:80px;max-height:80px;" class="rounded">' +
+                    '<p class="mt-2 mb-0 text-muted small">' + file.name + '</p>';
+            };
+            reader.readAsDataURL(file);
         }
     });
 });

@@ -17,11 +17,11 @@
 </section>
 
 {{-- ===== HERO DONATION CTA ===== --}}
-<section class="py-5" style="background: linear-gradient(135deg, var(--pc-primary), var(--pc-secondary));">
+<section class="py-5" style="background: #ffffff;">
     <div class="container text-center text-white" data-aos="fade-up">
-        <i class="bi bi-heart-fill display-3 mb-3 d-block" style="color: var(--pc-accent);"></i>
+        <i class="bi bi-heart-fill display-3 mb-3 d-block" style="color:var(--pc-primary);"></i>
         <h2 class="fw-bold mb-3">Your Generosity Changes Lives</h2>
-        <p class="lead mb-4 mx-auto" style="max-width:700px;">
+        <p class="lead mb-4 mx-auto" style="max-width:700px; color: var(--pc-dark);">
             Every contribution to <strong>Palli Chetana</strong> helps us empower rural communities through education,
             healthcare, and sustainable development. Together we can build a brighter future.
         </p>
