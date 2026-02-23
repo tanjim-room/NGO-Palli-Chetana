@@ -1,5 +1,5 @@
 ﻿<!-- Top Bar -->
-<div class="pc-topbar d-none d-lg-block" style="background: var(--pc-dark); padding: 8px 0; font-size: .85rem;">
+<div class="pc-topbar d-none d-lg-block" style="background: var(--pc-dark); padding: 8px 0; font-size: .85rem; margin-top: -24px;">
     <div class="container d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center gap-4 text-white text-opacity-75">
             <span><i class="bi bi-telephone-fill me-1" style="color:#2a8547;"></i> 01719-691409</span>
@@ -20,7 +20,7 @@
 </div>
 
 <!-- Main Navbar -->
-<nav class="navbar navbar-expand-lg pc-navbar sticky-top" style="background:transparent; box-shadow: var(--pc-shadow); z-index:1030; transition: all .3s ease;">
+<nav class="navbar navbar-expand-lg pc-navbar sticky-top" style="background: white; box-shadow: var(--pc-shadow); z-index:1030; transition: all .3s ease;">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center py-1" href="{{ url('/') }}">
             <img src="{{ asset('images/application/'.application()->main_logo) }}" alt="Palli Chetana" style="height: 50px; width: auto;">

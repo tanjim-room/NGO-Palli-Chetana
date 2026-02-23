@@ -40,11 +40,26 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            top: 0 !important;
+            position: static !important;
+        }
         body {
             font-family: 'Inter', sans-serif;
             color: var(--pc-text);
             background: var(--pc-body);
             overflow-x: hidden;
+        }
+        /* Hide Google Translate / browser extension top bars */
+        .goog-te-banner-frame,
+        .skiptranslate,
+        iframe.skiptranslate,
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+            height: 0 !important;
+            visibility: hidden !important;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
@@ -301,6 +316,18 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 700, once: true, offset: 80 });
+
+        // Remove any top offset added by browser extensions (e.g. Google Translate)
+        function resetBodyPosition() {
+            document.body.style.top = '0px';
+            document.body.style.position = 'static';
+            document.documentElement.style.top = '0px';
+            var frame = document.querySelector('.goog-te-banner-frame');
+            if (frame) frame.style.display = 'none';
+        }
+        resetBodyPosition();
+        window.addEventListener('load', resetBodyPosition);
+        new MutationObserver(resetBodyPosition).observe(document.body, { attributes: true, attributeFilter: ['style', 'class'] });
 
         // Back to top
         window.addEventListener('scroll', function() {
