@@ -31,7 +31,9 @@ class newsController extends Controller
         $news = array(
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $imageName
+            'image' => $imageName,
+            'created_at' => now(),
+            'updated_at' => now(),
         );
 
         DB::table('latest_news')->insert($news);
@@ -92,7 +94,8 @@ class newsController extends Controller
         $news = array(
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $imageName
+            'image' => $imageName,
+            'updated_at' => now(),
         );
 
         DB::table('latest_news')->where('id', $id)->update($news);

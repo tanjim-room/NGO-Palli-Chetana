@@ -36,7 +36,7 @@
                             <div class="position-absolute top-0 end-0 m-3">
                                 <span class="badge rounded-pill text-white px-3 py-2" style="background: var(--pc-primary);">
                                     <i class="bi bi-calendar3 me-1"></i>
-                                    {{ date('M d, Y', strtotime($data->created_at)) }}
+                                    {{ $data->created_at ? date('M d, Y', strtotime($data->created_at)) : 'Recent' }}
                                 </span>
                             </div>
                         </div>

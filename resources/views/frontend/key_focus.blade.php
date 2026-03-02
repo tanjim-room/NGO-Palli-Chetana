@@ -78,7 +78,10 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <p class="card-text" style="text-align:justify;">{{ $item->description }}</p>
+                                <p class="card-text text-muted" style="text-align:justify;">{{ Str::limit($item->description, 120) }}</p>
+                                <a href="{{ route('key.focus.view', $item->id) }}" class="btn btn-sm btn-outline-success d-inline-flex align-items-center gap-1 mt-2">
+                                    Learn More <i class="bi bi-arrow-right"></i>
+                                </a>
                             </div>
                         @else
                             <div class="card-body">
@@ -91,7 +94,10 @@
                                     @endif
                                 </div>
                                 <h5 class="card-title">{{ $item->title }}</h5>
-                                <p class="card-text" style="text-align:justify;">{{ $item->description }}</p>
+                                <p class="card-text text-muted" style="text-align:justify;">{{ Str::limit($item->description, 120) }}</p>
+                                <a href="{{ route('key.focus.view', $item->id) }}" class="btn btn-sm btn-outline-success d-inline-flex align-items-center gap-1 mt-2">
+                                    Learn More <i class="bi bi-arrow-right"></i>
+                                </a>
                             </div>
                         @endif
                     </div>

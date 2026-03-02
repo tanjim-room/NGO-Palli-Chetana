@@ -20,7 +20,7 @@ class ExecutiveCommitteeController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'designation' => 'required',
-            'photo' => 'required|mimes:jpg,png,jpeg,gif',
+            'photo' => 'nullable|mimes:jpg,png,jpeg,gif',
             'order' => 'nullable|integer',
         ]);
 
@@ -33,6 +33,9 @@ class ExecutiveCommitteeController extends Controller
         $data = array(
             'name' => $request->name,
             'designation' => $request->designation,
+            'gender' => $request->gender,
+            'profession' => $request->profession,
+            'duration_of_involvement' => $request->duration_of_involvement,
             'bio' => $request->bio,
             'photo' => $photoName,
             'facebook' => $request->facebook,
@@ -100,6 +103,9 @@ class ExecutiveCommitteeController extends Controller
         $data = array(
             'name' => $request->name,
             'designation' => $request->designation,
+            'gender' => $request->gender,
+            'profession' => $request->profession,
+            'duration_of_involvement' => $request->duration_of_involvement,
             'bio' => $request->bio,
             'photo' => $photoName,
             'facebook' => $request->facebook,

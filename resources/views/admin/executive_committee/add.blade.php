@@ -27,9 +27,27 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="col-md-4">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select name="gender" id="gender" class="form-select">
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="profession" class="form-label">Profession</label>
+                            <input type="text" name="profession" class="form-control" id="profession" placeholder="Enter Profession">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="duration_of_involvement" class="form-label">Duration of Involvement</label>
+                            <input type="text" name="duration_of_involvement" class="form-control" id="duration_of_involvement" placeholder="e.g. 2015 - Present">
+                        </div>
                         <div class="col-md-12">
-                            <label for="img" class="form-label">Photo</label>
+                            <label for="img" class="form-label">Photo (Optional)</label>
                             <input type="file" name="photo" class="form-control @error('photo') is-invalid @enderror" id="img">
+                            <small class="text-muted">If no photo is uploaded, a default avatar will be shown.</small>
                             @error('photo')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror

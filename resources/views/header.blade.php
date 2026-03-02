@@ -47,7 +47,7 @@
                         <ul class="dropdown-menu border-0 shadow-lg" style="border-radius: var(--pc-radius); min-width: 240px;">
                             <li><a class="dropdown-item py-2" href="{{ route('about.us') }}">About Palli Chetana</a></li>
                             <li><a class="dropdown-item py-2" href="{{ route('vision.mission') }}">Mission, Vision & Values</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('key.focus.area') }}">Area</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('key.focus.area') }}">Key Focus Areas</a></li>
                             <li><a class="dropdown-item py-2" href="{{ route('team.members') }}">Team Members</a></li>
                             <li><a class="dropdown-item py-2" href="{{ route('origin_affilation') }}">Origin & Legal Affiliation</a></li>
                             <li><a class="dropdown-item py-2" href="{{ route('executive.committee') }}">Executive Committee</a></li>

@@ -29,6 +29,8 @@
                                 <th>SL.</th>
                                 <th>Name</th>
                                 <th>Designation</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
                                 <th>Department</th>
                                 <th>Photo</th>
                                 <th>Order</th>
@@ -41,6 +43,8 @@
                                 <td class="align-middle">{{ ++$key }}</td>
                                 <td class="align-middle">{{ $item->name }}</td>
                                 <td class="align-middle">{{ $item->designation }}</td>
+                                <td class="align-middle">{{ $item->email }}</td>
+                                <td class="align-middle">{{ $item->mobile }}</td>
                                 <td class="align-middle">{{ $item->department }}</td>
                                 <td class="align-middle">
                                     <img src="{{ asset('images/team_members/'.$item->photo) }}" alt="" width="50">

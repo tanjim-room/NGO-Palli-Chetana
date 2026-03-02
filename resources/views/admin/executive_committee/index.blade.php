@@ -29,6 +29,9 @@
                                 <th>SL.</th>
                                 <th>Name</th>
                                 <th>Designation</th>
+                                <th>Gender</th>
+                                <th>Profession</th>
+                                <th>Duration</th>
                                 <th>Photo</th>
                                 <th>Order</th>
                                 <th class="text-center">Action</th>
@@ -40,8 +43,15 @@
                                 <td class="align-middle">{{ ++$key }}</td>
                                 <td class="align-middle">{{ $item->name }}</td>
                                 <td class="align-middle">{{ $item->designation }}</td>
+                                <td class="align-middle">{{ $item->gender }}</td>
+                                <td class="align-middle">{{ $item->profession }}</td>
+                                <td class="align-middle">{{ $item->duration_of_involvement }}</td>
                                 <td class="align-middle">
-                                    <img src="{{ asset('images/executive_committee/'.$item->photo) }}" alt="" width="50">
+                                    @if($item->photo)
+                                        <img src="{{ asset('images/executive_committee/'.$item->photo) }}" alt="" width="50">
+                                    @else
+                                        <img src="https://ui-avatars.com/api/?name={{ urlencode($item->name) }}&background=2a8547&color=fff&size=50" alt="" width="50" class="rounded-circle">
+                                    @endif
                                 </td>
                                 <td class="align-middle">{{ $item->order }}</td>
                                 <td class="text-center align-middle">

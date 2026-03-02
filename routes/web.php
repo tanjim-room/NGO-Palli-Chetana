@@ -39,7 +39,9 @@ Route::get('about/impact', [frontController::class, 'impact'])->name('about.impa
 
 // Programs
 Route::get('key/focus', [frontController::class, 'key_focus'])->name('key.focus.area');
+Route::get('key/focus/{id}', [frontController::class, 'key_focus_view'])->name('key.focus.view');
 Route::get('project/archieve', [frontController::class, 'proj_archieve'])->name('project.archieve');
+Route::get('project/archive/view/{id}', [frontController::class, 'proj_archive_view'])->name('project.archive.view');
 Route::get('ongoing/project', [frontController::class, 'ongoing_project'])->name('ongoing.project');
 Route::get('ongoing/project/view/{id}', [frontController::class, 'project_view'])->name('ongoing.project.view');
 Route::get('latest/news/view/{id}', [frontController::class, 'news_view'])->name('latest.news.view');

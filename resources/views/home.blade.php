@@ -305,7 +305,7 @@ Palli Chetana - Empowering Communities
                         <img src="{{ asset('images/news/'.$data->image) }}" alt="{{ $data->title }}" class="card-img">
                         <div class="position-absolute bottom-0 start-0 m-3">
                             <span class="badge bg-white text-dark rounded-pill px-3 py-2" style="font-size:.75rem;">
-                                <i class="bi bi-calendar3 me-1"></i> {{ date('M d, Y', strtotime($data->created_at ?? now())) }}
+                                <i class="bi bi-calendar3 me-1"></i> {{ $data->created_at ? date('M d, Y', strtotime($data->created_at)) : 'Recent' }}
                             </span>
                         </div>
                     </div>

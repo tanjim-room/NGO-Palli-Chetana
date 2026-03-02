@@ -263,6 +263,407 @@
             background-color: var(--primary-color) !important;
             border-color: var(--primary-color) !important;
         }
+
+        /* ===== Enhanced Admin Form Styles ===== */
+
+        /* Page heading redesign */
+        .admin-main > .row > .col-xl-9 > h6.text-uppercase,
+        .admin-main > .row > [class*='col-'] > h6.text-uppercase {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 12px;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .admin-main > .row > .col-xl-9 > h6.text-uppercase::before,
+        .admin-main > .row > [class*='col-'] > h6.text-uppercase::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--primary-color), var(--primary-navy));
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .admin-main > .row > .col-xl-9 > hr,
+        .admin-main > .row > [class*='col-'] > hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-navy), transparent);
+            opacity: .3;
+            margin: 12px 0 20px;
+        }
+
+        /* Card redesign */
+        .admin-main .card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,.06), 0 0 0 1px rgba(0,0,0,.03);
+            overflow: hidden;
+            transition: box-shadow .3s ease;
+        }
+        .admin-main .card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,.08), 0 0 0 1px rgba(0,0,0,.04);
+        }
+        .admin-main .card > .card-body {
+            padding: 0;
+        }
+
+        /* Remove the inner border box — make it seamless */
+        .admin-main .card .p-4.border.rounded {
+            border: none !important;
+            border-radius: 0 !important;
+            padding: 32px !important;
+            position: relative;
+        }
+        .admin-main .card .p-4.border.rounded::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-navy), var(--primary-red));
+        }
+
+        /* Success alert redesign */
+        .admin-main .alert-success {
+            background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+            color: #1b5e20;
+            border: 1px solid rgba(42,133,71,.15);
+            border-radius: 12px;
+            padding: 14px 20px;
+            font-weight: 500;
+            font-size: .9rem;
+            margin: 20px 32px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: alertSlideIn .4s ease;
+        }
+        .admin-main .alert-success::before {
+            content: '\F26A';
+            font-family: 'bootstrap-icons';
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        @keyframes alertSlideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Form labels */
+        .admin-main .form-label {
+            font-weight: 600;
+            font-size: .85rem;
+            color: #334155;
+            margin-bottom: 6px;
+            letter-spacing: .2px;
+            transition: color .3s;
+        }
+        .admin-main .form-label .text-danger {
+            margin-left: 2px;
+        }
+
+        /* Form controls */
+        .admin-main .form-control,
+        .admin-main .form-select {
+            border-radius: 10px;
+            border: 2px solid #e2e8f0;
+            padding: 10px 16px;
+            font-size: .9rem;
+            background: #f8fafc;
+            transition: all .25s ease;
+            color: #1e293b;
+        }
+        .admin-main .form-control:hover,
+        .admin-main .form-select:hover {
+            border-color: #cbd5e1;
+        }
+        .admin-main .form-control:focus,
+        .admin-main .form-select:focus {
+            border-color: var(--primary-color) !important;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(42,133,71,.08) !important;
+        }
+        .admin-main .form-control::placeholder {
+            color: #94a3b8;
+        }
+        .admin-main textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* File input (custom dropzone) */
+        .admin-main .pch-file-wrapper {
+            position: relative;
+            border: 2px dashed #d1d5db;
+            border-radius: 12px;
+            padding: 28px 20px;
+            text-align: center;
+            background: #fafbfc;
+            transition: all .3s ease;
+            cursor: pointer;
+        }
+        .admin-main .pch-file-wrapper:hover,
+        .admin-main .pch-file-wrapper.dragover {
+            border-color: var(--primary-color);
+            background: rgba(42,133,71,.03);
+        }
+        .admin-main .pch-file-wrapper .pch-file-icon {
+            font-size: 2rem;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            transition: color .3s;
+        }
+        .admin-main .pch-file-wrapper:hover .pch-file-icon {
+            color: var(--primary-color);
+        }
+        .admin-main .pch-file-wrapper .pch-file-text {
+            font-size: .85rem;
+            color: #64748b;
+        }
+        .admin-main .pch-file-wrapper .pch-file-text strong {
+            color: var(--primary-color);
+        }
+        .admin-main .pch-file-wrapper input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .admin-main .pch-file-wrapper .pch-file-name {
+            font-size: .8rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-top: 8px;
+            display: none;
+            word-break: break-all;
+        }
+        .admin-main .pch-file-wrapper .pch-file-name.show {
+            display: block;
+        }
+
+        /* Image preview */
+        .admin-main .pch-img-preview {
+            margin-top: 12px;
+            display: none;
+            position: relative;
+        }
+        .admin-main .pch-img-preview.show {
+            display: block;
+            animation: previewFadeIn .4s ease;
+        }
+        .admin-main .pch-img-preview img {
+            max-width: 200px;
+            max-height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,.08);
+        }
+        @keyframes previewFadeIn {
+            from { opacity: 0; transform: scale(.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Image dimension hint */
+        .admin-main .text-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: .78rem;
+            font-weight: 500;
+            background: rgba(27,42,107,.06);
+            color: var(--primary-navy) !important;
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-top: 8px;
+        }
+
+        /* Validation errors */
+        .admin-main .text-danger:not(.form-label .text-danger) {
+            font-size: .8rem;
+            font-weight: 500;
+            margin-top: 4px;
+            animation: shakeError .4s ease;
+        }
+        @keyframes shakeError {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-3px); }
+        }
+        .admin-main .is-invalid {
+            border-color: var(--primary-red) !important;
+            box-shadow: 0 0 0 3px rgba(229,57,53,.1) !important;
+        }
+
+        /* Submit button redesign */
+        .admin-main .card form > .col-12:last-child .btn-primary,
+        .admin-main .pch-submit-btn {
+            padding: 12px 36px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: .95rem;
+            letter-spacing: .3px;
+            background: linear-gradient(135deg, var(--primary-color), #1f7a3a) !important;
+            border: none !important;
+            box-shadow: 0 4px 14px rgba(42,133,71,.25);
+            transition: all .3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .admin-main .card form > .col-12:last-child .btn-primary:hover,
+        .admin-main .pch-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(42,133,71,.35);
+        }
+        .admin-main .card form > .col-12:last-child .btn-primary:active,
+        .admin-main .pch-submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Form button group (submit + back) */
+        .pch-btn-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding-top: 8px;
+        }
+        .pch-form-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-size: .95rem;
+            font-weight: 600;
+            color: #475569;
+            background: #f1f5f9;
+            border: 2px solid #e2e8f0;
+            text-decoration: none;
+            transition: all .25s ease;
+            cursor: pointer;
+            letter-spacing: .3px;
+        }
+        .pch-form-back-btn:hover {
+            color: var(--primary-navy);
+            background: #e2e8f0;
+            border-color: #cbd5e1;
+            transform: translateX(-3px);
+        }
+        .pch-form-back-btn i {
+            font-size: 1rem;
+            transition: transform .25s;
+        }
+        .pch-form-back-btn:hover i {
+            transform: translateX(-3px);
+        }
+
+        /* Loading spinner for submit */
+        .admin-main .pch-btn-spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255,255,255,.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: pchSpin .6s linear infinite;
+        }
+        .admin-main .btn-primary.pch-loading .pch-btn-spinner { display: inline-block; }
+        .admin-main .btn-primary.pch-loading .pch-btn-label { display: none; }
+        @keyframes pchSpin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Ripple effect */
+        .pch-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,.25);
+            transform: scale(0);
+            animation: pchRipple .5s linear;
+            pointer-events: none;
+        }
+        @keyframes pchRipple {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        /* Old image preview (edit pages) */
+        .admin-main .card img[src*="images/"] {
+            border-radius: 10px;
+            border: 2px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0,0,0,.06);
+            transition: transform .3s;
+        }
+        .admin-main .card img[src*="images/"]:hover {
+            transform: scale(1.05);
+        }
+
+        /* Form row spacing */
+        .admin-main .card form.row.g-3 > [class*='col-'] {
+            margin-bottom: 4px;
+        }
+
+        /* Back button */
+        .pch-page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .pch-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            border-radius: 10px;
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            text-decoration: none;
+            transition: all .25s ease;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .pch-back-btn:hover {
+            color: #fff;
+            background: var(--primary-navy);
+            border-color: var(--primary-navy);
+            transform: translateX(-3px);
+            box-shadow: 0 4px 12px rgba(27,42,107,.2);
+        }
+        .pch-back-btn i {
+            font-size: 1rem;
+            transition: transform .25s;
+        }
+        .pch-back-btn:hover i {
+            transform: translateX(-3px);
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 768px) {
+            .admin-main .card .p-4.border.rounded {
+                padding: 20px !important;
+            }
+            .pch-back-btn {
+                padding: 6px 14px;
+                font-size: .8rem;
+            }
+        }
     </style>
 </head>
 
@@ -680,6 +1081,201 @@
                 link.style.fontWeight = '500';
             }
         });
+    </script>
+
+    <script>
+    (function() {
+        'use strict';
+
+        // ===== Enhanced File Upload with Drag & Drop + Preview =====
+        document.querySelectorAll('.admin-main input[type="file"]').forEach(function(fileInput) {
+            // Skip if already wrapped
+            if (fileInput.closest('.pch-file-wrapper')) return;
+
+            // Create wrapper
+            var wrapper = document.createElement('div');
+            wrapper.className = 'pch-file-wrapper';
+
+            // Icon
+            var icon = document.createElement('div');
+            icon.className = 'pch-file-icon';
+            icon.innerHTML = '<i class="bi bi-cloud-arrow-up"></i>';
+
+            // Text
+            var text = document.createElement('div');
+            text.className = 'pch-file-text';
+            text.innerHTML = '<strong>Click to upload</strong> or drag & drop<br><small>Supports images & documents</small>';
+
+            // File name display
+            var fileName = document.createElement('div');
+            fileName.className = 'pch-file-name';
+
+            // Image preview
+            var preview = document.createElement('div');
+            preview.className = 'pch-img-preview';
+            var previewImg = document.createElement('img');
+            previewImg.alt = 'Preview';
+            preview.appendChild(previewImg);
+
+            // Insert wrapper before file input
+            fileInput.parentNode.insertBefore(wrapper, fileInput);
+            wrapper.appendChild(icon);
+            wrapper.appendChild(text);
+            wrapper.appendChild(fileName);
+            wrapper.appendChild(fileInput);
+
+            // Add preview after wrapper
+            wrapper.parentNode.insertBefore(preview, wrapper.nextSibling);
+
+            // Drag & drop events
+            ['dragenter', 'dragover'].forEach(function(evt) {
+                wrapper.addEventListener(evt, function(e) {
+                    e.preventDefault();
+                    wrapper.classList.add('dragover');
+                });
+            });
+            ['dragleave', 'drop'].forEach(function(evt) {
+                wrapper.addEventListener(evt, function(e) {
+                    e.preventDefault();
+                    wrapper.classList.remove('dragover');
+                });
+            });
+
+            // File change handler
+            fileInput.addEventListener('change', function() {
+                if (this.files && this.files.length > 0) {
+                    var file = this.files[0];
+                    fileName.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+                    fileName.classList.add('show');
+
+                    // Image preview
+                    if (file.type.startsWith('image/')) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            previewImg.src = e.target.result;
+                            preview.classList.add('show');
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        preview.classList.remove('show');
+                    }
+                } else {
+                    fileName.classList.remove('show');
+                    preview.classList.remove('show');
+                }
+            });
+        });
+
+        // ===== Submit Button Enhancement =====
+        // Detect page type from heading
+        var pageHeading = document.querySelector('.admin-main h6.text-uppercase');
+        var pageText = pageHeading ? pageHeading.textContent.trim().toLowerCase() : '';
+        var isEditPage = pageText.indexOf('edit') === 0 || pageText.indexOf('update') === 0;
+        var isAddPage = pageText.indexOf('add') === 0 || pageText.indexOf('create') === 0;
+
+        document.querySelectorAll('.admin-main .card form').forEach(function(form) {
+            var btn = form.querySelector('button[type="submit"]');
+            if (!btn) return;
+
+            // Rename button based on page type
+            var btnLabel = 'Submit';
+            var btnIcon = 'bi-check-lg';
+            if (isEditPage) {
+                btnLabel = 'Update';
+                btnIcon = 'bi-arrow-repeat';
+            } else if (isAddPage) {
+                btnLabel = 'Add';
+                btnIcon = 'bi-plus-lg';
+            }
+
+            // Rebuild button HTML
+            btn.innerHTML = '<span class="pch-btn-spinner"></span><span class="pch-btn-label"><i class="bi ' + btnIcon + '"></i> ' + btnLabel + '</span>';
+
+            // Create button group wrapper with Back button
+            var btnCol = btn.closest('.col-12');
+            if (btnCol && (isAddPage || isEditPage)) {
+                var group = document.createElement('div');
+                group.className = 'pch-btn-group';
+                btnCol.innerHTML = '';
+                group.appendChild(btn);
+
+                var backBtn = document.createElement('a');
+                backBtn.className = 'pch-form-back-btn';
+                backBtn.href = 'javascript:void(0)';
+                backBtn.onclick = function() { window.history.back(); };
+                backBtn.innerHTML = '<i class="bi bi-arrow-left"></i> Back';
+                group.appendChild(backBtn);
+
+                btnCol.appendChild(group);
+            }
+
+            // Ripple effect
+            btn.addEventListener('mousedown', function(e) {
+                var ripple = document.createElement('span');
+                ripple.className = 'pch-ripple';
+                var rect = btn.getBoundingClientRect();
+                var size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+                btn.appendChild(ripple);
+                setTimeout(function() { ripple.remove(); }, 500);
+            });
+
+            // Loading on submit
+            form.addEventListener('submit', function() {
+                btn.classList.add('pch-loading');
+                btn.disabled = true;
+            });
+        });
+
+        // ===== Auto-dismiss success alerts =====
+        document.querySelectorAll('.admin-main .alert-success').forEach(function(alert) {
+            setTimeout(function() {
+                alert.style.transition = 'opacity .5s, transform .5s';
+                alert.style.opacity = '0';
+                alert.style.transform = 'translateY(-10px)';
+                setTimeout(function() { alert.remove(); }, 500);
+            }, 5000);
+        });
+
+        // ===== Auto-inject Back Button on Add/Edit pages =====
+        document.querySelectorAll('.admin-main h6.text-uppercase').forEach(function(heading) {
+            var text = heading.textContent.trim().toLowerCase();
+            if (text.indexOf('add') === 0 || text.indexOf('edit') === 0 || text.indexOf('update') === 0 || text.indexOf('create') === 0) {
+                // Wrap heading + button in a flex row
+                var wrapper = document.createElement('div');
+                wrapper.className = 'pch-page-header';
+                heading.parentNode.insertBefore(wrapper, heading);
+                wrapper.appendChild(heading);
+
+                var backBtn = document.createElement('a');
+                backBtn.className = 'pch-back-btn';
+                backBtn.href = 'javascript:void(0)';
+                backBtn.onclick = function() { window.history.back(); };
+                backBtn.innerHTML = '<i class="bi bi-arrow-left"></i> Back';
+                wrapper.appendChild(backBtn);
+            }
+        });
+
+        // ===== Input focus label coloring =====
+        document.querySelectorAll('.admin-main .form-control, .admin-main .form-select').forEach(function(input) {
+            input.addEventListener('focus', function() {
+                var label = this.closest('[class*="col-"]');
+                if (label) {
+                    var lbl = label.querySelector('.form-label');
+                    if (lbl) lbl.style.color = '#2a8547';
+                }
+            });
+            input.addEventListener('blur', function() {
+                var label = this.closest('[class*="col-"]');
+                if (label) {
+                    var lbl = label.querySelector('.form-label');
+                    if (lbl) lbl.style.color = '#334155';
+                }
+            });
+        });
+    })();
     </script>
 </body>
 

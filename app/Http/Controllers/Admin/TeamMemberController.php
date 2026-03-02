@@ -33,6 +33,8 @@ class TeamMemberController extends Controller
         $data = array(
             'name' => $request->name,
             'designation' => $request->designation,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
             'department' => $request->department,
             'bio' => $request->bio,
             'photo' => $photoName,
@@ -101,6 +103,8 @@ class TeamMemberController extends Controller
         $data = array(
             'name' => $request->name,
             'designation' => $request->designation,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
             'department' => $request->department,
             'bio' => $request->bio,
             'photo' => $photoName,

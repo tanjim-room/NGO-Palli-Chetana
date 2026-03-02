@@ -99,11 +99,11 @@
 </section>
 
 {{-- ===== DONATION FORM ===== --}}
-<section class="pc-section" id="donate-form">
+<section class="py-5 mb-16" id="donate-form">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-7" data-aos="fade-up">
-                <div class="text-center mb-5">
+                <div class="text-center mb-4">
                     <span class="pc-badge">Step 2</span>
                     <h2 class="pc-section-title mx-auto">Confirm Your Donation</h2>
                 </div>
@@ -117,91 +117,95 @@
                 @endif
 
                 {{-- Info Alert --}}
-                <div class="alert alert-info border-0 shadow-sm mb-4">
-                    <i class="bi bi-info-circle-fill me-2"></i>
-                    <strong>Important:</strong> Please make the payment using one of the methods above first,
-                    then fill in this form with your transaction details for confirmation.
+                <div class="alert alert-info border-0 shadow-sm mb-3 py-2 small">
+                    <i class="bi bi-info-circle-fill me-1"></i>
+                    <strong>Important:</strong> Please make the payment first, then fill in this form with your transaction details.
                 </div>
 
-                <div class="pc-card p-4 p-md-5">
+                <div class="pc-card p-4" style="height: auto;">
                     <form action="{{ route('donation.submit') }}" method="POST">
                         @csrf
 
-                        {{-- Donor Name --}}
-                        <div class="mb-3">
-                            <label for="donor_name" class="form-label fw-semibold">
-                                <i class="bi bi-person me-1"></i> Your Name <span class="text-danger">*</span>
-                            </label>
-                            <input type="text" name="donor_name" id="donor_name"
-                                   class="form-control form-control-lg @error('donor_name') is-invalid @enderror"
-                                   value="{{ old('donor_name') }}" placeholder="Enter your full name" required>
-                            @error('donor_name')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                        <div class="row g-3">
+                            {{-- Donor Name --}}
+                            <div class="col-md-6">
+                                <label for="donor_name" class="form-label fw-semibold small mb-1">
+                                    <i class="bi bi-person me-1"></i> Your Name <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" name="donor_name" id="donor_name"
+                                       class="form-control @error('donor_name') is-invalid @enderror"
+                                       value="{{ old('donor_name') }}" placeholder="Full name" required>
+                                @error('donor_name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
 
-                        {{-- Donor Phone --}}
-                        <div class="mb-3">
-                            <label for="donor_phone" class="form-label fw-semibold">
-                                <i class="bi bi-phone me-1"></i> Phone Number <span class="text-danger">*</span>
-                            </label>
-                            <input type="text" name="donor_phone" id="donor_phone"
-                                   class="form-control form-control-lg @error('donor_phone') is-invalid @enderror"
-                                   value="{{ old('donor_phone') }}" placeholder="Enter your phone number" required>
-                            @error('donor_phone')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                            {{-- Donor Phone --}}
+                            <div class="col-md-6">
+                                <label for="donor_phone" class="form-label fw-semibold small mb-1">
+                                    <i class="bi bi-phone me-1"></i> Phone Number <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" name="donor_phone" id="donor_phone"
+                                       class="form-control @error('donor_phone') is-invalid @enderror"
+                                       value="{{ old('donor_phone') }}" placeholder="Phone number" required>
+                                @error('donor_phone')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
 
-                        {{-- Payment Method --}}
-                        <div class="mb-3">
-                            <label for="payment_method_id" class="form-label fw-semibold">
-                                <i class="bi bi-credit-card me-1"></i> Payment Method <span class="text-danger">*</span>
-                            </label>
-                            <select name="payment_method_id" id="payment_method_id"
-                                    class="form-select form-select-lg @error('payment_method_id') is-invalid @enderror" required>
-                                <option value="">-- Select Payment Method --</option>
-                                @foreach($paymentMethods as $method)
-                                    <option value="{{ $method->id }}" {{ old('payment_method_id') == $method->id ? 'selected' : '' }}>
-                                        {{ $method->account_name }} ({{ $method->account_number }})
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('payment_method_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                            {{-- Payment Method --}}
+                            <div class="col-12">
+                                <label for="payment_method_id" class="form-label fw-semibold small mb-1">
+                                    <i class="bi bi-credit-card me-1"></i> Payment Method <span class="text-danger">*</span>
+                                </label>
+                                <select name="payment_method_id" id="payment_method_id"
+                                        class="form-select @error('payment_method_id') is-invalid @enderror" required>
+                                    <option value="">-- Select Payment Method --</option>
+                                    @foreach($paymentMethods as $method)
+                                        <option value="{{ $method->id }}" {{ old('payment_method_id') == $method->id ? 'selected' : '' }}>
+                                            {{ $method->account_name }} ({{ $method->account_number }})
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('payment_method_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
 
-                        {{-- Transaction ID --}}
-                        <div class="mb-3">
-                            <label for="transaction_id" class="form-label fw-semibold">
-                                <i class="bi bi-receipt me-1"></i> Transaction ID <span class="text-danger">*</span>
-                            </label>
-                            <input type="text" name="transaction_id" id="transaction_id"
-                                   class="form-control form-control-lg @error('transaction_id') is-invalid @enderror"
-                                   value="{{ old('transaction_id') }}" placeholder="Enter your transaction / reference ID" required>
-                            @error('transaction_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                            {{-- Transaction ID --}}
+                            <div class="col-md-6">
+                                <label for="transaction_id" class="form-label fw-semibold small mb-1">
+                                    <i class="bi bi-receipt me-1"></i> Transaction ID <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" name="transaction_id" id="transaction_id"
+                                       class="form-control @error('transaction_id') is-invalid @enderror"
+                                       value="{{ old('transaction_id') }}" placeholder="Transaction / reference ID" required>
+                                @error('transaction_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
 
-                        {{-- Amount --}}
-                        <div class="mb-4">
-                            <label for="amount" class="form-label fw-semibold">
-                                <i class="bi bi-cash me-1"></i> Amount (BDT) <span class="text-danger">*</span>
-                            </label>
-                            <input type="number" name="amount" id="amount" min="1" step="any"
-                                   class="form-control form-control-lg @error('amount') is-invalid @enderror"
-                                   value="{{ old('amount') }}" placeholder="Enter donation amount" required>
-                            @error('amount')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                            {{-- Amount --}}
+                            <div class="col-md-6">
+                                <label for="amount" class="form-label fw-semibold small mb-1">
+                                    <i class="bi bi-cash me-1"></i> Amount (BDT) <span class="text-danger">*</span>
+                                </label>
+                                <input type="number" name="amount" id="amount" min="1" step="any"
+                                       class="form-control @error('amount') is-invalid @enderror"
+                                       value="{{ old('amount') }}" placeholder="Donation amount" required>
+                                @error('amount')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
 
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-pc-primary btn-lg rounded-pill">
-                                <i class="bi bi-send-fill me-2"></i>Submit Donation
-                            </button>
+                            {{-- Submit --}}
+                            <div class="col-12 mt-3">
+                                <div class="d-grid my-4">
+                                    <button type="submit" class="btn btn-pc-primary rounded-pill">
+                                        <i class="bi bi-send-fill me-2"></i>Submit Donation
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

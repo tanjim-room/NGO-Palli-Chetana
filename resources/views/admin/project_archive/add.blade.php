@@ -31,6 +31,19 @@
                         </div>
 
                         <div class="col-md-12">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea name="description" class="form-control" id="description" rows="4" placeholder="Enter project description (optional)">{{ old('description') }}</textarea>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="image" class="form-label">Project Image</label>
+                            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" id="image" accept="image/*">
+                            @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-12">
                             <label for="from" class="form-label">From</label>
                             <input type="date" name="from" class="form-control @error('from') is-invalid @enderror" id="from" value="{{ old('from') }}" placeholder="From Date">
                             @error('from')

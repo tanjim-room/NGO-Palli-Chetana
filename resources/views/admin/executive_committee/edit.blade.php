@@ -27,13 +27,35 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-md-12">
-                            <label for="img" class="form-label">Photo</label>
-                            <input type="file" name="photo" class="form-control" id="img">
+                        <div class="col-md-4">
+                            <label for="gender" class="form-label">Gender</label>
+                            <select name="gender" id="gender" class="form-select">
+                                <option value="">Select Gender</option>
+                                <option value="Male" {{ $data->gender == 'Male' ? 'selected' : '' }}>Male</option>
+                                <option value="Female" {{ $data->gender == 'Female' ? 'selected' : '' }}>Female</option>
+                                <option value="Other" {{ $data->gender == 'Other' ? 'selected' : '' }}>Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="profession" class="form-label">Profession</label>
+                            <input type="text" name="profession" class="form-control" id="profession" value="{{ $data->profession }}">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="duration_of_involvement" class="form-label">Duration of Involvement</label>
+                            <input type="text" name="duration_of_involvement" class="form-control" id="duration_of_involvement" value="{{ $data->duration_of_involvement }}">
                         </div>
                         <div class="col-md-12">
-                            <label for="img" class="form-label">Old Photo:</label>
-                            <img src="{{ asset('images/executive_committee/'.$data->photo) }}" alt="" width="100">
+                            <label for="img" class="form-label">Photo (Optional)</label>
+                            <input type="file" name="photo" class="form-control" id="img">
+                            <small class="text-muted">If no photo is uploaded, a default avatar will be shown.</small>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="img" class="form-label">Current Photo:</label><br>
+                            @if($data->photo)
+                                <img src="{{ asset('images/executive_committee/'.$data->photo) }}" alt="" width="100">
+                            @else
+                                <span class="text-muted">No photo (default avatar will be used)</span>
+                            @endif
                         </div>
                         <div class="col-md-12">
                             <label for="bio" class="form-label">Bio (Optional)</label>

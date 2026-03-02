@@ -27,6 +27,14 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email (Optional)</label>
+                            <input type="email" name="email" class="form-control" id="email" value="{{ $data->email }}" placeholder="Enter Email">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="mobile" class="form-label">Mobile No (Optional)</label>
+                            <input type="text" name="mobile" class="form-control" id="mobile" value="{{ $data->mobile }}" placeholder="Enter Mobile No">
+                        </div>
                         <div class="col-md-12">
                             <label for="department" class="form-label">Department (Optional)</label>
                             <input type="text" name="department" class="form-control" id="department" value="{{ $data->department }}">

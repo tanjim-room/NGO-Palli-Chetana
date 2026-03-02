@@ -33,13 +33,15 @@
                             <div class="d-flex align-items-center gap-3 text-muted mb-4">
                                 <span>
                                     <i class="bi bi-calendar-event me-1" style="color: var(--pc-secondary);"></i>
-                                    {{ date('F d, Y', strtotime($news->created_at)) }}
+                                    {{ $news->created_at ? date('F d, Y', strtotime($news->created_at)) : 'Recently Published' }}
                                 </span>
+                                @if($news->created_at)
                                 <span class="text-muted">|</span>
                                 <span>
                                     <i class="bi bi-clock me-1" style="color: var(--pc-secondary);"></i>
                                     {{ date('h:i A', strtotime($news->created_at)) }}
                                 </span>
+                                @endif
                             </div>
                         </div>
 
