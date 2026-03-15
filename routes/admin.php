@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DonationController;
 use App\Http\Controllers\Admin\ExecutiveCommitteeController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\FocusAreaController;
+use App\Http\Controllers\Admin\FundraisingCampaignController;
 use App\Http\Controllers\Admin\galleryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ImpactController;
@@ -259,5 +260,13 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('donations/verify/{id}', [DonationController::class, 'verify'])->name('admin.donations.verify');
     Route::post('donations/reject/{id}', [DonationController::class, 'reject'])->name('admin.donations.reject');
     Route::get('donations/delete/{id}', [DonationController::class, 'destroy'])->name('admin.donations.delete');
+
+    // __ Fundraising Campaigns __//
+    Route::get('fundraising-campaigns/create', [FundraisingCampaignController::class, 'create'])->name('fundraising_campaigns.create');
+    Route::post('fundraising-campaigns/store', [FundraisingCampaignController::class, 'store'])->name('fundraising_campaigns.store');
+    Route::get('fundraising-campaigns/index', [FundraisingCampaignController::class, 'index'])->name('fundraising_campaigns.index');
+    Route::get('fundraising-campaigns/delete/{id}', [FundraisingCampaignController::class, 'destroy'])->name('fundraising_campaigns.delete');
+    Route::get('fundraising-campaigns/edit/{id}', [FundraisingCampaignController::class, 'edit'])->name('fundraising_campaigns.edit');
+    Route::post('fundraising-campaigns/update/{id}', [FundraisingCampaignController::class, 'update'])->name('fundraising_campaigns.update');
 
 });

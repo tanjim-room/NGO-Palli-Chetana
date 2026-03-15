@@ -25,19 +25,17 @@
             <p class="text-muted mx-auto" style="max-width:600px;">Reach out to us through any of our offices or contact persons. We'd love to hear from you.</p>
         </div>
 
-        <!-- Head Office & Branches -->
-        <div class="row g-4 mb-5">
-            @if($head_office)
-            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+        <!-- Head Office -->
+        @if($head_office)
+        <div class="row g-4 mb-4 justify-content-center">
+            <div class="col-lg-6 col-md-8" data-aos="fade-up">
                 <div class="pc-card h-100 border-0 shadow-sm">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width:48px;height:48px;background:rgba(42,133,71,0.1);">
-                                <i class="bi bi-building fs-5" style="color:var(--pc-primary);"></i>
-                            </div>
-                            <h5 class="fw-bold mb-0">{{ $head_office->title ?: 'Head Office' }}</h5>
+                    <div class="card-body p-4 text-center">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width:48px;height:48px;background:rgba(42,133,71,0.1);">
+                            <i class="bi bi-building fs-5" style="color:var(--pc-primary);"></i>
                         </div>
-                        <ul class="list-unstyled mb-0 text-secondary">
+                        <h5 class="fw-bold mb-3">{{ $head_office->title ?: 'Head Office' }}</h5>
+                        <ul class="list-unstyled mb-0 text-secondary d-inline-block text-start">
                             @if($head_office->address)
                             <li class="mb-2"><i class="bi bi-geo-alt me-2" style="color:var(--pc-primary);"></i>{{ $head_office->address }}</li>
                             @endif
@@ -51,8 +49,11 @@
                     </div>
                 </div>
             </div>
-            @endif
+        </div>
+        @endif
 
+        <!-- Branches -->
+        <div class="row g-4 mb-5 justify-content-center">
             @forelse ($branches as $branch)
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                 <div class="pc-card h-100 border-0 shadow-sm">
@@ -255,7 +256,7 @@
         </div>
         <div class="rounded-4 overflow-hidden shadow-sm" data-aos="fade-up" data-aos-delay="100">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1719.1936844054173!2d89.62614056461113!3d25.80873502360909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e2c8d493785f47%3A0x89cb625d52f7cfd3!2sKhalilganj%20Bazar!5e0!3m2!1sen!2sbd!4v1675184176828!5m2!1sen!2sbd"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.3879966334794!2d89.11945727530136!3d22.60198197947083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a01dfac30e61ba1%3A0x3d8dc14b406b2c5b!2sPalli%20Chetana!5e0!3m2!1sen!2sbd!4v1772457050052!5m2!1sen!2sbd"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                 width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>

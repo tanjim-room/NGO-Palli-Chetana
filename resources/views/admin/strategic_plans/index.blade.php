@@ -3,7 +3,12 @@
 @section('content')
 <div class="row">
     <div class="col-md-12 mx-auto">
-        <h6 class="mb-0 text-uppercase">All Strategic Plans</h6>
+        <div class="d-flex justify-content-between align-items-center">
+            <h6 class="mb-0 text-uppercase">All Strategic Plans</h6>
+            <a href="{{ route('strategic_plans.create') }}" class="btn btn-primary">
+                <i class="bi bi-plus-lg"></i> Add Strategic Plan
+            </a>
+        </div>
         <hr/>
         <div class="card">
             <div class="card-body">
@@ -14,9 +19,7 @@
                 @endif
 
                 <div class="mb-3">
-                    <a href="{{ route('strategic_plans.create') }}" class="btn btn-primary">
-                        <i class="bi bi-plus-lg"></i> Add Strategic Plan
-                    </a>
+                  
                 </div>
 
                 <div class="p-4 border rounded table-responsive">

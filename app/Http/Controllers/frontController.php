@@ -308,7 +308,8 @@ class frontController extends Controller
 
     // Fundraising
     public function fundraising(){
-        return view('frontend.fundraising');
+        $campaigns = DB::table('fundraising_campaigns')->orderBy('created_at', 'desc')->get();
+        return view('frontend.fundraising', compact('campaigns'));
     }
 
     // Corporate Partnership

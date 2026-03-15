@@ -732,6 +732,12 @@
                         <li><a href="{{ route('admin.donations.index') }}" class="nav-link">Donations</a></li>
                     </ul>
                 </li>
+                <!-- Fundraising Campaigns -->
+                <li class="nav-item">
+                    <a href="{{ route('fundraising_campaigns.index') }}" class="nav-link {{ request()->routeIs('fundraising_campaigns.*') ? 'active' : '' }}">
+                        <i class="bi bi-megaphone"></i> <span>Fundraising Campaigns</span>
+                    </a>
+                </li>
                 <!-- Key Focus Area -->
                 <li class="nav-item">
                     <a href="{{ route('admin.focus_areas.index') }}" class="nav-link {{ request()->routeIs('admin.focus_areas.*') ? 'active' : '' }}">

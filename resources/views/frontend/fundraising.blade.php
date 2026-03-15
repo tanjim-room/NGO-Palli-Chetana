@@ -36,8 +36,87 @@
     </div>
 </section>
 
-{{-- ===== WHY FUNDRAISE ===== --}}
+{{-- ===== ACTIVE CAMPAIGNS ===== --}}
+@if(isset($campaigns) && $campaigns->count())
 <section class="pc-section" style="background: var(--pc-gray-light);">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="pc-badge"><i class="bi bi-megaphone me-1"></i> Active Campaigns</span>
+            <h2 class="pc-section-title mx-auto">Our Fundraising Campaigns</h2>
+            <p class="text-muted mt-3 mx-auto" style="max-width:600px;">Support one of our ongoing campaigns and help us reach our goals. Every contribution makes a difference.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            @foreach($campaigns as $index => $campaign)
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
+                <div class="pc-card h-100 border-0 shadow-sm overflow-hidden">
+                    {{-- Campaign Image --}}
+                    <div class="position-relative" style="height:220px; background:#f8f9fa;">
+                        @if(!empty($campaign->image))
+                            <img src="{{ asset('images/fundraising_campaigns/'.$campaign->image) }}" alt="{{ $campaign->title }}"
+                                 class="w-100 h-100" style="object-fit:cover;">
+                        @else
+                            <div class="d-flex align-items-center justify-content-center h-100">
+                                <i class="bi bi-megaphone display-3" style="color:var(--pc-primary); opacity:0.3;"></i>
+                            </div>
+                        @endif
+                        {{-- Status Badge --}}
+                        <span class="position-absolute top-0 end-0 m-3 badge rounded-pill {{ $campaign->status == 'active' ? 'bg-success' : ($campaign->status == 'completed' ? 'bg-primary' : 'bg-warning text-dark') }}">
+                            {{ ucfirst($campaign->status) }}
+                        </span>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-2">{{ $campaign->title }}</h5>
+                        @if(!empty($campaign->description))
+                            <p class="text-muted small mb-3">{{ Str::limit($campaign->description, 100, '...') }}</p>
+                        @endif
+
+                        {{-- Progress Bar --}}
+                        @php
+                            $progress = $campaign->goal_amount > 0 ? min(100, round(($campaign->raised_amount / $campaign->goal_amount) * 100, 1)) : 0;
+                        @endphp
+                        <div class="mb-2">
+                            <div class="d-flex justify-content-between small mb-1">
+                                <span class="fw-semibold" style="color:var(--pc-primary);">Raised: ৳{{ number_format($campaign->raised_amount, 0) }}</span>
+                                <span class="text-muted">Goal: ৳{{ number_format($campaign->goal_amount, 0) }}</span>
+                            </div>
+                            <div class="progress" style="height:10px; border-radius:5px;">
+                                <div class="progress-bar" role="progressbar" style="width:{{ $progress }}%; background:var(--pc-primary); border-radius:5px;" aria-valuenow="{{ $progress }}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="text-end mt-1">
+                                <small class="fw-bold" style="color:var(--pc-primary);">{{ $progress }}%</small>
+                            </div>
+                        </div>
+
+                        {{-- Duration --}}
+                        @if($campaign->start_date || $campaign->end_date)
+                        <div class="small text-muted mt-2">
+                            <i class="bi bi-calendar3 me-1"></i>
+                            @if($campaign->start_date && $campaign->end_date)
+                                {{ date('M d, Y', strtotime($campaign->start_date)) }} — {{ date('M d, Y', strtotime($campaign->end_date)) }}
+                            @elseif($campaign->start_date)
+                                From {{ date('M d, Y', strtotime($campaign->start_date)) }}
+                            @endif
+                        </div>
+                        @endif
+                    </div>
+
+                    <div class="card-footer bg-white border-top p-4">
+                        <a href="{{ route('donate') }}" class="btn btn-pc-primary w-100">
+                            <i class="bi bi-heart-fill me-2"></i>Donate to This Campaign
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+
+{{-- ===== WHY FUNDRAISE ===== --}}
+<section class="pc-section" style="background: {{ isset($campaigns) && $campaigns->count() ? '#ffffff' : 'var(--pc-gray-light)' }};">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="pc-badge">Why Fundraise?</span>

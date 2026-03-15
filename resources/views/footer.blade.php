@@ -122,9 +122,9 @@
 
     <!-- Copyright -->
     <div style="border-top: 1px solid rgba(255,255,255,.1); padding: 20px 0; font-size: .85rem;">
-        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-            <span class="text-white text-opacity-50">&copy; {{ date('Y') }} Palli Chetana. All rights reserved.</span>
-            <span class="text-white text-opacity-50">Developed by <strong class="text-white text-opacity-75">NSTU Software Development Team</strong></span>
+        <div class="container d-flex flex-column flex-md-row justify-content-center align-items-center gap-2">
+            <span class="text-white text-center text-opacity-50">&copy; {{ date('Y') }} Palli Chetana. All rights reserved.</span>
+            <!-- <span class="text-white text-opacity-50">Developed by <strong class="text-white text-opacity-75">NSTU Software Development Team</strong></span> -->
         </div>
     </div>
 </footer>
