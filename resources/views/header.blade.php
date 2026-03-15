@@ -52,6 +52,7 @@
                             <li><a class="dropdown-item py-2" href="{{ route('origin_affilation') }}">Origin & Legal Affiliation</a></li>
                             <li><a class="dropdown-item py-2" href="{{ route('executive.committee') }}">Executive Committee</a></li>
                             <li><a class="dropdown-item py-2" href="{{ route('cheif.message') }}">Chief Executive Message</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('policy.guideline') }}">Our Policy</a></li>
                             <li><a class="dropdown-item py-2" href="{{ route('partner.donor') }}">Partners & Donors</a></li>
                             <li><a class="dropdown-item py-2" href="{{ route('about.impact') }}">Our Impact</a></li>
                         </ul>
@@ -89,7 +90,6 @@
                             <li><a class="dropdown-item py-2" href="{{ route('youtube.video') }}">Videos</a></li>
                             <li><a class="dropdown-item py-2" href="{{ route('publication') }}">Publications</a></li>
                             <li><a class="dropdown-item py-2" href="{{ route('strategic.plan') }}">Strategic Plan</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('policy.guideline') }}">Policy & Guidelines</a></li>
                         </ul>
                     </li>
 

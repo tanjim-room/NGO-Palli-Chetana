@@ -23,7 +23,7 @@
                             @enderror
                         </div>
                         <div class="col-md-12">
-                            <label for="file" class="form-label">Upload PDF<span class="text-danger">*</span></label>
+                            <label for="file" class="form-label">Upload PDF <span class="text-muted">(Optional)</span></label>
                             <input type="file" name="file" id="file" class="form-control @error('file') is -invalid @enderror">
                             <span class="text-info">Old File: {{ $file->file }}</span>
                             @error('file')

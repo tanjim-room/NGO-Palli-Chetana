@@ -19,7 +19,7 @@ class policyController extends Controller
     {
         $validatedDate = $request->validate([
             'name' => 'required',
-            'file' => 'required|mimes:pdf',
+            'file' => 'nullable|mimes:pdf',
         ]);
 
         $fileName = '';
@@ -71,6 +71,7 @@ class policyController extends Controller
     {
         $validatedDate = $request->validate([
             'name' => 'required',
+            'file' => 'nullable|mimes:pdf',
         ]);
 
         $files = DB::table('policy_guideline')->where('id', $id)->first();

@@ -17,13 +17,13 @@
                         @csrf
                         <div class="col-md-12">
                             <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
-                            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Enter Pdf Name" value="{{ old('name') }}">
+                            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Enter Policy Name" value="{{ old('name') }}">
                             @error('name')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="col-md-12">
-                            <label for="file" class="form-label">Upload PDF<span class="text-danger">*</span></label>
+                            <label for="file" class="form-label">Upload PDF <span class="text-muted">(Optional)</span></label>
                             <input type="file" name="file" id="file" class="form-control @error('file') is -invalid @enderror">
                             @error('file')
                                 <div class="text-danger">{{ $message }}</div>

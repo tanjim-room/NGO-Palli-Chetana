@@ -23,28 +23,30 @@
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="pc-badge"><i class="bi bi-shield-check me-1"></i> Documents</span>
             <h2 class="pc-section-title mt-3">Policy & Guidelines</h2>
-            <p class="text-muted mx-auto" style="max-width:600px;">Download and review Palli Chetana's policies and guidelines that govern our operations.</p>
+            <p class="text-muted mx-auto" style="max-width:600px;">Browse our uploaded policy documents below. Each item is managed from Admin and shown here as a bullet list.</p>
         </div>
 
         @if(isset($policy) && count($policy) > 0)
-        <div class="row g-4 justify-content-center">
-            @foreach ($policy as $index => $data)
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
-                <a href="{{ asset('images/policy_guideline/'.$data->file) }}" target="_blank" class="text-decoration-none">
-                    <div class="pc-card h-100 border-0 shadow-sm text-center transition-all" style="transition:transform 0.3s;">
-                        <div class="card-body p-4 p-lg-5">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width:80px;height:80px;background:rgba(42,133,71,0.1);">
-                                <i class="bi bi-file-earmark-arrow-down fs-2" style="color:var(--pc-primary);"></i>
-                            </div>
-                            <h5 class="fw-bold text-dark mb-3">{{ $data->name }}</h5>
-                            <span class="btn btn-pc-outline">
-                                <i class="bi bi-download me-2"></i>Download PDF
-                            </span>
-                        </div>
-                    </div>
-                </a>
+        <div class="row justify-content-center" data-aos="fade-up">
+            <div class="col-lg-10">
+                <div class="pc-card border-0 shadow-sm p-4 p-lg-5">
+                    <ul class="mb-0 ps-3" style="list-style: disc;">
+                        @foreach ($policy as $index => $data)
+                        <li class="mb-3">
+                            @if(!empty($data->file))
+                            <a href="{{ asset('images/policy_guideline/'.$data->file) }}" target="_blank" class="fw-semibold" style="color:var(--pc-primary);">
+                                {{ $data->name }}
+                            </a>
+                            <span class="text-muted ms-2">(PDF)</span>
+                            @else
+                            <span class="fw-semibold" style="color:var(--pc-dark);">{{ $data->name }}</span>
+                            <span class="text-muted ms-2"></span>
+                            @endif
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
-            @endforeach
         </div>
         @else
         <!-- Empty State -->
