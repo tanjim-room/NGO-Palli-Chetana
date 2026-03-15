@@ -344,6 +344,33 @@
             }
         });
     </script>
+    <!-- Global Photo Lightbox -->
+    <div class="modal fade" id="photoLightbox" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width:92vw;">
+            <div class="modal-content border-0" style="background:transparent;">
+                <div class="modal-body p-0 position-relative text-center">
+                    <button type="button" class="btn-close btn-close-white position-absolute"
+                            data-bs-dismiss="modal" aria-label="Close"
+                            style="top:-14px;right:-14px;z-index:10;background-color:rgba(0,0,0,.7);border-radius:50%;padding:12px;opacity:1;"></button>
+                    <img id="lightboxImg" src="" alt="Full Image"
+                         class="img-fluid rounded-3 shadow-lg"
+                         style="max-height:88vh;object-fit:contain;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        [data-lightbox] { cursor: zoom-in; }
+        #photoLightbox { backdrop-filter: blur(4px); }
+    </style>
+    <script>
+        document.addEventListener('click', function(e) {
+            var el = e.target.closest('[data-lightbox]');
+            if (!el) return;
+            document.getElementById('lightboxImg').src = el.dataset.lightbox;
+            new bootstrap.Modal(document.getElementById('photoLightbox')).show();
+        });
+    </script>
     @stack('js')
 </body>
 </html>

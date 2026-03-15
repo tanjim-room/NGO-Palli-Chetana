@@ -36,7 +36,7 @@
                             <!-- Card Image -->
                             <div class="position-relative overflow-hidden" style="height: 200px;">
                                 @if($proj->image)
-                                    <img src="{{ asset('images/project/'.$proj->image) }}" alt="{{ $proj->name }}" class="w-100 h-100" style="object-fit: cover;">
+                                    <img src="{{ asset('images/project/'.$proj->image) }}" data-lightbox="{{ asset('images/project/'.$proj->image) }}" alt="{{ $proj->name }}" class="w-100 h-100" style="object-fit: cover;">
                                 @else
                                     <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, var(--pc-primary-light) 0%, #dcedc8 100%);">
                                         <i class="bi bi-archive" style="font-size: 3rem; color: var(--pc-primary); opacity: .5;"></i>

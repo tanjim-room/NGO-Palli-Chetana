@@ -62,7 +62,7 @@
                         <a class="nav-link dropdown-toggle fw-semibold px-3" href="#" data-bs-toggle="dropdown" style="color: var(--pc-dark);">Programs</a>
                         <ul class="dropdown-menu border-0 shadow-lg" style="border-radius: var(--pc-radius); min-width: 220px;">
                             <li><a class="dropdown-item py-2" href="{{ route('programs.all') }}">Featured Programs</a></li>
-                            <li><a class="dropdown-item py-2" href="{{ route('ongoing.project') }}">Ongoing Programs</a></li>
+                            <li><a class="dropdown-item py-2" href="{{ route('ongoing.project') }}">Ongoing Projects</a></li>
                             <li><a class="dropdown-item py-2" href="{{ route('project.archieve') }}">Project Archive</a></li>
                             <li><a class="dropdown-item py-2" href="{{ route('success.stories') }}">Success Stories</a></li>
                         </ul>

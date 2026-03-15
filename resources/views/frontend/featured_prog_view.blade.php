@@ -27,7 +27,7 @@
             <div class="col-lg-5">
                 <div class="rounded-4 overflow-hidden shadow-lg">
                     @if($program->image)
-                        <img src="{{ asset('images/programs/'.$program->image) }}" alt="{{ $program->title }}" class="w-100" style="object-fit:cover; min-height:320px;">
+                        <img src="{{ asset('images/programs/'.$program->image) }}" data-lightbox="{{ asset('images/programs/'.$program->image) }}" alt="{{ $program->title }}" class="w-100" style="object-fit:cover; min-height:320px;">
                     @else
                         <div class="d-flex align-items-center justify-content-center w-100" style="min-height:320px; background:var(--pc-gray-light);">
                             <i class="bi bi-image" style="font-size:4rem; color:var(--pc-gray);"></i>

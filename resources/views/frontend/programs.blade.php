@@ -35,7 +35,7 @@
                         <div class="pc-card h-100">
                             <div class="position-relative overflow-hidden">
                                 @if($program->image)
-                                    <img src="{{ asset('images/programs/'.$program->image) }}" alt="{{ $program->title }}" class="card-img">
+                                    <img src="{{ asset('images/programs/'.$program->image) }}" data-lightbox="{{ asset('images/programs/'.$program->image) }}" alt="{{ $program->title }}" class="card-img">
                                 @else
                                     <div class="card-img d-flex align-items-center justify-content-center" style="background:var(--pc-gray-light);">
                                         <i class="bi bi-image" style="font-size:3rem; color:var(--pc-gray);"></i>

@@ -31,8 +31,10 @@
             <div class="row g-3" data-masonry='{"percentPosition": true}'>
                 @foreach ($photos as $key => $data)
                 <div class="col-6 col-md-4 col-lg-4" data-aos="fade-up" data-aos-delay="{{ ($key % 6) * 50 }}">
-                    <div class="position-relative rounded-3 overflow-hidden shadow-sm gallery-item" style="cursor: pointer;">
-                        <img src="{{ asset('images/gallery/'.$data->image) }}" class="img-fluid w-100" alt="Gallery Image" style="transition: transform 0.4s ease;">
+                    <div class="position-relative rounded-3 overflow-hidden shadow-sm gallery-item">
+                        <img src="{{ asset('images/gallery/'.$data->image) }}"
+                             data-lightbox="{{ asset('images/gallery/'.$data->image) }}"
+                             class="img-fluid w-100" alt="Gallery Image" style="transition: transform 0.4s ease;">
                         <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(42,133,71,0); transition: background 0.3s ease;">
                             <i class="bi bi-zoom-in text-white fs-1" style="opacity: 0; transition: opacity 0.3s ease;"></i>
                         </div>

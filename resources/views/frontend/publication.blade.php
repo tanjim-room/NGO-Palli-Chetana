@@ -35,6 +35,7 @@
                     @if($publication->thumbnail)
                         <div class="position-relative overflow-hidden" style="height:220px;">
                             <img src="{{ asset('images/publications/thumbnails/'.$publication->thumbnail) }}"
+                                 data-lightbox="{{ asset('images/publications/thumbnails/'.$publication->thumbnail) }}"
                                  class="w-100 h-100" style="object-fit:cover;"
                                  alt="{{ $publication->title }}">
                             <div class="position-absolute top-0 end-0 m-3">

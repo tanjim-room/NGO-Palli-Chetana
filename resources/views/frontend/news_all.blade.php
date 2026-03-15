@@ -32,7 +32,7 @@
                 <div class="col" data-aos="fade-up" data-aos-delay="{{ ($key % 3) * 100 }}">
                     <div class="pc-card h-100">
                         <div class="position-relative overflow-hidden">
-                            <img src="{{ asset('images/news/'.$data->image) }}" class="card-img" alt="{{ $data->title }}" style="height: 220px; object-fit: cover;">
+                            <img src="{{ asset('images/news/'.$data->image) }}" data-lightbox="{{ asset('images/news/'.$data->image) }}" class="card-img" alt="{{ $data->title }}" style="height: 220px; object-fit: cover;">
                             <div class="position-absolute top-0 end-0 m-3">
                                 <span class="badge rounded-pill text-white px-3 py-2" style="background: var(--pc-primary);">
                                     <i class="bi bi-calendar3 me-1"></i>

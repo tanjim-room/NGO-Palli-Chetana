@@ -477,7 +477,7 @@
                         Remember me
                     </label>
                     @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}" class="forgot-link">Forgot Password?</a>
+                        <!-- <a href="{{ route('password.request') }}" class="forgot-link">Forgot Password?</a> -->
                     @endif
                 </div>
 

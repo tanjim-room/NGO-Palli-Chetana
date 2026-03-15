@@ -24,7 +24,7 @@
                 <span class="pc-badge"><i class="bi bi-diagram-3 me-1"></i> Organization Structure</span>
                 <h2 class="pc-section-title mt-3">Palli Chetana Organogram</h2>
                 <p class="text-muted mb-4">View our complete organizational structure and hierarchy.</p>
-                <a href="{{ asset('frontend/file/AFAD_Organogram.pdf') }}" target="_blank" class="btn btn-pc-primary rounded-pill px-5 py-2 mb-4">
+                <a href="{{ asset('frontend/file/Palli_Chetana_Organogram.pdf') }}" target="_blank" class="btn btn-pc-primary rounded-pill px-5 py-2 mb-4">
                     <i class="bi bi-file-earmark-pdf me-2"></i> Download Organogram (PDF)
                 </a>
             </div>
@@ -50,6 +50,7 @@
                     <div class="position-relative overflow-hidden" style="height: 300px;">
                         @if($member->photo)
                         <img src="{{ asset('images/executive_committee/' . $member->photo) }}"
+                             data-lightbox="{{ asset('images/executive_committee/' . $member->photo) }}"
                              class="w-100 h-100"
                              style="object-fit: cover; transition: transform 0.4s ease;"
                              alt="{{ $member->name }}"

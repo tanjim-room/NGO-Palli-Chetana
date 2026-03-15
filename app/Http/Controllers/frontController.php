@@ -90,7 +90,7 @@ class frontController extends Controller
                 (object)[
                     'id' => 1,
                     'title' => 'Women Empowerment',
-                    'description' => 'AFAD mainly focuses on women empowerment, eradicating the gender Based Violence in community level, sub-distrit, district and national level.  AFAD undertakes initiatives that empower the destitute and neglected portion of women who are deprived from rights and to ensure equal rights and opportunities for them. AFAD  works on acclerating the women dignity and eqaul opportunity. AFAD sensitizes the government and non-government institutions for strengthening the socio-economic status of women, and ensuring the full enforcement of such arrangement though training and advocacy. It also sensitizes and influences the different level of stakeholders (policy makers, local government representatives, media, communities and religious leaders) on GVB. AFAD provides the income generation training to the women for the socio-economic empowerment.',
+                    'description' => 'Palli Chetana mainly focuses on women empowerment, eradicating gender-based violence at community, sub-district, district, and national levels. Palli Chetana undertakes initiatives that empower the destitute and neglected women who are deprived of their rights and works to ensure equal rights and opportunities for them. Palli Chetana works to accelerate women\'s dignity and equal opportunity. Palli Chetana sensitizes government and non-government institutions to strengthen the socio-economic status of women through training and advocacy. It also engages stakeholders including policymakers, local government representatives, media, communities, and religious leaders on GBV. Palli Chetana provides income generation training to support women\'s socio-economic empowerment.',
                     'icon_class' => null,
                     'icon_path' => null,
                     'image_path' => null,
@@ -99,7 +99,7 @@ class frontController extends Controller
                 (object)[
                     'id' => 2,
                     'title' => 'Community Empowerment',
-                    'description' => 'AFAD believes Community empowerment is only possible when everyone’s voices are heard. Women’s voices, particularly those living in poverty, are often unheard. Women often have the least power in communities, usually not knowing their rights or how to realize them, meaning the potential of half the population is not realized. As a result, AFAD Providing people, especially women living in poverty, with the tools to claim entitlements, develop leadership and take collective action through community-level organizations. In parallel, equipping local governments to be more accountable and responsive, creating violence-free enabling environments for women through realizing their potential, and increasing access to information and services. AFAD works on strengthening women-led community based organizations to uphold voices and realize their rights. Awareness for prevention and action to address violence, particularly against women and children. At the same time, though increasing access to the the information, AFAD creating sustainable impact as institutions become more accountable and pro-poor through ensuring access of the community to information.',
+                    'description' => 'Palli Chetana believes community empowerment is only possible when everyone\'s voices are heard. Women\'s voices, particularly those living in poverty, are often unheard. Women often have the least power in communities and may not know their rights or how to realize them, meaning the potential of half the population is left unrealized. As a result, Palli Chetana provides people, especially women living in poverty, with the tools to claim entitlements, develop leadership, and take collective action through community-level organizations. In parallel, it works with local governments to be more accountable and responsive, creates violence-free enabling environments for women, and increases access to information and services. Palli Chetana strengthens women-led community-based organizations to uphold voices and realize rights while promoting prevention and response to violence against women and children.',
                     'icon_class' => null,
                     'icon_path' => null,
                     'image_path' => null,
@@ -108,7 +108,7 @@ class frontController extends Controller
                 (object)[
                     'id' => 3,
                     'title' => 'Livelihood',
-                    'description' => 'AFAD is playing influential role in the development sectors for bringing a sustainable livelihoods and social changes of the women.  AFAD try to  Improve the livelihoods, income and food security of extremely poor women, children and men living on the norther Baangladesh particularly the  island char. AFAD  provide technical skills training, grants or interest-free loans to procure a viable market asset or start a business. Promoting agricultural farming, disaster preparedness, livelihood security, access to finance and micro-enterprise as means of income. AFAD works  for the market linkage.',
+                    'description' => 'Palli Chetana plays an influential role in the development sector by supporting sustainable livelihoods and social change. Palli Chetana works to improve the livelihoods, income, and food security of extremely poor women, children, and men living in northern Bangladesh, particularly in char areas. Palli Chetana provides technical skills training, grants, and interest-free support to help people procure viable market assets or start businesses. It promotes agricultural farming, disaster preparedness, livelihood security, access to finance, and micro-enterprise as means of income, while also supporting market linkage.',
                     'icon_class' => null,
                     'icon_path' => null,
                     'image_path' => null,
@@ -143,19 +143,19 @@ class frontController extends Controller
                 (object)[
                     'id' => 1,
                     'title' => 'Women Empowerment',
-                    'description' => 'AFAD mainly focuses on women empowerment, eradicating the gender Based Violence in community level, sub-distrit, district and national level. AFAD undertakes initiatives that empower the destitute and neglected portion of women who are deprived from rights and to ensure equal rights and opportunities for them.',
+                    'description' => 'Palli Chetana mainly focuses on women empowerment, eradicating gender-based violence at community, sub-district, district, and national levels. Palli Chetana undertakes initiatives that empower deprived and neglected women and works to ensure equal rights and opportunities for them.',
                     'icon_class' => null, 'icon_path' => null, 'image_path' => null, 'default_image' => 'img/key_area/power.png',
                 ],
                 (object)[
                     'id' => 2,
                     'title' => 'Community Empowerment',
-                    'description' => 'AFAD believes Community empowerment is only possible when everyone\'s voices are heard. Providing people, especially women living in poverty, with the tools to claim entitlements, develop leadership and take collective action through community-level organizations.',
+                    'description' => 'Palli Chetana believes community empowerment is only possible when everyone\'s voices are heard. It provides people, especially women living in poverty, with the tools to claim entitlements, develop leadership, and take collective action through community-level organizations.',
                     'icon_class' => null, 'icon_path' => null, 'image_path' => null, 'default_image' => 'img/key_area/women.png',
                 ],
                 (object)[
                     'id' => 3,
                     'title' => 'Livelihood',
-                    'description' => 'AFAD is playing influential role in the development sectors for bringing sustainable livelihoods and social changes. Promoting agricultural farming, disaster preparedness, livelihood security, access to finance and micro-enterprise as means of income.',
+                    'description' => 'Palli Chetana plays an influential role in the development sector by promoting sustainable livelihoods and social change through agricultural farming, disaster preparedness, livelihood security, access to finance, and micro-enterprise support.',
                     'icon_class' => null, 'icon_path' => null, 'image_path' => null, 'default_image' => 'img/key_area/livelihood.png',
                 ],
                 (object)[

@@ -199,7 +199,7 @@ Palli Chetana - Empowering Communities
                     <div class="pc-card">
                         <div class="position-relative overflow-hidden">
                             @if($program->image)
-                            <img src="{{ asset('images/programs/'.$program->image) }}" alt="{{ $program->title }}" class="card-img">
+                            <img src="{{ asset('images/programs/'.$program->image) }}" data-lightbox="{{ asset('images/programs/'.$program->image) }}" alt="{{ $program->title }}" class="card-img">
                             @else
                             <img src="https://images.pexels.com/photos/1371360/pexels-photo-1371360.jpeg?auto=compress&cs=tinysrgb&w=600" alt="{{ $program->title }}" class="card-img">
                             @endif
@@ -267,7 +267,7 @@ Palli Chetana - Empowering Communities
             @foreach ($project as $pkey => $proj)
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $pkey * 100 }}">
                 <div class="pc-card">
-                    <img src="{{ asset('images/project/'.$proj->image) }}" alt="{{ $proj->title }}" class="card-img">
+                    <img src="{{ asset('images/project/'.$proj->image) }}" data-lightbox="{{ asset('images/project/'.$proj->image) }}" alt="{{ $proj->title }}" class="card-img">
                     <div class="card-body">
                         <h5 class="card-title">{{ Str::limit($proj->title, 40) }}</h5>
                         <p class="card-text">{{ Str::limit($proj->description, 100) }}</p>
@@ -302,7 +302,7 @@ Palli Chetana - Empowering Communities
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $nkey * 100 }}">
                 <div class="pc-card">
                     <div class="position-relative overflow-hidden">
-                        <img src="{{ asset('images/news/'.$data->image) }}" alt="{{ $data->title }}" class="card-img">
+                        <img src="{{ asset('images/news/'.$data->image) }}" data-lightbox="{{ asset('images/news/'.$data->image) }}" alt="{{ $data->title }}" class="card-img">
                         <div class="position-absolute bottom-0 start-0 m-3">
                             <span class="badge bg-white text-dark rounded-pill px-3 py-2" style="font-size:.75rem;">
                                 <i class="bi bi-calendar3 me-1"></i> {{ $data->created_at ? date('M d, Y', strtotime($data->created_at)) : 'Recent' }}
@@ -403,7 +403,7 @@ Palli Chetana - Empowering Communities
             @foreach ($gallery as $gkey => $photo)
             <div class="col-md-4 col-6" data-aos="zoom-in" data-aos-delay="{{ $gkey * 50 }}">
                 <div class="position-relative overflow-hidden rounded-3" style="cursor:pointer;">
-                    <img src="{{ asset('images/gallery/'.$photo->image) }}" alt="Gallery" class="w-100" style="height:220px; object-fit:cover; transition: transform .5s ease;">
+                    <img src="{{ asset('images/gallery/'.$photo->image) }}" data-lightbox="{{ asset('images/gallery/'.$photo->image) }}" alt="Gallery" class="w-100" style="height:220px; object-fit:cover; transition: transform .5s ease;">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background:rgba(42,133,71,.0); transition: all .3s; opacity:0;" onmouseover="this.style.opacity='1';this.style.background='rgba(27,42,107,.4)';this.previousElementSibling.style.transform='scale(1.1)';" onmouseout="this.style.opacity='0';this.style.background='rgba(42,133,71,.0)';this.previousElementSibling.style.transform='scale(1)';">
                         <i class="bi bi-zoom-in text-white fs-2"></i>
                     </div>

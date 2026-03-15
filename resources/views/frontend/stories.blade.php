@@ -58,6 +58,7 @@
                                     <div class="d-flex align-items-center gap-3 pt-3 mt-auto" style="border-top:1px solid rgba(0,0,0,.06);">
                                         @if($story->image)
                                             <img src="{{ asset('images/stories/'.$story->image) }}"
+                                                 data-lightbox="{{ asset('images/stories/'.$story->image) }}"
                                                  alt="{{ $story->beneficiary_name }}"
                                                  class="rounded-circle"
                                                  style="width:50px; height:50px; object-fit:cover; border:2px solid var(--pc-primary-light);">

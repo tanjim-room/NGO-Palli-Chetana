@@ -27,7 +27,7 @@
                 <div class="col-lg-5">
                     @if($story->image)
                     <div class="rounded-4 overflow-hidden shadow-lg" data-aos="fade-right">
-                        <img src="{{ asset('images/stories/'.$story->image) }}" alt="{{ $story->beneficiary_name }}" class="img-fluid w-100" style="object-fit: cover;">
+                        <img src="{{ asset('images/stories/'.$story->image) }}" data-lightbox="{{ asset('images/stories/'.$story->image) }}" alt="{{ $story->beneficiary_name }}" class="img-fluid w-100" style="object-fit: cover;">
                     </div>
                     @endif
                 </div>

@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `afadzute_afad`
+-- Database: `Palli Chetana`
 --
 
 -- --------------------------------------------------------
@@ -37,8 +37,8 @@ CREATE TABLE `about_us` (
 --
 
 INSERT INTO `about_us` (`id`, `description`) VALUES
-(1, 'AFAD is a women led organization working in norther Bangladesh since 1999. AFAD is registered (No. 2443) with NGO Affair’s Bureau (NGOAB) of Prime Minister’s Office of People\'s Republic of Government of Bangladesh, and it got the registration (No. DWA/Kuri/Reg/29/99 ) from the Directorate of Women’s Affairs (DWA) in 1999. AFAD also has the registration from the Directorate of Youth Development, Govt. of Bangladesh.\r\n  Testing by robiul'),
-(3, 'AFAD is a women led organization working in norther Bangladesh since 1999. AFAD is registered (No. 2443) with NGO Affair’s Bureau (NGOAB) of Prime Minister’s Office of People\'s Republic of Government of Bangladesh, and it got the registration (No. DWA/Kuri/Reg/29/99 ) from the Directorate of Women’s Affairs (DWA) in 1999. AFAD also has the registration from the Directorate of Youth Development, Govt. of Bangladesh.');
+(1, 'Palli Chetana is a women-led organization working in northern Bangladesh since 1999. Palli Chetana is registered (No. 2443) with NGO Affair’s Bureau (NGOAB) of the Prime Minister’s Office of the People\'s Republic of Bangladesh, and it received registration (No. DWA/Kuri/Reg/29/99) from the Directorate of Women’s Affairs (DWA) in 1999. Palli Chetana also has registration from the Directorate of Youth Development, Government of Bangladesh.\r\n  Testing by robiul'),
+(3, 'Palli Chetana is a women-led organization working in northern Bangladesh since 1999. Palli Chetana is registered (No. 2443) with NGO Affair’s Bureau (NGOAB) of the Prime Minister’s Office of the People\'s Republic of Bangladesh, and it received registration (No. DWA/Kuri/Reg/29/99) from the Directorate of Women’s Affairs (DWA) in 1999. Palli Chetana also has registration from the Directorate of Youth Development, Government of Bangladesh.');
 
 -- --------------------------------------------------------
 
@@ -237,13 +237,13 @@ CREATE TABLE `faq` (
 --
 
 INSERT INTO `faq` (`id`, `question`, `answer`, `category`, `order`, `created_at`, `updated_at`) VALUES
-(4, '1. What is AFAD?', 'AFAD (Association for Alternative Development) is a non-profit organization working to empower marginalized communities, especially women and youth, through education, social development programs, and sustainable initiatives.', 'General', 1, NULL, NULL),
-(5, '2. Who can participate in AFAD programs?', 'Anyone from disadvantaged or underprivileged communities can participate. AFAD focuses mainly on women, youth, and rural populations seeking skills, education, or community support.', 'General', 2, NULL, NULL),
-(6, '3. How can I volunteer with AFAD?', 'You can apply through the website’s volunteer registration form. AFAD welcomes individuals who want to contribute their time, skills, or expertise to community development initiatives.', 'General', 3, NULL, NULL),
-(7, '4. How can I donate to AFAD?', 'Donations can be made through online payment gateways, bank transfers, or official fundraising campaigns listed on the website. Every contribution supports community empowerment programs.', 'General', 4, NULL, NULL),
-(8, '5. Where does AFAD operate?', 'AFAD mainly operates in northern Bangladesh, working closely with rural and marginalized communities to promote education, human rights, and sustainable development.', 'General', 5, NULL, NULL),
-(9, '6. Are AFAD programs free?', 'Most programs are free or highly subsidized to ensure accessibility for underprivileged individuals who need support the most.', 'General', 6, NULL, NULL),
-(10, '7. How can I stay updated with AFAD activities?', 'You can follow AFAD on social media, subscribe to newsletters, or regularly check the website for updates on events, projects, and community programs.', 'General', 7, NULL, NULL);
+(4, '1. What is Palli Chetana?', 'Palli Chetana is a non-profit organization working to empower marginalized communities, especially women and youth, through education, social development programs, and sustainable initiatives.', 'General', 1, NULL, NULL),
+(5, '2. Who can participate in Palli Chetana programs?', 'Anyone from disadvantaged or underprivileged communities can participate. Palli Chetana focuses mainly on women, youth, and rural populations seeking skills, education, or community support.', 'General', 2, NULL, NULL),
+(6, '3. How can I volunteer with Palli Chetana?', 'You can apply through the website’s volunteer registration form. Palli Chetana welcomes individuals who want to contribute their time, skills, or expertise to community development initiatives.', 'General', 3, NULL, NULL),
+(7, '4. How can I donate to Palli Chetana?', 'Donations can be made through online payment gateways, bank transfers, or official fundraising campaigns listed on the website. Every contribution supports community empowerment programs.', 'General', 4, NULL, NULL),
+(8, '5. Where does Palli Chetana operate?', 'Palli Chetana mainly operates in northern Bangladesh, working closely with rural and marginalized communities to promote education, human rights, and sustainable development.', 'General', 5, NULL, NULL),
+(9, '6. Are Palli Chetana programs free?', 'Most programs are free or highly subsidized to ensure accessibility for underprivileged individuals who need support the most.', 'General', 6, NULL, NULL),
+(10, '7. How can I stay updated with Palli Chetana activities?', 'You can follow Palli Chetana on social media, subscribe to newsletters, or regularly check the website for updates on events, projects, and community programs.', 'General', 7, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -430,9 +430,9 @@ INSERT INTO `legal_affilation` (`id`, `name`, `file`) VALUES
 (9, 'NGOAB- Privious ( 2015) Certificate', '48595legal_affilation.pdf'),
 (10, 'Department of Women Affairs Certificate', '71702legal_affilation.pdf'),
 (11, 'Department of Youth Development Certificate', '85976legal_affilation.pdf'),
-(12, 'AFAD-Legal Status', '64929legal_affilation.pdf'),
-(13, 'AFAD Organogram', '76380legal_affilation.pdf'),
-(14, 'AFAD Strategic Plan', '95068legal_affilation.pdf'),
+(12, 'Palli Chetana Legal Status', '64929legal_affilation.pdf'),
+(13, 'Palli Chetana Organogram', '76380legal_affilation.pdf'),
+(14, 'Palli Chetana Strategic Plan', '95068legal_affilation.pdf'),
 (15, 'NGO Affairs Bureau Registration Certificate  2029', '51191legal_affilation.pdf'),
 (16, 'Upload by Robiul', '58929legal_affilation.pdf');
 

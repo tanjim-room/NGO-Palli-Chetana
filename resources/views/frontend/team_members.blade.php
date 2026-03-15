@@ -33,6 +33,7 @@
                 <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden pc-card">
                     <div class="position-relative overflow-hidden" style="height: 400px;">
                         <img src="{{ asset('images/team_members/' . $member->photo) }}"
+                             data-lightbox="{{ asset('images/team_members/' . $member->photo) }}"
                              class="w-100 h-100"
                              style="object-fit: cover; transition: transform 0.4s ease;"
                              alt="{{ $member->name }}"
