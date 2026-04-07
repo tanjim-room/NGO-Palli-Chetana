@@ -1,19 +1,30 @@
 ﻿<!-- Top Bar -->
 <div class="pc-topbar d-none d-lg-block" style="background: var(--pc-dark); padding: 8px 0; font-size: .85rem; margin-top: -24px;">
+    @php
+        $topbarContact = topbar_contact();
+        $app = application();
+    @endphp
     <div class="container d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center gap-4 text-white text-opacity-75">
-            <span><i class="bi bi-telephone-fill me-1" style="color:#2a8547;"></i> 01719-691409</span>
-            <span><i class="bi bi-envelope-fill me-1" style="color:#2a8547;"></i> info@pallichetanabd.org</span>
+            @if($topbarContact && $topbarContact->mobile)
+            <span><i class="bi bi-telephone-fill me-1" style="color:#2a8547;"></i>{{ $topbarContact->mobile }}</span>
+            @endif
+            @if($topbarContact && $topbarContact->email)
+            <span><i class="bi bi-envelope-fill me-1" style="color:#2a8547;"></i>{{ $topbarContact->email }}</span>
+            @endif
         </div>
         <div class="d-flex align-items-center gap-3">
-            @if(application()->facebook)
-            <a href="{{ application()->facebook }}" target="_blank" class="text-white text-opacity-75" style="font-size:1rem;"><i class="bi bi-facebook"></i></a>
+            @if($app && $app->facebook)
+            <a href="{{ $app->facebook }}" target="_blank" class="text-white text-opacity-75" style="font-size:1rem;"><i class="bi bi-facebook"></i></a>
             @endif
-            @if(application()->twitter)
-            <a href="{{ application()->twitter }}" target="_blank" class="text-white text-opacity-75" style="font-size:1rem;"><i class="bi bi-twitter-x"></i></a>
+            @if($app && $app->twitter)
+            <a href="{{ $app->twitter }}" target="_blank" class="text-white text-opacity-75" style="font-size:1rem;"><i class="bi bi-twitter-x"></i></a>
             @endif
-            @if(application()->youtube)
-            <a href="{{ application()->youtube }}" target="_blank" class="text-white text-opacity-75" style="font-size:1rem;"><i class="bi bi-youtube"></i></a>
+            @if($app && $app->instagram)
+            <a href="{{ $app->instagram }}" target="_blank" class="text-white text-opacity-75" style="font-size:1rem;"><i class="bi bi-instagram"></i></a>
+            @endif
+            @if($app && $app->youtube)
+            <a href="{{ $app->youtube }}" target="_blank" class="text-white text-opacity-75" style="font-size:1rem;"><i class="bi bi-youtube"></i></a>
             @endif
         </div>
     </div>

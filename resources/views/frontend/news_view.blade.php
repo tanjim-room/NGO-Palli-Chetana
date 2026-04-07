@@ -21,6 +21,13 @@
     <!-- ======= News Detail Section ======= -->
     <section class="pc-section">
         <div class="container">
+            @php
+                $newsGallery = collect([$news->image])
+                    ->merge(json_decode($news->additional_images ?? '[]', true) ?? [])
+                    ->filter()
+                    ->unique()
+                    ->values();
+            @endphp
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <article data-aos="fade-up">
@@ -48,7 +55,17 @@
                         <!-- Featured Image -->
                         @if($news->image)
                         <div class="rounded-4 overflow-hidden shadow-lg mb-5" data-aos="zoom-in">
-                            <img src="{{ asset('images/news/'.$news->image) }}" alt="{{ $news->title }}" class="img-fluid w-100" style="max-height: 500px; object-fit: cover;">
+                            <img src="{{ asset('images/news/'.$news->image) }}" data-lightbox="{{ asset('images/news/'.$news->image) }}" alt="{{ $news->title }}" class="img-fluid w-100" style="max-height: 500px; object-fit: cover;">
+                        </div>
+                        @endif
+
+                        @if($newsGallery->count() > 1)
+                        <div class="row g-3 mb-5" data-aos="fade-up">
+                            @foreach($newsGallery as $galleryImage)
+                            <div class="col-md-4 col-6">
+                                <img src="{{ asset('images/news/'.$galleryImage) }}" data-lightbox="{{ asset('images/news/'.$galleryImage) }}" alt="{{ $news->title }}" class="img-fluid w-100 rounded-3 shadow-sm" style="height:140px; object-fit:cover; cursor:pointer;">
+                            </div>
+                            @endforeach
                         </div>
                         @endif
 

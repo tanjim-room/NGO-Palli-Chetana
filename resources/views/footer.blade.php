@@ -31,6 +31,10 @@
 
 <!-- Main Footer -->
 <footer style="background: var(--pc-dark); color: rgba(255,255,255,.8);">
+    @php
+        $footerContact = topbar_contact();
+        $app = application();
+    @endphp
     <div class="container py-5">
         <div class="row g-4">
             <!-- Brand -->
@@ -103,18 +107,48 @@
             <div class="col-lg-2 col-md-6 col-6">
                 <h6 class="text-white fw-bold mb-3">Contact</h6>
                 <ul style="font-size:.88rem;">
+                    @if($footerContact && $footerContact->address)
                     <li class="mb-3 d-flex gap-2">
                         <i class="bi bi-geo-alt text-white-50 flex-shrink-0 mt-1"></i>
-                        <span class="text-white text-opacity-75">R.K Road Khalilganj Bazar, Kurigram</span>
+                        <span class="text-white text-opacity-75">{{ $footerContact->address }}</span>
                     </li>
+                    @endif
+                    @if($footerContact && $footerContact->mobile)
                     <li class="mb-3 d-flex gap-2">
                         <i class="bi bi-telephone text-white-50 flex-shrink-0"></i>
-                        <span class="text-white text-opacity-75">01719-691409</span>
+                        <span class="text-white text-opacity-75">{{ $footerContact->mobile }}</span>
                     </li>
+                    @endif
+                    @if($footerContact && $footerContact->email)
                     <li class="mb-3 d-flex gap-2">
                         <i class="bi bi-envelope text-white-50 flex-shrink-0"></i>
-                        <span class="text-white text-opacity-75">info@pallichetanabd.org</span>
+                        <span class="text-white text-opacity-75">{{ $footerContact->email }}</span>
                     </li>
+                    @endif
+                    @if($app && $app->facebook)
+                    <li class="mb-3 d-flex gap-2">
+                        <i class="bi bi-facebook text-white-50 flex-shrink-0"></i>
+                        <a href="{{ $app->facebook }}" target="_blank" class="text-white text-opacity-75">Facebook</a>
+                    </li>
+                    @endif
+                    @if($app && $app->twitter)
+                    <li class="mb-3 d-flex gap-2">
+                        <i class="bi bi-twitter-x text-white-50 flex-shrink-0"></i>
+                        <a href="{{ $app->twitter }}" target="_blank" class="text-white text-opacity-75">Twitter/X</a>
+                    </li>
+                    @endif
+                    @if($app && $app->instagram)
+                    <li class="mb-3 d-flex gap-2">
+                        <i class="bi bi-instagram text-white-50 flex-shrink-0"></i>
+                        <a href="{{ $app->instagram }}" target="_blank" class="text-white text-opacity-75">Instagram</a>
+                    </li>
+                    @endif
+                    @if($app && $app->youtube)
+                    <li class="mb-3 d-flex gap-2">
+                        <i class="bi bi-youtube text-white-50 flex-shrink-0"></i>
+                        <a href="{{ $app->youtube }}" target="_blank" class="text-white text-opacity-75">YouTube</a>
+                    </li>
+                    @endif
                 </ul>
             </div>
         </div>

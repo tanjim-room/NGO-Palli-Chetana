@@ -21,6 +21,7 @@ class ProgramController extends Controller
             'title' => 'required',
             'description' => 'required',
             'image' => 'required|mimes:jpg,png,jpeg,gif',
+            'images.*' => 'nullable|mimes:jpg,png,jpeg,gif',
             'status' => 'required|in:active,completed,upcoming',
         ]);
 
@@ -30,10 +31,20 @@ class ProgramController extends Controller
             $image->move(public_path('images/programs/'), $imageName);
         }
 
+        $additionalImages = [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $galleryImage) {
+                $galleryImageName = rand(100000, 999999) . "program_gallery." . $galleryImage->getClientOriginalExtension();
+                $galleryImage->move(public_path('images/programs/'), $galleryImageName);
+                $additionalImages[] = $galleryImageName;
+            }
+        }
+
         $data = array(
             'title' => $request->title,
             'description' => $request->description,
             'image' => $imageName,
+            'additional_images' => !empty($additionalImages) ? json_encode($additionalImages) : null,
             'start_date' => $request->start_date,
             'status' => $request->status
         );
@@ -58,6 +69,14 @@ class ProgramController extends Controller
         if (file_exists($oldImageName)) {
             @unlink($oldImageName);
         }
+
+        foreach (json_decode($item->additional_images ?? '[]', true) as $galleryImage) {
+            $galleryImagePath = public_path('images/programs/' . $galleryImage);
+            if (file_exists($galleryImagePath)) {
+                @unlink($galleryImagePath);
+            }
+        }
+
         DB::table('programs')->where('id', $id)->delete();
         return redirect()->back()->with('success', 'Successfully Deleted');
     }
@@ -75,6 +94,7 @@ class ProgramController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'images.*' => 'nullable|mimes:jpg,png,jpeg,gif',
             'status' => 'required|in:active,completed,upcoming',
         ]);
 
@@ -93,10 +113,28 @@ class ProgramController extends Controller
             $imageName = $item->image;
         }
 
+        $additionalImages = json_decode($item->additional_images ?? '[]', true);
+        if ($request->hasFile('images')) {
+            foreach ($additionalImages as $galleryImage) {
+                $galleryImagePath = public_path('images/programs/' . $galleryImage);
+                if (file_exists($galleryImagePath)) {
+                    @unlink($galleryImagePath);
+                }
+            }
+
+            $additionalImages = [];
+            foreach ($request->file('images') as $galleryImage) {
+                $galleryImageName = rand(100000, 999999) . "program_gallery." . $galleryImage->getClientOriginalExtension();
+                $galleryImage->move(public_path('images/programs'), $galleryImageName);
+                $additionalImages[] = $galleryImageName;
+            }
+        }
+
         $data = array(
             'title' => $request->title,
             'description' => $request->description,
             'image' => $imageName,
+            'additional_images' => !empty($additionalImages) ? json_encode($additionalImages) : null,
             'start_date' => $request->start_date,
             'status' => $request->status
         );

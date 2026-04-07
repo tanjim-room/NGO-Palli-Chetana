@@ -22,6 +22,13 @@
 <!-- Project Detail Section -->
 <section class="pc-section">
     <div class="container">
+        @php
+            $projectGallery = collect([$project->image])
+                ->merge(json_decode($project->additional_images ?? '[]', true) ?? [])
+                ->filter()
+                ->unique()
+                ->values();
+        @endphp
         <div class="row g-5" data-aos="fade-up">
             <!-- Image Column -->
             <div class="col-lg-5">
@@ -34,6 +41,16 @@
                         </div>
                     @endif
                 </div>
+
+                @if($projectGallery->count() > 1)
+                <div class="row g-2 mt-3">
+                    @foreach($projectGallery as $galleryImage)
+                    <div class="col-4">
+                        <img src="{{ asset('images/project/'.$galleryImage) }}" data-lightbox="{{ asset('images/project/'.$galleryImage) }}" alt="{{ $project->title }}" class="w-100 rounded-3 shadow-sm" style="height:100px; object-fit:cover; cursor:pointer;">
+                    </div>
+                    @endforeach
+                </div>
+                @endif
             </div>
 
             <!-- Content Column -->

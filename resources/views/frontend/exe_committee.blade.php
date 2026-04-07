@@ -47,7 +47,7 @@
             @foreach($committee as $member)
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                 <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden pc-card">
-                    <div class="position-relative overflow-hidden" style="height: 300px;">
+                    <div class="position-relative overflow-hidden" style="height: 460px;">
                         @if($member->photo)
                         <img src="{{ asset('images/executive_committee/' . $member->photo) }}"
                              data-lightbox="{{ asset('images/executive_committee/' . $member->photo) }}"

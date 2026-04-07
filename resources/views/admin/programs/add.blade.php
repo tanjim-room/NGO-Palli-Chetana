@@ -28,6 +28,14 @@
                             @enderror
                         </div>
                         <div class="col-md-12">
+                            <label for="images" class="form-label">Additional Images</label>
+                            <input type="file" name="images[]" multiple class="form-control @error('images.*') is-invalid @enderror" id="images">
+                            <span class="text-info">You can select multiple images.</span>
+                            @error('images.*')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-md-12">
                             <label for="description" class="form-label">Description</label>
                             <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" rows="5"></textarea>
                             @error('description')

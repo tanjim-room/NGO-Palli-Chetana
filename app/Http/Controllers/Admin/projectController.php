@@ -19,6 +19,7 @@ class projectController extends Controller
             'title' => 'required',
             'description' => 'required',
             'image' => 'required|mimes:jpeg,png,jpg',
+            'images.*' => 'nullable|mimes:jpeg,png,jpg',
         ]);
 
         $imageName = '';
@@ -27,10 +28,20 @@ class projectController extends Controller
             $image->move(public_path('images/project'), $imageName);
         }
 
+        $additionalImages = [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $galleryImage) {
+                $galleryImageName = rand(100000, 999999) . "project_gallery." . $galleryImage->getClientOriginalExtension();
+                $galleryImage->move(public_path('images/project'), $galleryImageName);
+                $additionalImages[] = $galleryImageName;
+            }
+        }
+
         $project = array(
                 'title' => $request->title,
                 'description' => $request->description,
                 'image' => $imageName,
+                'additional_images' => !empty($additionalImages) ? json_encode($additionalImages) : null,
             );
 
         DB::table('ongoing_project')->insert($project);
@@ -52,6 +63,13 @@ class projectController extends Controller
             @unlink($oldImageName);
         }
 
+        foreach (json_decode($project->additional_images ?? '[]', true) as $galleryImage) {
+            $galleryImagePath = public_path('images/project/' . $galleryImage);
+            if (file_exists($galleryImagePath)) {
+                @unlink($galleryImagePath);
+            }
+        }
+
         DB::table('ongoing_project')->where('id',$id)->delete();
         return redirect()->back()->with('success','Successfully Deleted Project');
     }
@@ -67,6 +85,7 @@ class projectController extends Controller
         $validated = $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'images.*' => 'nullable|mimes:jpeg,png,jpg',
         ]);
 
         $project = DB::table('ongoing_project')->where('id',$id)->first();
@@ -85,10 +104,28 @@ class projectController extends Controller
             $imageName = $project->image;
         }
 
+        $additionalImages = json_decode($project->additional_images ?? '[]', true);
+        if ($request->hasFile('images')) {
+            foreach ($additionalImages as $galleryImage) {
+                $galleryImagePath = public_path('images/project/' . $galleryImage);
+                if (file_exists($galleryImagePath)) {
+                    @unlink($galleryImagePath);
+                }
+            }
+
+            $additionalImages = [];
+            foreach ($request->file('images') as $galleryImage) {
+                $galleryImageName = rand(100000, 999999) . "project_gallery." . $galleryImage->getClientOriginalExtension();
+                $galleryImage->move(public_path('images/project'), $galleryImageName);
+                $additionalImages[] = $galleryImageName;
+            }
+        }
+
         $project = array(
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $imageName
+            'image' => $imageName,
+            'additional_images' => !empty($additionalImages) ? json_encode($additionalImages) : null
         );
 
         DB::table('ongoing_project')->where('id',$id)->update($project);

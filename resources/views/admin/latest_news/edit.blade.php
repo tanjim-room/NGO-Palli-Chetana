@@ -26,9 +26,27 @@
                             <span class="text-info">Image Dimension Must be (725 X 375) and maximum size 300 kb.</span>
                         </div>
                         <div class="col-md-12">
+                            <label for="images" class="form-label">Additional Images</label>
+                            <input type="file" name="images[]" multiple class="form-control @error('images.*') is-invalid @enderror" id="images">
+                            <span class="text-info">Selecting new files will replace the previous additional images.</span>
+                            @error('images.*')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-md-12">
                             <label for="img" class="form-label">Old Image:</label>
                             <img src="{{ asset('images/news/'.$news->image) }}" alt="" width="100">
                         </div>
+                        @if(!empty($news->additional_images))
+                        <div class="col-md-12">
+                            <label class="form-label">Current Additional Images:</label>
+                            <div class="d-flex flex-wrap gap-2">
+                                @foreach(json_decode($news->additional_images, true) as $galleryImage)
+                                    <img src="{{ asset('images/news/'.$galleryImage) }}" alt="" width="100">
+                                @endforeach
+                            </div>
+                        </div>
+                        @endif
                         <div class="col-md-12">
                             <label for="description" class="form-label">Description</label>
                             <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" rows="3">

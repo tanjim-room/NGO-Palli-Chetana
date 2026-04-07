@@ -39,7 +39,7 @@
                                          style="object-fit: cover;"
                                          alt="{{ $message->name }}">
                                     <div class="position-absolute bottom-0 start-0 end-0 p-4 text-white text-center" style="background: linear-gradient(transparent, rgba(0,0,0,0.8));">
-                                        <h5 class="fw-bold mb-1">{{ $message->name }}</h5>
+                                        <h5 class="fw-bold mb-1 text-white">{{ $message->name }}</h5>
                                         <span class="badge rounded-pill" style="background: var(--pc-primary);">{{ $message->designation }}</span>
                                     </div>
                                 </div>

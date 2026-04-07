@@ -20,6 +20,7 @@ class newsController extends Controller
             'title' => 'required',
             'description' => 'required',
             'image' => 'required|mimes:jpg,png,jpeg,gif',
+            'images.*' => 'nullable|mimes:jpg,png,jpeg,gif',
         ]);
 
         $imageName = '';
@@ -28,10 +29,20 @@ class newsController extends Controller
             $image->move(public_path('images/news/'),$imageName);
         }
 
+        $additionalImages = [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $galleryImage) {
+                $galleryImageName = rand(100000, 999999) . "news_gallery." . $galleryImage->getClientOriginalExtension();
+                $galleryImage->move(public_path('images/news/'), $galleryImageName);
+                $additionalImages[] = $galleryImageName;
+            }
+        }
+
         $news = array(
             'title' => $request->title,
             'description' => $request->description,
             'image' => $imageName,
+            'additional_images' => !empty($additionalImages) ? json_encode($additionalImages) : null,
             'created_at' => now(),
             'updated_at' => now(),
         );
@@ -56,6 +67,14 @@ class newsController extends Controller
         if(file_exists($oldIamgeName)){
             @unlink($oldIamgeName);
         }
+
+        foreach (json_decode($news->additional_images ?? '[]', true) as $galleryImage) {
+            $galleryImagePath = public_path('images/news/' . $galleryImage);
+            if (file_exists($galleryImagePath)) {
+                @unlink($galleryImagePath);
+            }
+        }
+
         DB::table('latest_news')->where('id', $id)->delete();
         return redirect()->back()->with('success', 'Successfully Deleted News');
     }
@@ -73,6 +92,7 @@ class newsController extends Controller
         $validated = $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'images.*' => 'nullable|mimes:jpg,png,jpeg,gif',
         ]);
 
         $news = DB::table('latest_news')->where('id',$id)->first();
@@ -91,10 +111,28 @@ class newsController extends Controller
             $imageName = $news->image;
         }
 
+        $additionalImages = json_decode($news->additional_images ?? '[]', true);
+        if ($request->hasFile('images')) {
+            foreach ($additionalImages as $galleryImage) {
+                $galleryImagePath = public_path('images/news/' . $galleryImage);
+                if (file_exists($galleryImagePath)) {
+                    @unlink($galleryImagePath);
+                }
+            }
+
+            $additionalImages = [];
+            foreach ($request->file('images') as $galleryImage) {
+                $galleryImageName = rand(100000, 999999) . "news_gallery." . $galleryImage->getClientOriginalExtension();
+                $galleryImage->move(public_path('images/news'), $galleryImageName);
+                $additionalImages[] = $galleryImageName;
+            }
+        }
+
         $news = array(
             'title' => $request->title,
             'description' => $request->description,
             'image' => $imageName,
+            'additional_images' => !empty($additionalImages) ? json_encode($additionalImages) : null,
             'updated_at' => now(),
         );
 

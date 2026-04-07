@@ -402,7 +402,7 @@ Palli Chetana - Empowering Communities
         <div class="row g-3">
             @foreach ($gallery as $gkey => $photo)
             <div class="col-md-4 col-6" data-aos="zoom-in" data-aos-delay="{{ $gkey * 50 }}">
-                <div class="position-relative overflow-hidden rounded-3" style="cursor:pointer;">
+                <div class="position-relative overflow-hidden rounded-3" style="cursor:pointer;" data-lightbox="{{ asset('images/gallery/'.$photo->image) }}">
                     <img src="{{ asset('images/gallery/'.$photo->image) }}" data-lightbox="{{ asset('images/gallery/'.$photo->image) }}" alt="Gallery" class="w-100" style="height:220px; object-fit:cover; transition: transform .5s ease;">
                     <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background:rgba(42,133,71,.0); transition: all .3s; opacity:0;" onmouseover="this.style.opacity='1';this.style.background='rgba(27,42,107,.4)';this.previousElementSibling.style.transform='scale(1.1)';" onmouseout="this.style.opacity='0';this.style.background='rgba(42,133,71,.0)';this.previousElementSibling.style.transform='scale(1)';">
                         <i class="bi bi-zoom-in text-white fs-2"></i>
