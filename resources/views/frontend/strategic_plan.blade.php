@@ -45,7 +45,12 @@
                     <div class="card-body p-4">
                         <h5 class="fw-bold mb-2">{{ $plan->title }}</h5>
                         @if (!empty($plan->description))
-                            <p class="text-secondary small mb-0">{{ $plan->description }}</p>
+                            @php
+                                $safeDescription = strip_tags($plan->description, '<p><br><strong><em><u><span><ul><ol><li><a>');
+                            @endphp
+                            <div class="text-secondary small mb-0" style="max-height: 120px; overflow: hidden; text-align: left;">
+                                {!! $safeDescription !!}
+                            </div>
                         @endif
                     </div>
                     @if(!empty($plan->pdf_file))

@@ -55,7 +55,12 @@
                                 </h5>
 
                                 @if($proj->description)
-                                    <p class="card-text text-muted small mb-3 flex-grow-1">{{ Str::limit($proj->description, 100) }}</p>
+                                    @php
+                                        $safeDescription = strip_tags($proj->description, '<p><br><strong><em><u><span><ul><ol><li><a>');
+                                    @endphp
+                                    <div class="card-text text-muted small mb-3 flex-grow-1" style="max-height: 110px; overflow: hidden;">
+                                        {!! $safeDescription !!}
+                                    </div>
                                 @else
                                     <div class="flex-grow-1"></div>
                                 @endif

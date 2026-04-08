@@ -17,7 +17,7 @@
 </section>
 
 {{-- ===== HERO IMAGE SECTION ===== --}}
-<section class="position-relative overflow-hidden" style="min-height:480px;">
+<section class="position-relative overflow-hidden mt-4" style="min-height:480px;">
     <img src="{{ asset('img/fund.jpg') }}" alt="Fundraising"
          class="position-absolute top-0 start-0 w-100 h-100" style="object-fit:cover;">
     <div class="position-absolute top-0 start-0 w-100 h-100"
@@ -69,7 +69,12 @@
                     <div class="card-body p-4">
                         <h5 class="fw-bold mb-2">{{ $campaign->title }}</h5>
                         @if(!empty($campaign->description))
-                            <p class="text-muted small mb-3">{{ Str::limit($campaign->description, 100, '...') }}</p>
+                            @php
+                                $safeDescription = strip_tags($campaign->description, '<p><br><strong><em><u><span><ul><ol><li><a>');
+                            @endphp
+                            <div class="text-muted small mb-3" style="max-height: 120px; overflow: hidden; text-align: left;">
+                                {!! $safeDescription !!}
+                            </div>
                         @endif
 
                         {{-- Progress Bar --}}

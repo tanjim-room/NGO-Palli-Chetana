@@ -57,7 +57,12 @@
                     <div class="card-body p-4 d-flex flex-column">
                         <h5 class="fw-bold mb-2">{{ $publication->title }}</h5>
                         @if($publication->description)
-                            <p class="text-secondary small flex-grow-1">{{ Str::limit($publication->description, 120) }}</p>
+                            @php
+                                $safeDescription = strip_tags($publication->description, '<p><br><strong><em><u><span><ul><ol><li><a>');
+                            @endphp
+                            <div class="text-secondary small flex-grow-1" style="max-height: 120px; overflow: hidden; text-align: left;">
+                                {!! $safeDescription !!}
+                            </div>
                         @endif
                         @if($publication->created_at)
                             <div class="mb-3">

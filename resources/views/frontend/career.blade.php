@@ -17,7 +17,7 @@
 </section>
 
 {{-- ===== INTRO ===== --}}
-<section class="py-5" style="background: linear-gradient(135deg, var(--pc-primary), var(--pc-secondary));">
+<section class="py-5 mt-4" style="background: linear-gradient(135deg, var(--pc-primary), var(--pc-secondary));">
     <div class="container text-center text-white" data-aos="fade-up">
         <i class="bi bi-briefcase-fill display-3 mb-3 d-block" style="color: var(--pc-accent);"></i>
         <h2 class="fw-bold mb-3">Join the Palli Chetana Team</h2>

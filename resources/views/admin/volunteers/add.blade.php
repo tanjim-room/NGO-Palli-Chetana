@@ -22,14 +22,14 @@
                         </div>
                         <div class="col-md-12">
                             <label for="description" class="form-label">Description</label>
-                            <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" rows="5"></textarea>
+                            <textarea id="description" name="description" class="form-control js-richtext @error('description') is-invalid @enderror" rows="5"></textarea>
                             @error('description')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="col-md-12">
                             <label for="requirements" class="form-label">Requirements (Optional)</label>
-                            <textarea id="requirements" name="requirements" class="form-control" rows="3"></textarea>
+                            <textarea id="requirements" name="requirements" class="form-control js-richtext" rows="3"></textarea>
                         </div>
                         <div class="col-md-6">
                             <label for="location" class="form-label">Location (Optional)</label>

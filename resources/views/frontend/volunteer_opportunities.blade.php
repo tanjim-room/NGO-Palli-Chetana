@@ -56,7 +56,12 @@
                             </div>
 
                             {{-- Description --}}
-                            <p class="text-muted small mb-3">{{ Str::limit($volunteer->description, 150) }}</p>
+                            @php
+                                $safeDescription = strip_tags($volunteer->description ?? '', '<p><br><strong><em><u><span><ul><ol><li><a>');
+                            @endphp
+                            <div class="text-muted small mb-3" style="max-height: 120px; overflow: hidden; text-align: left;">
+                                {!! $safeDescription !!}
+                            </div>
 
                             {{-- Location --}}
                             @if($volunteer->location)
@@ -73,7 +78,12 @@
                                     <h6 class="fw-semibold small text-uppercase text-muted mb-2">
                                         <i class="bi bi-list-check me-1"></i>Requirements
                                     </h6>
-                                    <p class="small text-muted mb-0">{{ Str::limit($volunteer->requirements, 120) }}</p>
+                                    @php
+                                        $safeRequirements = strip_tags($volunteer->requirements, '<p><br><strong><em><u><span><ul><ol><li><a>');
+                                    @endphp
+                                    <div class="small text-muted mb-0" style="max-height: 100px; overflow: hidden; text-align: left;">
+                                        {!! $safeRequirements !!}
+                                    </div>
                                 </div>
                             @endif
 

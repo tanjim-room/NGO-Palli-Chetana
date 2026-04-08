@@ -71,9 +71,9 @@
                                     <small class="text-muted">Palli Chetana Initiative</small>
                                 </div>
                             </div>
-                            <p class="fs-6 lh-lg mb-0" style="text-align:justify; word-wrap:break-word; overflow-wrap:break-word; color:#444;">
-                                {{ $focus_area->description }}
-                            </p>
+                            <div class="fs-6 lh-lg mb-0" style="text-align:justify; word-wrap:break-word; overflow-wrap:break-word; color:#444;">
+                                {!! $focus_area->description !!}
+                            </div>
                         </div>
                     </div>
 

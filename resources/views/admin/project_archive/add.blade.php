@@ -32,7 +32,7 @@
 
                         <div class="col-md-12">
                             <label for="description" class="form-label">Description</label>
-                            <textarea name="description" class="form-control" id="description" rows="4" placeholder="Enter project description (optional)">{{ old('description') }}</textarea>
+                            <textarea name="description" class="form-control js-richtext" id="description" rows="4" placeholder="Enter project description (optional)">{{ old('description') }}</textarea>
                         </div>
 
                         <div class="col-md-12">

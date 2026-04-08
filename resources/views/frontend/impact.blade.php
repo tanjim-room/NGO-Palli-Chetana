@@ -54,7 +54,12 @@
                         {{-- Title & Description --}}
                         <h5 class="fw-bold mb-2">{{ $item->title }}</h5>
                         @if($item->description)
-                        <p class="text-muted small mb-2">{{ $item->description }}</p>
+                        @php
+                            $safeDescription = strip_tags($item->description, '<p><br><strong><em><u><span><ul><ol><li><a>');
+                        @endphp
+                        <div class="text-muted small mb-2" style="max-height: 120px; overflow: hidden; text-align: left;">
+                            {!! $safeDescription !!}
+                        </div>
                         @endif
 
                         {{-- Year Badge --}}

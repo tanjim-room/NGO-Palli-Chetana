@@ -57,7 +57,12 @@
                             </div>
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">{{ $program->title }}</h5>
-                                <p class="card-text flex-grow-1">{{ Str::limit(strip_tags($program->description), 120) }}</p>
+                                @php
+                                    $programCardText = html_entity_decode(strip_tags($program->description ?? ''), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                                    $programCardText = str_replace("\u{00A0}", ' ', $programCardText);
+                                    $programCardText = preg_replace('/\s+/u', ' ', $programCardText);
+                                @endphp
+                                <p class="card-text flex-grow-1">{{ Str::limit(trim($programCardText), 120) }}</p>
                                 <a href="{{ route('programs.view', $program->id) }}" class="card-link mt-2">
                                     View Details <i class="bi bi-arrow-right"></i>
                                 </a>

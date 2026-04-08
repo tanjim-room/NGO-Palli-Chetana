@@ -100,8 +100,11 @@
                             <h6 class="fw-bold mb-3" style="color: var(--pc-primary);">
                                 <i class="bi bi-file-text me-2"></i>About This Project
                             </h6>
+                            @php
+                                $safeDescription = strip_tags($project->description, '<p><br><strong><em><u><span><ul><ol><li><a>');
+                            @endphp
                             <div class="text-muted lh-lg" style="text-align: justify; font-size: .98rem;">
-                                {!! nl2br(e($project->description)) !!}
+                                {!! $safeDescription !!}
                             </div>
                         </div>
                     </div>
