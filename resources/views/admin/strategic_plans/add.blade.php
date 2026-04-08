@@ -24,7 +24,7 @@
                         </div>
                         <div class="col-md-12">
                             <label for="description" class="form-label">Description</label>
-                            <textarea name="description" id="description" rows="4" class="form-control @error('description') is-invalid @enderror" placeholder="Enter Description (optional)">{{ old('description') }}</textarea>
+                            <textarea name="description" id="description" rows="4" class="form-control js-richtext @error('description') is-invalid @enderror" placeholder="Enter Description (optional)">{{ old('description') }}</textarea>
                             @error('description')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror

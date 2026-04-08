@@ -48,7 +48,7 @@
                             
                             <div class="col-md-12 mb-3">
                                 <label for="description" class="form-label">Description</label>
-                                <textarea id="description" name="description" class="form-control" rows="4">{{ old('description', $data->description) }}</textarea>
+                                <textarea id="description" name="description" class="form-control js-richtext" rows="4">{{ old('description', $data->description) }}</textarea>
                             </div>
                             
                             <div class="row">

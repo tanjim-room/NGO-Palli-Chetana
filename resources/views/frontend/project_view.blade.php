@@ -59,7 +59,7 @@
                 <h2 class="pc-section-title mb-3">{{ $project->title }}</h2>
 
                 <div class="text-muted lh-lg" style="text-align:justify; font-size:.98rem;">
-                    {!! nl2br(e($project->description)) !!}
+                    {!! $project->description !!}
                 </div>
 
                 <div class="mt-4 pt-3 border-top">

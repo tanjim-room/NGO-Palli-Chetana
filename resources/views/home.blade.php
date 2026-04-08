@@ -59,16 +59,16 @@ Palli Chetana - Empowering Communities
         ['bg' => 'var(--pc-primary-light)', 'color' => 'var(--pc-primary)'],
     ];
 @endphp
-<section class="position-relative" style="margin-top:-50px; z-index:10;">
+<section class="position-relative pc-impact-overlap" style="z-index:10;">
     <div class="container">
         <div class="row g-3 justify-content-center">
             @foreach($impacts as $index => $impact)
             @php $c = $statColors[$index % count($statColors)]; @endphp
             <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
-                <div class="text-center p-4 rounded-4 bg-white" style="box-shadow: var(--pc-shadow-lg);">
-                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2" style="width:50px;height:50px;background:{{ $c['bg'] }};">
+                <div class="text-center p-4 rounded-4 bg-white pc-impact-card" style="box-shadow: var(--pc-shadow-lg);">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-2 pc-impact-icon-wrap" style="width:50px;height:50px;background:{{ $c['bg'] }};">
                         @if($impact->icon && file_exists(public_path('images/impact/' . $impact->icon)))
-                            <img src="{{ asset('images/impact/' . $impact->icon) }}" alt="{{ $impact->title }}" style="width:28px;height:28px;object-fit:contain;">
+                            <img src="{{ asset('images/impact/' . $impact->icon) }}" alt="{{ $impact->title }}" class="pc-impact-icon-img" style="width:28px;height:28px;object-fit:contain;">
                         @else
                             <i class="bi bi-bar-chart-fill fs-4" style="color:{{ $c['color'] }};"></i>
                         @endif
@@ -211,7 +211,7 @@ Palli Chetana - Empowering Communities
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $program->title }}</h5>
-                            <p class="card-text">{{ Str::limit($program->description, 120) }}</p>
+                            <p class="card-text">{{ Str::limit(strip_tags($program->description), 120) }}</p>
                             <a href="{{ route('programs.view', $program->id) }}" class="card-link">
                                 Learn More <i class="bi bi-arrow-right"></i>
                             </a>
@@ -270,7 +270,7 @@ Palli Chetana - Empowering Communities
                     <img src="{{ asset('images/project/'.$proj->image) }}" data-lightbox="{{ asset('images/project/'.$proj->image) }}" alt="{{ $proj->title }}" class="card-img">
                     <div class="card-body">
                         <h5 class="card-title">{{ Str::limit($proj->title, 40) }}</h5>
-                        <p class="card-text">{{ Str::limit($proj->description, 100) }}</p>
+                        <p class="card-text">{{ Str::limit(strip_tags($proj->description), 100) }}</p>
                         <a href="{{ route('ongoing.project.view', $proj->id) }}" class="card-link">
                             Read More <i class="bi bi-arrow-right"></i>
                         </a>
@@ -311,7 +311,7 @@ Palli Chetana - Empowering Communities
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ Str::limit($data->title, 50) }}</h5>
-                        <p class="card-text">{{ Str::limit($data->description, 100) }}</p>
+                        <p class="card-text">{{ Str::limit(strip_tags($data->description), 100) }}</p>
                         <a href="{{ route('latest.news.view', $data->id) }}" class="card-link">
                             Read More <i class="bi bi-arrow-right"></i>
                         </a>
@@ -424,6 +424,25 @@ Palli Chetana - Empowering Communities
 
 @push('css')
 <style>
+    .pc-impact-overlap {
+        margin-top: -86px;
+    }
+    .pc-impact-card {
+        min-height: 170px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .pc-impact-icon-wrap {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .pc-impact-icon-wrap i,
+    .pc-impact-icon-img {
+        display: block;
+        margin: 0 auto;
+        line-height: 1;
+    }
     .pc-hero-slide {
         min-height: 85vh;
         background-size: cover;
@@ -441,7 +460,21 @@ Palli Chetana - Empowering Communities
         z-index: 1;
     }
     .ms-n3 { margin-left: -1.5rem !important; }
+    @media (max-width: 991.98px) {
+        .pc-impact-overlap {
+            margin-top: -72px;
+        }
+        .pc-impact-card {
+            min-height: 155px;
+        }
+    }
     @media (max-width: 768px) {
+        .pc-impact-overlap {
+            margin-top: -44px;
+        }
+        .pc-impact-card {
+            min-height: 138px;
+        }
         .pc-hero-slide { min-height: 60vh; }
         .min-vh-75 { min-height: 60vh; }
         .pc-hero-slide h1 { font-size: 1.75rem !important; }

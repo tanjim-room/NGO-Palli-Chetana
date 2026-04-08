@@ -70,10 +70,8 @@
                         @endif
 
                         <!-- Article Body -->
-                        <div class="mb-5">
-                            <p class="fs-6 lh-lg" style="text-align: justify; word-wrap: break-word; overflow-wrap: break-word;">
-                                {{ $news->description }}
-                            </p>
+                        <div class="mb-5 fs-6 lh-lg" style="text-align: justify; word-wrap: break-word; overflow-wrap: break-word;">
+                            {!! $news->description !!}
                         </div>
 
                         <!-- Divider -->

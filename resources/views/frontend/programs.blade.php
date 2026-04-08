@@ -57,7 +57,7 @@
                             </div>
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">{{ $program->title }}</h5>
-                                <p class="card-text flex-grow-1">{{ Str::limit($program->description, 120) }}</p>
+                                <p class="card-text flex-grow-1">{{ Str::limit(strip_tags($program->description), 120) }}</p>
                                 <a href="{{ route('programs.view', $program->id) }}" class="card-link mt-2">
                                     View Details <i class="bi bi-arrow-right"></i>
                                 </a>

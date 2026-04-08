@@ -1283,6 +1283,42 @@
         });
     })();
     </script>
+    <script src="https://cdn.ckeditor.com/4.22.1/full/ckeditor.js"></script>
+    <script>
+    (function () {
+        function initRichTextEditors() {
+            if (typeof CKEDITOR === 'undefined') return;
+
+            document.querySelectorAll('textarea.js-richtext').forEach(function (el) {
+                if (el.dataset.richtextInitialized === '1') return;
+
+                CKEDITOR.replace(el, {
+                    height: 220,
+                    toolbar: [
+                        { name: 'document', items: ['Source'] },
+                        { name: 'clipboard', items: ['Undo', 'Redo'] },
+                        { name: 'styles', items: ['Format', 'Font', 'FontSize'] },
+                        { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'] },
+                        { name: 'colors', items: ['TextColor', 'BGColor'] },
+                        { name: 'paragraph', items: ['NumberedList', 'BulletedList', 'Outdent', 'Indent', 'JustifyLeft', 'JustifyCenter', 'JustifyRight'] },
+                        { name: 'links', items: ['Link', 'Unlink'] },
+                        { name: 'insert', items: ['Table', 'HorizontalRule', 'SpecialChar'] }
+                    ],
+                    fontSize_sizes: '10/10px;12/12px;14/14px;16/16px;18/18px;20/20px;24/24px;28/28px;32/32px'
+                });
+
+                el.dataset.richtextInitialized = '1';
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initRichTextEditors);
+        } else {
+            initRichTextEditors();
+        }
+    })();
+    </script>
+    @stack('scripts')
 </body>
 
 </html>

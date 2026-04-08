@@ -44,7 +44,7 @@
                             </div>
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">{{ Str::limit($data->title, 50, '...') }}</h5>
-                                <p class="card-text flex-grow-1">{{ Str::limit($data->description, 100, '...') }}</p>
+                                <p class="card-text flex-grow-1">{{ Str::limit(strip_tags($data->description), 100, '...') }}</p>
                                 <a href="{{ route('ongoing.project.view', $data->id) }}" class="card-link mt-2">
                                     Read More <i class="bi bi-arrow-right"></i>
                                 </a>

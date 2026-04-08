@@ -22,7 +22,7 @@
                         </div>
                         <div class="col-md-12">
                             <label for="answer" class="form-label">Answer</label>
-                            <textarea id="answer" name="answer" class="form-control @error('answer') is-invalid @enderror" rows="5">{{ $data->answer }}</textarea>
+                            <textarea id="answer" name="answer" class="form-control js-richtext @error('answer') is-invalid @enderror" rows="5">{{ $data->answer }}</textarea>
                             @error('answer')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror

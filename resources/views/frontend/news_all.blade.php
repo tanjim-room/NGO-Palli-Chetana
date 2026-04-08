@@ -43,7 +43,7 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title fw-bold">{{ Str::limit($data->title, 50, '...') }}</h5>
                             <p class="card-text text-muted flex-grow-1">
-                                {{ Str::limit($data->description, 100, '...') }}
+                                {{ Str::limit(strip_tags($data->description), 100, '...') }}
                             </p>
                             <a href="{{ route('latest.news.view', $data->id) }}" class="card-link fw-semibold mt-auto" style="color: var(--pc-primary);">
                                 Read More <i class="bi bi-arrow-right"></i>

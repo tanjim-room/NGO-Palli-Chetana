@@ -35,7 +35,7 @@
                          data-lightbox="{{ asset('images/gallery/'.$data->image) }}">
                         <img src="{{ asset('images/gallery/'.$data->image) }}"
                              data-lightbox="{{ asset('images/gallery/'.$data->image) }}"
-                             class="img-fluid w-100" alt="Gallery Image" style="transition: transform 0.4s ease;">
+                                class="img-fluid w-100 gallery-fixed-photo" alt="Gallery Image" style="transition: transform 0.4s ease;">
                         <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(42,133,71,0); transition: background 0.3s ease;">
                             <i class="bi bi-zoom-in text-white fs-1" style="opacity: 0; transition: opacity 0.3s ease;"></i>
                         </div>
@@ -54,6 +54,12 @@
 
     <!-- Gallery Hover Effect Styles -->
     <style>
+        .gallery-fixed-photo {
+            display: block;
+            height: 260px;
+            object-fit: cover;
+            object-position: center;
+        }
         .gallery-item:hover img {
             transform: scale(1.1);
         }
@@ -62,6 +68,11 @@
         }
         .gallery-item:hover .bi-zoom-in {
             opacity: 1 !important;
+        }
+        @media (max-width: 767.98px) {
+            .gallery-fixed-photo {
+                height: 190px;
+            }
         }
     </style>
 
