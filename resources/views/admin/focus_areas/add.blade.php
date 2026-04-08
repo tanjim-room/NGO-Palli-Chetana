@@ -19,7 +19,7 @@
 
                         <div class="col-md-12">
                             <label class="form-label">Description</label>
-                            <textarea name="description" rows="5" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
+                            <textarea name="description" rows="5" class="form-control js-richtext @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
                             @error('description')<div class="text-danger">{{ $message }}</div>@enderror
                         </div>
 

@@ -17,7 +17,7 @@
                         @csrf
                         <div class="col-md-12">
                             <label for="description" class="form-label">Description</label>
-                            <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror" rows="3">
+                            <textarea id="description" name="description" class="form-control js-richtext @error('description') is-invalid @enderror" rows="3">
                                 {{ isset($about->description)?$about->description:'' }}
                             </textarea>
                             @error('description')
@@ -32,11 +32,11 @@
             </div>
         </div>
 
-        <div class="card border-top border-0 border-4 border-info">
+        <div class="card border-top border-0 border-4 border-info p-4">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <h6>Description:</h6>
+                        <h6 class="">Description:</h6>
                         <p class="text-justify">
                             {!! isset($about->description)?"$about->description":'' !!}
                         </p>

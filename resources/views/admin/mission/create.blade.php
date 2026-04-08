@@ -17,21 +17,21 @@
                         @csrf
                         <div class="col-md-12">
                             <label for="vision" class="form-label">Vision</label>
-                            <textarea id="vision" name="vision" class="form-control @error('vision') is-invalid @enderror" rows="3">{{ old('vision', $mission->vision ?? '') }}</textarea>
+                            <textarea id="vision" name="vision" class="form-control js-richtext @error('vision') is-invalid @enderror" rows="3">{{ old('vision', $mission->vision ?? '') }}</textarea>
                             @error('vision')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="col-md-12">
                             <label for="mission" class="form-label">Mission</label>
-                            <textarea id="mission" name="mission" class="form-control @error('mission') is-invalid @enderror" rows="3">{{ old('mission', $mission->mission ?? '') }}</textarea>
+                            <textarea id="mission" name="mission" class="form-control js-richtext @error('mission') is-invalid @enderror" rows="3">{{ old('mission', $mission->mission ?? '') }}</textarea>
                             @error('mission')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="col-md-12">
                             <label for="values" class="form-label">Our Values</label>
-                            <textarea id="values" name="values" class="form-control @error('values') is-invalid @enderror" rows="5">{{ old('values', $mission->values ?? '') }}</textarea>
+                            <textarea id="values" name="values" class="form-control js-richtext @error('values') is-invalid @enderror" rows="5">{{ old('values', $mission->values ?? '') }}</textarea>
                             @error('values')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <div class="card border-top border-0 border-4 border-info">
+        <div class="card border-top border-0 border-4 border-info p-4">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
