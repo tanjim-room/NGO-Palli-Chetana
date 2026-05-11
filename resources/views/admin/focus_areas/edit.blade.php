@@ -39,7 +39,7 @@
                             @if (!empty($focus_area->icon_path))
                                 <div class="mt-2">
                                     <div class="text-muted mb-1">Current icon:</div>
-                                    <img src="{{ asset('storage/' . $focus_area->icon_path) }}" alt="{{ $focus_area->title }} icon" style="max-width: 80px;" class="border rounded p-1 bg-white">
+                                    <img src="{{ public_storage_url($focus_area->icon_path) }}" alt="{{ $focus_area->title }} icon" style="max-width: 80px;" class="border rounded p-1 bg-white">
 
                                     <div class="form-check mt-2">
                                         <input class="form-check-input" type="checkbox" name="remove_icon" value="1" id="remove_icon">
@@ -57,7 +57,7 @@
                             @if (!empty($focus_area->image_path))
                                 <div class="mt-2">
                                     <div class="text-muted mb-1">Current image:</div>
-                                    <img src="{{ asset('storage/' . $focus_area->image_path) }}" alt="{{ $focus_area->title }}" style="max-width: 180px;" class="border rounded">
+                                    <img src="{{ public_storage_url($focus_area->image_path) }}" alt="{{ $focus_area->title }}" style="max-width: 180px;" class="border rounded">
 
                                     <div class="form-check mt-2">
                                         <input class="form-check-input" type="checkbox" name="remove_image" value="1" id="remove_image">

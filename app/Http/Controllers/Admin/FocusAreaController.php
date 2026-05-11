@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class FocusAreaController extends Controller
 {
@@ -37,12 +36,18 @@ class FocusAreaController extends Controller
 
         $iconPath = null;
         if ($request->hasFile('icon')) {
-            $iconPath = $request->file('icon')->store('focus_areas/icons', 'public');
+            $iconFile = $request->file('icon');
+            $iconName = uniqid() . '_' . preg_replace('/\s+/', '_', $iconFile->getClientOriginalName());
+            $iconFile->move(public_path('images/focus_areas/icons'), $iconName);
+            $iconPath = 'focus_areas/icons/' . $iconName;
         }
 
         $imagePath = null;
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('focus_areas', 'public');
+            $imageFile = $request->file('image');
+            $imageName = uniqid() . '_' . preg_replace('/\s+/', '_', $imageFile->getClientOriginalName());
+            $imageFile->move(public_path('images/focus_areas'), $imageName);
+            $imagePath = 'focus_areas/' . $imageName;
         }
 
         DB::table('focus_areas')->insert([
@@ -91,32 +96,50 @@ class FocusAreaController extends Controller
 
         if (!empty($validated['remove_icon'])) {
             if ($iconPath) {
-                Storage::disk('public')->delete($iconPath);
+                $iconFilePath = public_path('images/' . ltrim($iconPath, '/'));
+                if (file_exists($iconFilePath)) {
+                    @unlink($iconFilePath);
+                }
             }
             $iconPath = null;
         }
 
         if ($request->hasFile('icon')) {
             if ($iconPath) {
-                Storage::disk('public')->delete($iconPath);
+                $oldIconFilePath = public_path('images/' . ltrim($iconPath, '/'));
+                if (file_exists($oldIconFilePath)) {
+                    @unlink($oldIconFilePath);
+                }
             }
-            $iconPath = $request->file('icon')->store('focus_areas/icons', 'public');
+            $iconFile = $request->file('icon');
+            $iconName = uniqid() . '_' . preg_replace('/\s+/', '_', $iconFile->getClientOriginalName());
+            $iconFile->move(public_path('images/focus_areas/icons'), $iconName);
+            $iconPath = 'focus_areas/icons/' . $iconName;
         }
 
         $imagePath = $focus_area->image_path;
 
         if (!empty($validated['remove_image'])) {
             if ($imagePath) {
-                Storage::disk('public')->delete($imagePath);
+                $imageFilePath = public_path('images/' . ltrim($imagePath, '/'));
+                if (file_exists($imageFilePath)) {
+                    @unlink($imageFilePath);
+                }
             }
             $imagePath = null;
         }
 
         if ($request->hasFile('image')) {
             if ($imagePath) {
-                Storage::disk('public')->delete($imagePath);
+                $oldImageFilePath = public_path('images/' . ltrim($imagePath, '/'));
+                if (file_exists($oldImageFilePath)) {
+                    @unlink($oldImageFilePath);
+                }
             }
-            $imagePath = $request->file('image')->store('focus_areas', 'public');
+            $imageFile = $request->file('image');
+            $imageName = uniqid() . '_' . preg_replace('/\s+/', '_', $imageFile->getClientOriginalName());
+            $imageFile->move(public_path('images/focus_areas'), $imageName);
+            $imagePath = 'focus_areas/' . $imageName;
         }
 
         DB::table('focus_areas')->where('id', $id)->update([
@@ -140,11 +163,17 @@ class FocusAreaController extends Controller
         }
 
         if (!empty($focus_area->icon_path)) {
-            Storage::disk('public')->delete($focus_area->icon_path);
+            $iconFilePath = public_path('images/' . ltrim($focus_area->icon_path, '/'));
+            if (file_exists($iconFilePath)) {
+                @unlink($iconFilePath);
+            }
         }
 
         if ($focus_area->image_path) {
-            Storage::disk('public')->delete($focus_area->image_path);
+            $imageFilePath = public_path('images/' . ltrim($focus_area->image_path, '/'));
+            if (file_exists($imageFilePath)) {
+                @unlink($imageFilePath);
+            }
         }
 
         DB::table('focus_areas')->where('id', $id)->delete();

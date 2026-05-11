@@ -42,7 +42,7 @@ class galleryController extends Controller
     public function index()
     {
         $gallery = DB::table('gallery')->get();
-        return view('admin.galLery.index', compact('gallery'));
+        return view('admin.gallery.index', compact('gallery'));
     }
 
     // Destroy

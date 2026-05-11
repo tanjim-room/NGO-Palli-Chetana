@@ -34,7 +34,7 @@
 <nav class="navbar navbar-expand-lg pc-navbar sticky-top" style="background: white; box-shadow: var(--pc-shadow); z-index:1030; transition: all .3s ease;">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center py-1 gap-2" href="{{ url('/') }}">
-            <img class="pc-brand-logo" src="{{ asset('images/application/'.application()->main_logo) }}" alt="Palli Chetana" style="height: 50px; width: auto;">
+            <img class="pc-brand-logo" src="{{ main_logo_url() }}" alt="Palli Chetana" style="height: 50px; width: auto;">
             <h5 class="pc-brand-title offcanvas-title fw-bold text-green-600 mb-0"><span class="colorName">Palli Chetana</span></h5>
         </a>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#pcNavbar" aria-controls="pcNavbar">

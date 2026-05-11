@@ -56,6 +56,9 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    // Supports shared hosting where web root is not the default "public" directory.
+    'public_path' => env('APP_PUBLIC_PATH', 'public'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

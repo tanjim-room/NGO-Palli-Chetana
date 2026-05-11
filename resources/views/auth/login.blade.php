@@ -134,7 +134,7 @@
             height: 80px;
             object-fit: contain;
             border-radius: 18px;
-            background: linear-gradient(135deg, var(--green), var(--navy));
+            background: white;
             padding: 10px;
             box-shadow: 0 8px 24px rgba(42,133,71,.2);
             animation: logoPulse 3s ease-in-out infinite;

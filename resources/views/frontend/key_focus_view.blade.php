@@ -39,7 +39,7 @@
                     @php
                         $imageUrl = null;
                         if (!empty($focus_area->image_path)) {
-                            $imageUrl = asset('storage/' . $focus_area->image_path);
+                            $imageUrl = public_storage_url($focus_area->image_path);
                         } elseif (!empty($focus_area->default_image)) {
                             $imageUrl = asset($focus_area->default_image);
                         }
@@ -57,7 +57,7 @@
                             <div class="d-flex align-items-center gap-3 mb-4">
                                 @php
                                     $iconClass = !empty($focus_area->icon_class) ? $focus_area->icon_class : 'bi bi-bullseye';
-                                    $iconUrl = !empty($focus_area->icon_path) ? asset('storage/' . $focus_area->icon_path) : null;
+                                    $iconUrl = !empty($focus_area->icon_path) ? public_storage_url($focus_area->icon_path) : null;
                                 @endphp
                                 <div class="d-flex align-items-center justify-content-center rounded-3" style="width:56px; height:56px; background:rgba(42,133,71,.1); flex-shrink:0;">
                                     @if($iconUrl)

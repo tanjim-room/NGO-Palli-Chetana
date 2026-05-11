@@ -49,12 +49,12 @@
 
                     $iconUrl = null;
                     if (!empty($item->icon_path)) {
-                        $iconUrl = asset('storage/' . $item->icon_path);
+                        $iconUrl = public_storage_url($item->icon_path);
                     }
 
                     $imageUrl = null;
                     if (!empty($item->image_path)) {
-                        $imageUrl = asset('storage/' . $item->image_path);
+                        $imageUrl = public_storage_url($item->image_path);
                     } elseif (!empty($item->default_image)) {
                         $imageUrl = asset($item->default_image);
                     }

@@ -5,6 +5,12 @@
 
     RewriteEngine On
 
+    # Expose Laravel public disk files when the project root is the web root.
+    RewriteCond %{REQUEST_URI} ^/storage/(.+)$ [NC]
+    RewriteCond %{DOCUMENT_ROOT}/storage/app/public/%1 -f [OR]
+    RewriteCond %{DOCUMENT_ROOT}/storage/app/public/%1 -d
+    RewriteRule ^storage/(.+)$ storage/app/public/$1 [L,NC]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
